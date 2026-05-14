@@ -1,0 +1,1208 @@
+<!DOCTYPE html>
+<!-- saved from url=(0048)file:///Users/hichamtahir/Downloads/index_1.html -->
+<html lang="fr"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>iFOCUS</title>
+<link rel="preconnect" href="https://fonts.googleapis.com/">
+<link href="./iFOCUS_files/css2" rel="stylesheet">
+<style>
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+:root{
+  --bg:#070707;--bg2:#0f0f0f;--bg3:#161616;--bg4:#1c1c1c;
+  --border:rgba(255,255,255,.07);--border2:rgba(255,255,255,.14);
+  --text:#fff;--muted:rgba(255,255,255,.42);
+  --accent:#E8FF4A;--accent2:#FF6B35;
+  --fh:'Syne',sans-serif;--fb:'DM Sans',sans-serif;
+  /* Tags pastels par thème */
+  --tag-football:#FFD9B8;--tag-football-text:#3d2817;
+  --tag-gaming:#D8D4FF;--tag-gaming-text:#1f1a4d;
+  --tag-music:#FFD4E5;--tag-music-text:#4d1a33;
+  --tag-tv:#FFC9C9;--tag-tv-text:#4d1a1a;
+  --tag-social:#C9DCFF;--tag-social-text:#1a2d4d;
+  --tag-brand:#F0E4D0;--tag-brand-text:#3d3017;
+  --tag-vlog:#C8EBD4;--tag-vlog-text:#173d28;
+  --tag-yt:#F0EFB8;--tag-yt-text:#3d3a17;
+  --tag-cars:#FFE0B8;--tag-cars-text:#3d2917;
+}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--text);font-family:var(--fb);overflow-x:hidden;cursor:none;font-size:16px;line-height:1.6}
+body.lock{overflow:hidden}
+.cur{width:10px;height:10px;background:var(--accent);border-radius:50%;position:fixed;top:0;left:0;pointer-events:none;z-index:9999;transform:translate(-50%,-50%)}
+.cur-ring{width:30px;height:30px;border:1.5px solid rgba(232,255,74,.38);border-radius:50%;position:fixed;top:0;left:0;pointer-events:none;z-index:9998;transform:translate(-50%,-50%);transition:width .22s,height .22s}
+nav{position:fixed;top:0;left:0;right:0;z-index:200;padding:1.3rem 4rem 1.3rem 2rem;display:flex;align-items:center;justify-content:space-between;backdrop-filter:blur(24px);background:rgba(7,7,7,.82);border-bottom:1px solid var(--border)}
+.logo-wrap{display:flex;align-items:center}
+.logo{font-family:var(--fh);font-size:1.5rem;font-weight:800;letter-spacing:-.03em;text-decoration:none;color:var(--text);white-space:nowrap}.logo span{color:var(--accent)}
+.logo-sub{font-size:.65rem;font-weight:400;color:var(--muted);letter-spacing:.08em;text-transform:uppercase;margin-left:.75rem;font-family:var(--fb);white-space:nowrap}
+.nav-links{display:flex;gap:2.5rem;list-style:none}
+.nav-links a{font-size:.78rem;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);text-decoration:none;transition:color .2s}
+.nav-links a:hover{color:var(--text)}
+.nav-right{display:flex;align-items:center;gap:1rem}
+.lang-btn{background:transparent;border:1px solid var(--border2);color:var(--muted);font-family:var(--fh);font-size:.72rem;font-weight:700;letter-spacing:.1em;padding:.4rem .9rem;cursor:none;transition:border-color .2s,color .2s}
+.lang-btn:hover,.lang-btn.active{border-color:var(--accent);color:var(--accent)}
+.nav-wa{display:inline-flex;align-items:center;gap:8px;background:var(--accent);color:#000;font-family:var(--fh);font-size:.8rem;font-weight:700;padding:.6rem 1.4rem;text-decoration:none;cursor:none;transition:transform .2s,box-shadow .2s}
+.nav-wa:hover{transform:translateY(-2px);box-shadow:0 6px 24px rgba(232,255,74,.28)}
+.nav-wa svg{width:14px;height:14px;fill:#000}
+.nav-mobile{display:none;align-items:center;gap:.5rem}
+.nav-mobile .lang-btn{padding:.35rem .7rem;font-size:.65rem}
+.burger{display:flex;flex-direction:column;gap:5px;cursor:none;background:none;border:none;padding:4px}
+.burger span{display:block;width:22px;height:1.5px;background:var(--text)}
+.hero{min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:9rem 2rem 4rem;position:relative;overflow:hidden}
+.hero-grid{position:absolute;inset:0;z-index:0}
+.hero-timeline{position:absolute;inset:0;bottom:0;z-index:0;overflow:hidden;opacity:.06;pointer-events:none;mask-image:linear-gradient(to bottom,rgba(0,0,0,1) 0%,rgba(0,0,0,1) 70%,rgba(0,0,0,0) 100%);-webkit-mask-image:linear-gradient(to bottom,rgba(0,0,0,1) 0%,rgba(0,0,0,1) 70%,rgba(0,0,0,0) 100%)}
+.hero-glow{position:absolute;width:800px;height:800px;background:radial-gradient(circle,rgba(232,255,74,.055) 0%,transparent 65%);top:50%;left:50%;transform:translate(-50%,-62%);pointer-events:none}
+.hero-eyebrow{display:inline-flex;align-items:center;gap:8px;background:rgba(232,255,74,.07);border:1px solid rgba(232,255,74,.2);color:var(--accent);font-size:.7rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;padding:.42rem 1rem;margin-bottom:2.2rem;position:relative;z-index:1;animation:fu .9s ease both}
+.bdot{width:5px;height:5px;background:var(--accent);border-radius:50%;animation:pulse 2s infinite}
+@keyframes pulse{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.35;transform:scale(.65)}}
+.hero h1{font-family:var(--fh);font-size:clamp(2.8rem,5.5vw,6.5rem);font-weight:800;line-height:.92;letter-spacing:-.045em;position:relative;z-index:1;margin-bottom:1.6rem;animation:fu .9s .12s ease both}
+.hero h1 .y{color:var(--accent)}
+.hero h1 .line{display:block}
+.hero-sub{font-size:clamp(1rem,1.8vw,1.15rem);color:var(--muted);max-width:580px;margin:0 auto 1.5rem;position:relative;z-index:1;animation:fu .9s .25s ease both;line-height:1.7}
+.hero-sub strong{color:var(--text);font-weight:500}
+.hero-proof{display:flex;align-items:center;justify-content:center;gap:.5rem;font-size:.78rem;color:var(--muted);margin-bottom:2.5rem;position:relative;z-index:1;animation:fu .9s .38s ease both;flex-wrap:wrap}
+.proof-pill{display:inline-flex;align-items:center;gap:5px;background:var(--bg2);border:1px solid var(--border2);padding:.3rem .8rem;font-size:.72rem;font-weight:600;color:var(--text)}
+.proof-pill .dot{width:5px;height:5px;background:var(--accent);border-radius:50%}
+.hero-btns{display:flex;gap:1rem;justify-content:center;flex-wrap:wrap;position:relative;z-index:1;animation:fu .9s .5s ease both}
+.btn-y{display:inline-flex;align-items:center;gap:9px;background:var(--accent);color:#000;font-family:var(--fh);font-size:.92rem;font-weight:700;padding:1rem 2.2rem;text-decoration:none;cursor:none;transition:transform .2s,box-shadow .2s;border:none}
+.btn-y:hover{transform:translateY(-3px);box-shadow:0 14px 44px rgba(232,255,74,.32)}
+.btn-y svg{width:17px;height:17px;fill:#000}
+.btn-g{display:inline-flex;align-items:center;gap:9px;background:transparent;color:var(--text);font-family:var(--fh);font-size:.92rem;font-weight:600;padding:1rem 2.2rem;border:1px solid var(--border2);cursor:none;text-decoration:none;transition:border-color .2s,background .2s}
+.btn-g:hover{border-color:var(--accent);background:rgba(232,255,74,.04)}
+.resp-tag{display:inline-flex;align-items:center;gap:7px;margin-top:1.5rem;font-size:.74rem;color:var(--muted);position:relative;z-index:1;animation:fu .9s .62s ease both}
+.gdot{width:7px;height:7px;background:#4ade80;border-radius:50%;box-shadow:0 0 8px rgba(74,222,128,.55);animation:pulse 2.5s infinite;flex-shrink:0}
+.hero-stats{display:flex;gap:0;justify-content:center;border-top:1px solid var(--border);margin-top:4rem;position:relative;z-index:1;animation:fu .9s .72s ease both;flex-wrap:nowrap;width:100%;max-width:900px}
+.stat{flex:1;min-width:140px;padding:2rem 1.5rem;border-right:1px solid var(--border);text-align:center}
+.stat:last-child{border-right:none}
+.snum{font-family:var(--fh);font-size:2.6rem;font-weight:800;color:var(--accent);line-height:1}
+.slbl{font-size:.72rem;color:var(--muted);letter-spacing:.06em;text-transform:uppercase;margin-top:5px}
+@keyframes fu{from{opacity:0;transform:translateY(26px)}to{opacity:1;transform:translateY(0)}}
+.services-strip{display:flex;gap:0;border-top:1px solid var(--border);border-bottom:1px solid var(--border);overflow-x:auto;scrollbar-width:none}
+.services-strip::-webkit-scrollbar{display:none}
+.srv{flex:1;min-width:160px;padding:1.6rem 1.5rem;border-right:1px solid var(--border);display:flex;flex-direction:column;align-items:center;gap:.5rem;text-align:center;transition:background .2s}
+.srv:last-child{border-right:none}
+.srv:hover{background:var(--bg2)}
+.srv-icon{font-size:1.4rem}
+.srv-name{font-family:var(--fh);font-size:.8rem;font-weight:700;letter-spacing:.04em}
+.srv-desc{font-size:.7rem;color:var(--muted)}
+.tick{padding:1.6rem 0;border-bottom:1px solid var(--border);overflow:hidden}
+.tick-w{display:flex}
+.tick-t{display:flex;gap:3rem;align-items:center;animation:ticker 24s linear infinite;white-space:nowrap;flex-shrink:0}
+.tick-t:nth-child(2){animation-delay:-12s}
+@keyframes ticker{from{transform:translateX(0)}to{transform:translateX(-100%)}}
+.tl{font-family:var(--fh);font-size:.8rem;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--muted);padding:0 2rem;transition:color .3s}
+.tl:hover{color:var(--accent)}
+.ts{color:var(--accent);opacity:.35;font-size:.5rem}
+.sec{padding:8rem 4rem}
+.elbl{display:flex;align-items:center;gap:10px;font-size:.7rem;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--accent);margin-bottom:1.1rem}
+.elbl::before{content:'';display:block;width:20px;height:1px;background:var(--accent)}
+h2{font-family:var(--fh);font-size:clamp(2rem,3.8vw,3.3rem);font-weight:800;line-height:1.04;letter-spacing:-.03em;margin-bottom:1.4rem}
+h2 span{color:var(--accent)}
+
+/* PORTFOLIO - nouvelle structure */
+.port-head{display:flex;align-items:flex-end;justify-content:space-between;margin-bottom:3rem;flex-wrap:wrap;gap:1.5rem}
+.port-head-inner{display:flex;align-items:flex-end;justify-content:space-between;width:100%;flex-wrap:wrap;gap:1.5rem}
+.port-head h2{margin-bottom:0;font-size:clamp(3rem,5.5vw,5.5rem)}
+.port-head-sub{color:var(--muted);max-width:360px;font-size:.92rem;line-height:1.75}
+
+/* Onglets refondus - design pastel/élégant, pleine largeur */
+.port-tabs-wrap{margin-top:3rem;margin-bottom:2rem}
+.port-tabs{display:grid;grid-template-columns:repeat(6,1fr);gap:.6rem;background:transparent;border:none;width:100%;margin-bottom:0}
+.tab{padding:.95rem 1rem;background:var(--bg2);color:var(--muted);font-family:var(--fh);font-size:.78rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;border:1px solid var(--border);cursor:none;transition:all .25s ease;display:flex;align-items:center;justify-content:center;gap:.5rem;text-align:center}
+.tab:hover{border-color:var(--border2);color:var(--text);background:var(--bg3)}
+.tab.active{background:var(--accent);color:#000;border-color:var(--accent);box-shadow:0 4px 20px rgba(232,255,74,.15)}
+.tab-count{font-size:.65rem;opacity:.55;font-weight:600}
+.tab.active .tab-count{opacity:.7}
+
+.port-panel{display:none;animation:fadePanel .4s ease}
+.port-panel.show{display:block}
+@keyframes fadePanel{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:translateY(0)}}
+
+/* Grids - adaptés selon format */
+.grid-3{display:grid;grid-template-columns:repeat(3,1fr);gap:1.2rem;margin-bottom:1.2rem}
+.grid-2{display:grid;grid-template-columns:1fr 1fr;gap:1.2rem;margin-bottom:1.2rem}
+.grid-4{display:grid;grid-template-columns:repeat(4,1fr);gap:1rem;margin-bottom:1.2rem}
+.grid-vert-4{display:grid;grid-template-columns:repeat(4,1fr);gap:1rem;margin-bottom:1.2rem}
+.grid-vert-5{display:grid;grid-template-columns:repeat(5,1fr);gap:1rem;margin-bottom:1.2rem}
+.grid-mix{display:grid;grid-template-columns:repeat(12,1fr);gap:1rem;margin-bottom:1.2rem}
+.grid-mix .span-h{grid-column:span 6}
+.grid-mix .span-v{grid-column:span 3}
+
+.vcard{background:var(--bg2);border:1px solid var(--border);overflow:hidden;cursor:none;transition:border-color .3s,transform .3s;text-decoration:none;color:inherit;display:block;position:relative}
+.vcard:hover{border-color:rgba(232,255,74,.28);transform:translateY(-2px)}
+.vcard:hover .vi,.vcard:hover img.vthumb-img{transform:scale(1.05)}
+.vcard:hover .vplay{border-color:var(--accent)}
+
+.vthumb{position:relative;overflow:hidden;background:var(--bg3)}
+.vthumb-16{aspect-ratio:16/9}
+.vthumb-916{aspect-ratio:9/16}
+.vthumb-hero{aspect-ratio:16/8}
+
+.vthumb-img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transition:transform .5s ease}
+.vi{position:absolute;inset:0;transition:transform .5s ease;display:flex;align-items:center;justify-content:center}
+.vover{position:absolute;inset:0;background:rgba(0,0,0,.32);opacity:0;transition:opacity .3s;z-index:1}
+.vcard:hover .vover{opacity:1}
+.vplay{width:54px;height:54px;border:2px solid rgba(255,255,255,.38);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:1.1rem;position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);z-index:2;transition:border-color .3s,transform .3s;background:rgba(0,0,0,.28);backdrop-filter:blur(8px)}
+.vplay-sm{width:42px;height:42px;font-size:.9rem}
+.vplay-lg{width:68px;height:68px;font-size:1.4rem}
+.vcard:hover .vplay{transform:translate(-50%,-50%) scale(1.1)}
+.vinfo{padding:1.1rem 1.3rem}
+
+/* Tags pastels - look épuré */
+.vtag{font-family:var(--fh);font-size:.62rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;padding:3px 9px;display:inline-block;margin-bottom:.55rem;border-radius:2px}
+.vtag.football{background:var(--tag-football);color:var(--tag-football-text)}
+.vtag.gaming{background:var(--tag-gaming);color:var(--tag-gaming-text)}
+.vtag.music{background:var(--tag-music);color:var(--tag-music-text)}
+.vtag.tv{background:var(--tag-tv);color:var(--tag-tv-text)}
+.vtag.social{background:var(--tag-social);color:var(--tag-social-text)}
+.vtag.brand{background:var(--tag-brand);color:var(--tag-brand-text)}
+.vtag.vlog{background:var(--tag-vlog);color:var(--tag-vlog-text)}
+.vtag.yt{background:var(--tag-yt);color:var(--tag-yt-text)}
+.vtag.cars{background:var(--tag-cars);color:var(--tag-cars-text)}
+
+.vtitle{font-family:var(--fh);font-size:.95rem;font-weight:700;line-height:1.3;margin-bottom:.35rem}
+.vmeta{font-size:.72rem;color:var(--muted);line-height:1.5}
+.vstat{display:inline-flex;align-items:center;gap:5px;font-size:.68rem;color:var(--accent);margin-top:.35rem;font-weight:700}
+.m6b{position:absolute;top:.7rem;right:.7rem;background:#E8192C;color:#fff;font-family:var(--fh);font-size:.58rem;font-weight:700;letter-spacing:.06em;padding:3px 7px;z-index:3;border-radius:2px}
+.ig-link{display:inline-flex;align-items:center;gap:4px;font-size:.68rem;color:rgba(232,255,74,.6);margin-top:.3rem}
+
+/* Badge "à venir" pour vidéos non encore sorties */
+.coming-soon{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;background:linear-gradient(135deg,#0a0a14,#1a1424);z-index:3}
+.coming-soon-lbl{font-family:var(--fh);font-size:.7rem;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:var(--accent);margin-bottom:.4rem;animation:pulse 2.5s infinite}
+.coming-soon-title{font-family:var(--fh);font-size:1rem;font-weight:700;color:var(--text);text-align:center;padding:0 1rem}
+
+/* Carrousel Alyxa - hybride dots + flèches */
+.carousel-card{position:relative;background:var(--bg2);border:1px solid var(--border);overflow:hidden;transition:border-color .3s,transform .3s}
+.carousel-card:hover{border-color:rgba(232,255,74,.28);transform:translateY(-2px)}
+.carousel-track{position:relative;width:100%;aspect-ratio:9/16;overflow:hidden;cursor:none}
+.carousel-slide{position:absolute;inset:0;opacity:0;transition:opacity .45s ease;display:flex;align-items:center;justify-content:center}
+.carousel-slide.active{opacity:1}
+.carousel-slide .vi{position:absolute;inset:0}
+.carousel-slide img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.carousel-badge{position:absolute;top:.7rem;right:.7rem;background:rgba(0,0,0,.65);backdrop-filter:blur(8px);color:var(--accent);font-family:var(--fh);font-size:.62rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;padding:4px 9px;z-index:4;border-radius:2px;border:1px solid rgba(232,255,74,.3)}
+.carousel-arrow{position:absolute;top:50%;width:36px;height:36px;background:rgba(0,0,0,.55);backdrop-filter:blur(8px);border:1px solid rgba(255,255,255,.18);color:#fff;font-size:1.1rem;display:flex;align-items:center;justify-content:center;cursor:none;z-index:5;transition:background .2s,border-color .2s;transform:translateY(-50%);opacity:0;border-radius:50%}
+.carousel-card:hover .carousel-arrow{opacity:1}
+.carousel-arrow:hover{background:var(--accent);border-color:var(--accent);color:#000}
+.carousel-arrow.prev{left:.7rem}
+.carousel-arrow.next{right:.7rem}
+.carousel-dots{position:absolute;bottom:.8rem;left:50%;transform:translateX(-50%);display:flex;gap:6px;z-index:4}
+.carousel-dot{width:7px;height:7px;border-radius:50%;background:rgba(255,255,255,.3);cursor:none;transition:background .25s,transform .25s;border:none;padding:0}
+.carousel-dot.active{background:var(--accent);transform:scale(1.3)}
+.carousel-link{position:absolute;inset:0;z-index:3;cursor:none}
+
+/* Photos - galerie scrollable */
+.photo-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem}
+.pcard{position:relative;overflow:hidden;cursor:none;border:1px solid var(--border);transition:border-color .3s,transform .3s}
+.pcard:hover{border-color:rgba(232,255,74,.28);transform:translateY(-2px)}
+.pcard:hover .pinner{transform:scale(1.06)}
+.pinner{width:100%;aspect-ratio:4/3;transition:transform .5s ease;display:flex;align-items:flex-end;justify-content:flex-start;position:relative;overflow:hidden}
+.plbl{position:absolute;bottom:0;left:0;right:0;padding:1rem;background:linear-gradient(to top,rgba(0,0,0,.88),transparent);font-family:var(--fh);font-size:.92rem;font-weight:700;z-index:2;letter-spacing:.02em}
+.pcount{position:absolute;top:.7rem;right:.7rem;background:rgba(0,0,0,.65);backdrop-filter:blur(8px);color:var(--accent);font-family:var(--fh);font-size:.62rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;padding:4px 9px;z-index:2;border-radius:2px;border:1px solid rgba(232,255,74,.3)}
+.pemoji{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);font-size:2.4rem;opacity:.35;z-index:1}
+.c1{background:linear-gradient(135deg,#0a0d22,#1a0d30)}.c2{background:linear-gradient(135deg,#0d1a0d,#1a2e10)}.c3{background:linear-gradient(135deg,#1a0d0a,#2e1a0a)}.c4{background:linear-gradient(135deg,#0a1214,#14241a)}.c5{background:linear-gradient(135deg,#140812,#20101a)}.c6{background:linear-gradient(135deg,#0a0a1c,#1c0a0a)}.c7{background:linear-gradient(135deg,#0d0d14,#1a140d)}.c8{background:linear-gradient(135deg,#08100a,#1a1408)}.c9{background:linear-gradient(135deg,#10080a,#0a1020)}.c10{background:linear-gradient(135deg,#14100a,#0a1418)}.c11{background:linear-gradient(135deg,#1a0810,#081a14)}.c12{background:linear-gradient(135deg,#0a1010,#1a0a10)}
+
+/* Bouton "Travaillons ensemble" en bas */
+.port-cta-wrap{display:flex;justify-content:center;margin-top:3rem;padding-top:2.5rem;border-top:1px solid var(--border)}
+.port-cta{display:inline-flex;align-items:center;gap:10px;background:transparent;border:1px solid var(--border2);color:var(--text);font-family:var(--fh);font-size:.85rem;font-weight:700;letter-spacing:.06em;padding:.95rem 2rem;text-decoration:none;cursor:none;transition:border-color .25s,color .25s,background .25s}
+.port-cta:hover{border-color:var(--accent);color:var(--accent);background:rgba(232,255,74,.04)}
+
+/* LIGHTBOX - 70% écran + fond flouté */
+.lightbox{position:fixed;inset:0;z-index:1000;display:none;align-items:center;justify-content:center;padding:2rem;background:rgba(7,7,7,.55);backdrop-filter:blur(18px) saturate(140%);-webkit-backdrop-filter:blur(18px) saturate(140%);animation:lbFade .35s ease}
+.lightbox.open{display:flex}
+@keyframes lbFade{from{opacity:0}to{opacity:1}}
+.lightbox-inner{position:relative;width:70vw;height:70vh;max-width:1400px;display:flex;align-items:center;justify-content:center;animation:lbScale .4s cubic-bezier(.2,.8,.2,1)}
+@keyframes lbScale{from{opacity:0;transform:scale(.94)}to{opacity:1;transform:scale(1)}}
+.lightbox-img{max-width:100%;max-height:100%;object-fit:contain;box-shadow:0 30px 90px rgba(0,0,0,.6);border-radius:4px}
+.lightbox-close{position:absolute;top:-2.5rem;right:-1rem;width:42px;height:42px;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.18);color:#fff;font-size:1.3rem;display:flex;align-items:center;justify-content:center;cursor:none;transition:background .2s,border-color .2s,transform .2s;border-radius:50%;backdrop-filter:blur(8px)}
+.lightbox-close:hover{background:var(--accent);border-color:var(--accent);color:#000;transform:rotate(90deg)}
+.lightbox-arrow{position:absolute;top:50%;width:50px;height:50px;background:rgba(255,255,255,.08);backdrop-filter:blur(8px);border:1px solid rgba(255,255,255,.18);color:#fff;font-size:1.4rem;display:flex;align-items:center;justify-content:center;cursor:none;z-index:5;transition:background .2s,border-color .2s;transform:translateY(-50%);border-radius:50%}
+.lightbox-arrow:hover{background:var(--accent);border-color:var(--accent);color:#000}
+.lightbox-arrow.prev{left:-5rem}
+.lightbox-arrow.next{right:-5rem}
+.lightbox-caption{position:absolute;bottom:-2.5rem;left:0;right:0;text-align:center;font-family:var(--fh);font-size:.78rem;font-weight:600;color:rgba(255,255,255,.7);letter-spacing:.08em}
+.lightbox-counter{position:absolute;top:-2.5rem;left:0;font-family:var(--fh);font-size:.72rem;font-weight:700;color:var(--accent);letter-spacing:.12em;text-transform:uppercase}
+
+/* PROCESS */
+.proc-sec{background:var(--bg2)}
+.proc-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:0;margin-top:4rem;border:1px solid var(--border)}
+.pc{padding:2.2rem 1.8rem;border-right:1px solid var(--border);position:relative;transition:background .3s}
+.pc:last-child{border-right:none}
+.pc:hover{background:var(--bg3)}
+.pn{font-family:var(--fh);font-size:3.5rem;font-weight:800;color:rgba(232,255,74,.08);line-height:1;margin-bottom:1.2rem;transition:color .3s}
+.pc:hover .pn{color:rgba(232,255,74,.18)}
+.pi{font-size:1.5rem;margin-bottom:.8rem;display:block}
+.pc h3{font-family:var(--fh);font-size:1.1rem;font-weight:700;margin-bottom:.55rem}
+.pc p{font-size:.84rem;color:var(--muted);line-height:1.7}
+
+/* DEVIS */
+.devis-wrap{max-width:860px;margin:0 auto;padding:8rem 2rem}
+.devis-card{background:var(--bg2);border:1px solid var(--border)}
+.prog-bar{height:2px;background:var(--bg3)}
+.prog-fill{height:100%;background:var(--accent);transition:width .4s ease}
+.dsteps-row{display:flex;border-bottom:1px solid var(--border)}
+.ds{flex:1;padding:.95rem .5rem;text-align:center;font-family:var(--fh);font-size:.72rem;font-weight:700;letter-spacing:.07em;text-transform:uppercase;color:var(--muted);border:none;background:transparent;cursor:none;position:relative;transition:color .2s}
+.ds::after{content:'';position:absolute;bottom:-1px;left:0;right:0;height:2px;background:var(--accent);transform:scaleX(0);transition:transform .3s}
+.ds.active{color:var(--accent)}.ds.active::after{transform:scaleX(1)}
+.ds.done{color:rgba(232,255,74,.45)}
+.dpage{display:none;padding:2rem}.dpage.show{display:block}
+.type-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:.8rem;margin-bottom:1.5rem}
+.tcard{padding:1.2rem;background:var(--bg3);border:1px solid var(--border);cursor:none;transition:border-color .2s,background .2s;text-align:center}
+.tcard:hover{border-color:var(--border2)}
+.tcard.sel{border-color:var(--accent);background:rgba(232,255,74,.04)}
+.tcard-icon{font-size:1.5rem;margin-bottom:.4rem}
+.tcard-name{font-family:var(--fh);font-size:.84rem;font-weight:700;margin-bottom:.15rem}
+.tcard-desc{font-size:.7rem;color:var(--muted)}
+.qty-row{display:flex;align-items:center;justify-content:space-between;padding:1rem 1.2rem;background:var(--bg3);border:1px solid var(--border);margin-bottom:.75rem}
+.qty-lbl{font-family:var(--fh);font-size:.86rem;font-weight:700}
+.qty-sub{font-size:.7rem;color:var(--muted);margin-top:2px}
+.qty-ctrl{display:flex;align-items:center;gap:.75rem}
+.qbtn{width:30px;height:30px;background:var(--bg4);border:1px solid var(--border2);color:var(--text);font-size:1.1rem;cursor:none;display:flex;align-items:center;justify-content:center;transition:border-color .2s,background .2s;font-family:var(--fh);line-height:1}
+.qbtn:hover{border-color:var(--accent);background:rgba(232,255,74,.08)}
+.qnum{font-family:var(--fh);font-size:1.2rem;font-weight:800;min-width:2ch;text-align:center;color:var(--accent)}
+.bref-input{width:100%;background:var(--bg3);border:1px solid var(--border);color:var(--text);font-family:var(--fb);font-size:.88rem;padding:.8rem 1rem;outline:none;margin-bottom:.7rem;transition:border-color .2s}
+.bref-input:focus{border-color:rgba(232,255,74,.38)}
+.bref-area{width:100%;background:var(--bg3);border:1px solid var(--border);color:var(--text);font-family:var(--fb);font-size:.88rem;padding:.9rem 1rem;resize:vertical;min-height:110px;outline:none;margin-bottom:.7rem;transition:border-color .2s;line-height:1.6}
+.bref-area:focus{border-color:rgba(232,255,74,.38)}
+::placeholder{color:var(--muted);font-family:var(--fb)}
+.sum-box{background:var(--bg3);border:1px solid var(--border);padding:1.2rem;margin-bottom:1.2rem}
+.sum-row{display:flex;justify-content:space-between;align-items:flex-start;padding:.38rem 0;border-bottom:1px solid var(--border);font-size:.82rem;color:var(--muted)}
+.sum-row:last-child{border-bottom:none}
+.sum-val{text-align:right;max-width:60%}
+.dbtns{display:flex;gap:.75rem;justify-content:flex-end;margin-top:1.4rem}
+.dnext{background:var(--accent);color:#000;font-family:var(--fh);font-size:.86rem;font-weight:700;padding:.82rem 1.8rem;border:none;cursor:none;transition:transform .18s;display:inline-flex;align-items:center;gap:7px}
+.dnext:hover{transform:translateY(-2px)}
+.dback{background:transparent;color:var(--muted);font-family:var(--fh);font-size:.86rem;font-weight:600;padding:.82rem 1.3rem;border:1px solid var(--border);cursor:none;transition:color .2s,border-color .2s}
+.dback:hover{color:var(--text);border-color:var(--border2)}
+.dwa{display:inline-flex;align-items:center;justify-content:center;gap:9px;background:var(--accent);color:#000;font-family:var(--fh);font-size:.92rem;font-weight:700;padding:1rem 2rem;width:100%;text-decoration:none;cursor:none;transition:transform .18s,box-shadow .18s}
+.dwa:hover{transform:translateY(-2px);box-shadow:0 10px 32px rgba(232,255,74,.28)}
+.dwa svg{width:16px;height:16px;fill:#000}
+.dwa-note{text-align:center;font-size:.73rem;color:var(--muted);margin-top:.85rem;display:flex;align-items:center;justify-content:center;gap:6px}
+
+/* FAQ */
+.faq-wrap{max-width:720px;margin:0 auto;padding:8rem 2rem}
+.fi{border-top:1px solid var(--border);cursor:none}
+.fi:last-child{border-bottom:1px solid var(--border)}
+.fq{display:flex;align-items:center;justify-content:space-between;padding:1.4rem 0;font-family:var(--fh);font-size:.98rem;font-weight:700;transition:color .2s;gap:1rem}
+.fi:hover .fq{color:var(--accent)}
+.ftog{width:24px;height:24px;border:1px solid var(--border2);display:flex;align-items:center;justify-content:center;font-size:1rem;font-weight:300;flex-shrink:0;transition:background .2s,border-color .2s,transform .3s}
+.fi.open .ftog{background:var(--accent);border-color:var(--accent);color:#000;transform:rotate(45deg)}
+.fa{max-height:0;overflow:hidden;transition:max-height .4s ease,padding .3s;font-size:.86rem;color:var(--muted);line-height:1.75}
+.fi.open .fa{max-height:300px;padding-bottom:1.4rem}
+
+/* CTA */
+.cta-sec{text-align:center;padding:10rem 2rem;position:relative;overflow:hidden}
+.cta-glow{position:absolute;width:900px;height:500px;background:radial-gradient(ellipse,rgba(232,255,74,.055) 0%,transparent 68%);top:50%;left:50%;transform:translate(-50%,-50%);pointer-events:none}
+.cta-sec h2{font-size:clamp(2.5rem,5vw,5.5rem);max-width:700px;margin:0 auto .75rem;position:relative;z-index:1}
+.cta-sub{color:var(--muted);margin-bottom:.5rem;position:relative;z-index:1;font-size:1rem}
+.cta-24{display:inline-flex;align-items:center;gap:7px;font-size:.74rem;color:var(--muted);margin-bottom:2.6rem;position:relative;z-index:1}
+.cta-btn{display:inline-flex;align-items:center;gap:12px;background:var(--accent);color:#000;font-family:var(--fh);font-size:1rem;font-weight:700;padding:1.15rem 2.8rem;text-decoration:none;cursor:none;position:relative;z-index:1;transition:transform .2s,box-shadow .2s}
+.cta-btn:hover{transform:translateY(-4px);box-shadow:0 20px 60px rgba(232,255,74,.38)}
+.cta-btn svg{width:20px;height:20px;fill:#000}
+.cta-socials{display:flex;gap:1.5rem;justify-content:center;margin-top:2.8rem;flex-wrap:wrap;position:relative;z-index:1}
+.cl{font-size:.75rem;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);text-decoration:none;transition:color .2s}
+.cl:hover{color:var(--accent)}
+
+footer{border-top:1px solid var(--border);padding:2rem 4rem;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:1rem}
+footer p{font-size:.75rem;color:var(--muted)}
+.flogo{font-family:var(--fh);font-size:1.3rem;font-weight:800;letter-spacing:-.02em;text-decoration:none;color:var(--text)}.flogo span{color:var(--accent)}
+
+.rev{opacity:0;transform:translateY(32px);transition:opacity .7s ease,transform .7s ease}
+.rev.vis{opacity:1;transform:translateY(0)}
+.d1{transition-delay:.1s}.d2{transition-delay:.2s}.d3{transition-delay:.3s}.d4{transition-delay:.4s}
+.wa{fill:currentColor}
+
+/* RESPONSIVE */
+@media(max-width:1024px){
+  .proc-grid{grid-template-columns:1fr 1fr}.pc{border-bottom:1px solid var(--border)}.pc:nth-child(2){border-right:none}.pc:nth-child(3){border-bottom:none}.pc:nth-child(4){border-right:none;border-bottom:none}
+  .port-tabs{grid-template-columns:repeat(3,1fr)}
+  .grid-vert-5{grid-template-columns:repeat(3,1fr)}
+  .grid-mix .span-h{grid-column:span 12}
+  .grid-mix .span-v{grid-column:span 6}
+  .lightbox-arrow.prev{left:-3.5rem}
+  .lightbox-arrow.next{right:-3.5rem}
+}
+@media(max-width:900px){
+  .grid-3{grid-template-columns:1fr 1fr}.grid-2{grid-template-columns:1fr}.grid-4{grid-template-columns:1fr 1fr}.grid-vert-4{grid-template-columns:repeat(2,1fr)}.photo-grid{grid-template-columns:1fr 1fr}.type-grid{grid-template-columns:1fr 1fr}
+  .lightbox-inner{width:85vw;height:75vh}
+  .lightbox-arrow.prev{left:-3rem}
+  .lightbox-arrow.next{right:-3rem}
+}
+@media(max-width:768px){
+  nav{padding:1.2rem 1.5rem}
+  .nav-links,.nav-right{display:none}
+  .nav-mobile{display:flex}
+  .sec{padding:5rem 1.5rem}
+  .hero-stats{flex-direction:row;flex-wrap:wrap}.stat{border-right:none;border-bottom:1px solid var(--border);padding:1.2rem;flex:1;min-width:calc(50% - 1px)}.stat:nth-child(2){border-right:1px solid var(--border)}.stat:nth-child(3),.stat:nth-child(4){border-bottom:none}
+  h2{font-size:2rem}
+  footer{padding:1.5rem}
+  body{cursor:auto}
+  .cur,.cur-ring{display:none}
+  .services-strip{flex-wrap:nowrap;overflow-x:auto}
+  .port-tabs{grid-template-columns:repeat(2,1fr)}
+  .grid-vert-5{grid-template-columns:repeat(2,1fr)}
+  .lightbox-inner{width:90vw;height:70vh}
+  .lightbox-close{top:-3rem;right:0}
+  .lightbox-arrow{width:40px;height:40px;font-size:1.1rem}
+  .lightbox-arrow.prev{left:-.5rem}
+  .lightbox-arrow.next{right:-.5rem}
+  .lightbox-counter{top:-2.2rem}
+  .lightbox-caption{bottom:-2.2rem}
+}
+@media(max-width:520px){
+  .grid-3,.grid-4,.grid-vert-4,.photo-grid{grid-template-columns:1fr}
+  .type-grid{grid-template-columns:1fr}
+  .proc-grid{grid-template-columns:1fr}
+  .pc{border-right:none;border-bottom:1px solid var(--border)}.pc:last-child{border-bottom:none}
+  .port-tabs{grid-template-columns:1fr 1fr}
+  .grid-vert-5{grid-template-columns:1fr 1fr}
+}
+</style>
+</head>
+<body>
+
+<div class="cur" id="cur" style="transform: translate(1283px, 0px) translate(-50%, -50%);"></div>
+<div class="cur-ring" id="curRing" style="transform: translate(1283px, 0.000625652px) translate(-50%, -50%); width: 30px; height: 30px;"></div>
+
+<nav>
+  <div class="logo-wrap">
+    <a href="file:///Users/hichamtahir/Downloads/index_1.html#" class="logo">i<span>FOCUS</span></a>
+    <span class="logo-sub">Basé à Dubaï</span>
+  </div>
+  <ul class="nav-links">
+    <li><a href="file:///Users/hichamtahir/Downloads/index_1.html#portfolio" data-i18n="nav_portfolio">Portfolio</a></li>
+    <li><a href="file:///Users/hichamtahir/Downloads/index_1.html#process" data-i18n="nav_process">Process</a></li>
+    <li><a href="file:///Users/hichamtahir/Downloads/index_1.html#devis" data-i18n="nav_quote">Devis</a></li>
+    <li><a href="file:///Users/hichamtahir/Downloads/index_1.html#faq">FAQ</a></li>
+  </ul>
+  <div class="nav-right">
+    <button class="lang-btn active" onclick="setLang(&#39;fr&#39;)">FR</button>
+    <button class="lang-btn" onclick="setLang(&#39;en&#39;)">EN</button>
+    <a href="https://wa.me/VOTRE_NUMERO?text=Bonjour%2C%20je%20souhaite%20en%20savoir%20plus%20sur%20iFOCUS." target="_blank" class="nav-wa" id="nav-wa-btn">
+      <svg viewBox="0 0 24 24"><path class="wa" d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347zM12 0C5.373 0 0 5.373 0 12c0 2.123.553 4.116 1.522 5.845L.057 23.486a.5.5 0 00.598.665l5.968-1.553A11.932 11.932 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.888a9.876 9.876 0 01-5.031-1.375l-.36-.214-3.742.974.998-3.636-.235-.374A9.847 9.847 0 012.112 12C2.112 6.539 6.539 2.112 12 2.112S21.888 6.539 21.888 12 17.461 21.888 12 21.888z"></path></svg>
+      <span data-i18n="nav_cta">Envoyer un message</span>
+    </a>
+  </div>
+  <div class="nav-mobile">
+    <button class="lang-btn active" onclick="setLang(&#39;fr&#39;)">FR</button>
+    <button class="lang-btn" onclick="setLang(&#39;en&#39;)">EN</button>
+    <button class="burger" onclick="toggleMenu()"><span></span><span></span><span></span></button>
+  </div>
+</nav>
+
+<section class="hero">
+  <div class="hero-grid"></div>
+  <div class="hero-timeline" aria-hidden="true"><svg width="100%" height="100%" xmlns="http://www.w3.org/2000/svg"><defs><pattern id="tl" x="0" y="0" width="120" height="48" patternUnits="userSpaceOnUse"><rect x="0" y="8" width="80" height="12" rx="2" fill="#E8FF4A"></rect><rect x="85" y="8" width="30" height="12" rx="2" fill="#E8FF4A" opacity=".5"></rect><rect x="0" y="28" width="40" height="12" rx="2" fill="#fff" opacity=".3"></rect><rect x="45" y="28" width="65" height="12" rx="2" fill="#fff" opacity=".2"></rect><line x1="0" y1="0" x2="120" y2="0" stroke="#E8FF4A" stroke-width=".5"></line><line x1="0" y1="48" x2="120" y2="48" stroke="#E8FF4A" stroke-width=".3"></line></pattern></defs><rect width="100%" height="100%" fill="url(#tl)"></rect></svg></div>
+  <div class="hero-glow"></div>
+  <div class="hero-eyebrow"><div class="bdot"></div><span data-i18n="hero_badge">Mettre en images vos idées.</span></div>
+  <h1>
+    <span class="line" data-i18n="hero_h1_1">Notre caméra.</span>
+    <span class="line" data-i18n="hero_h1_mid">Notre montage.</span>
+    <span class="line"><span class="y" data-i18n="hero_h1_2">Votre résultat.</span></span>
+  </h1>
+  <p class="hero-sub" data-i18n="hero_sub">Tout type de contenu — chaque projet traité au moindre détail.</p>
+  <div class="hero-proof">
+    <div class="proof-pill"><div class="dot"></div><span data-i18n="proof_2">1,3M vues Instagram</span></div>
+    <div class="proof-pill"><div class="dot"></div><span data-i18n="proof_3">Michou · Inox Zombie · Pitch Addict...</span></div>
+  </div>
+  <div class="hero-btns">
+    <a href="https://wa.me/VOTRE_NUMERO?text=Bonjour%2C%20je%20souhaite%20en%20savoir%20plus%20sur%20iFOCUS." target="_blank" class="btn-y" id="hero-wa-btn">
+      <svg viewBox="0 0 24 24"><path class="wa" d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347zM12 0C5.373 0 0 5.373 0 12c0 2.123.553 4.116 1.522 5.845L.057 23.486a.5.5 0 00.598.665l5.968-1.553A11.932 11.932 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.888a9.876 9.876 0 01-5.031-1.375l-.36-.214-3.742.974.998-3.636-.235-.374A9.847 9.847 0 012.112 12C2.112 6.539 6.539 2.112 12 2.112S21.888 6.539 21.888 12 17.461 21.888 12 21.888z"></path></svg>
+      <span data-i18n="hero_cta">Discutons de votre projet</span>
+    </a>
+    <a href="file:///Users/hichamtahir/Downloads/index_1.html#portfolio" class="btn-g"><span data-i18n="hero_cta2">▶ Voir nos prods</span></a>
+  </div>
+  <div class="resp-tag"><div class="gdot"></div><span data-i18n="resp_tag">Réponse garantie sous 24 heures</span></div>
+  <div class="hero-stats">
+    <div class="stat"><div class="snum">2M+</div><div class="slbl" data-i18n="stat1">Audience TV M6</div></div>
+    <div class="stat"><div class="snum">1,3M</div><div class="slbl" data-i18n="stat2">Vues Instagram</div></div>
+    <div class="stat"><div class="snum">30M+</div><div class="slbl" data-i18n="stat_yt">Vues YouTube</div></div>
+    <div class="stat"><div class="snum">100%</div><div class="slbl" data-i18n="stat3">Sur mesure</div></div>
+  </div>
+</section>
+
+<div class="services-strip rev">
+  <div class="srv"><div class="srv-icon">🎥</div><div class="srv-name" data-i18n="srv1_name">Réalisation</div><div class="srv-desc" data-i18n="srv1_desc">Conception &amp; direction</div></div>
+  <div class="srv"><div class="srv-icon">📷</div><div class="srv-name" data-i18n="srv2_name">Cadrage</div><div class="srv-desc" data-i18n="srv2_desc">On se déplace partout</div></div>
+  <div class="srv"><div class="srv-icon">🚁</div><div class="srv-name" data-i18n="srv3_name">Drone</div><div class="srv-desc" data-i18n="srv3_desc">DJI Mini 3 Pro</div></div>
+  <div class="srv"><div class="srv-icon">✂️</div><div class="srv-name" data-i18n="srv4_name">Montage</div><div class="srv-desc" data-i18n="srv4_desc">Pro &amp; précis</div></div>
+  <div class="srv"><div class="srv-icon">🎨</div><div class="srv-name" data-i18n="srv5_name">Motion Design</div><div class="srv-desc" data-i18n="srv5_desc">Animations custom</div></div>
+  <div class="srv"><div class="srv-icon">🎵</div><div class="srv-name" data-i18n="srv6_name">Sound Design</div><div class="srv-desc" data-i18n="srv6_desc">Mixage &amp; effets</div></div>
+  <div class="srv"><div class="srv-icon">🌈</div><div class="srv-name" data-i18n="srv7_name">Étalonnage</div><div class="srv-desc" data-i18n="srv7_desc">Color grading cinéma</div></div>
+</div>
+
+<div class="tick">
+  <div class="tick-w">
+    <div class="tick-t"><span class="tl">YouTube</span><span class="ts">◆</span><span class="tl">M6</span><span class="ts">◆</span><span class="tl">Snapchat</span><span class="ts">◆</span><span class="tl">Michou</span><span class="ts">◆</span><span class="tl">Pitch Addict</span><span class="ts">◆</span><span class="tl">HMI House</span><span class="ts">◆</span><span class="tl">Injouables</span><span class="ts">◆</span><span class="tl">BSA Academy</span><span class="ts">◆</span><span class="tl">Inox Zombie</span><span class="ts">◆</span><span class="tl">Blue Magic</span><span class="ts">◆</span></div>
+    <div class="tick-t"><span class="tl">YouTube</span><span class="ts">◆</span><span class="tl">M6</span><span class="ts">◆</span><span class="tl">Snapchat</span><span class="ts">◆</span><span class="tl">Michou</span><span class="ts">◆</span><span class="tl">Pitch Addict</span><span class="ts">◆</span><span class="tl">HMI House</span><span class="ts">◆</span><span class="tl">Injouables</span><span class="ts">◆</span><span class="tl">BSA Academy</span><span class="ts">◆</span><span class="tl">Inox Zombie</span><span class="ts">◆</span><span class="tl">Blue Magic</span><span class="ts">◆</span></div>
+  </div>
+</div>
+
+<!-- ============= PORTFOLIO - NOUVELLE STRUCTURE ============= -->
+<section class="sec" id="portfolio" style="padding:8rem 4rem 10rem">
+  <div class="port-head">
+    <div class="port-head-inner">
+      <div>
+        <div class="elbl" data-i18n="port_label">Réalisations</div>
+        <h2><span data-i18n="port_h2_1">Nos projets.</span><br><span data-i18n="port_h2_2"><span style="color:var(--accent)">Leurs succès.</span></span></h2>
+      </div>
+      <p class="port-head-sub" data-i18n="port_sub">Chaque projet est livré avec le même niveau d'exigence, qu'il soit diffusé devant 2 millions de personnes ou sur vos réseaux sociaux.</p>
+    </div>
+  </div>
+
+  <!-- 1. MINIATURES EN HAUT -->
+  <div id="port-content">
+
+    <!-- ============ ONGLET TOUT - VRAI MIX ============ -->
+    <!-- Mix : YouTube + Instagram + M6 + Snapchat + Photos -->
+    <div class="port-panel show" id="tab-tout">
+
+      <!-- HERO : 2 grosses vidéos YouTube phares -->
+      <div class="grid-2 rev">
+        <a href="https://youtu.be/r0zvh0ElcnM" target="_blank" class="vcard">
+          <div class="vthumb vthumb-hero"><img class="vthumb-img" src="./iFOCUS_files/maxresdefault.jpg" alt="Pitch Addict ft. Gradur"><div class="vover"></div><div class="vplay vplay-lg">▶</div></div>
+          <div class="vinfo"><span class="vtag football">Football</span><div class="vtitle">Pitch Addict ft. Gradur</div><div class="vmeta">6M abonnés · Chef opérateur &amp; assistant cam</div><div class="vstat">👁 600 000 vues</div></div>
+        </a>
+        <a href="https://youtu.be/ggAgLZ9CMU4" target="_blank" class="vcard">
+          <div class="vthumb vthumb-hero"><img class="vthumb-img" src="./iFOCUS_files/maxresdefault(1).jpg" alt="Inox Zombie 48h"><div class="vover"></div><div class="vplay vplay-lg">▶</div></div>
+          <div class="vinfo"><span class="vtag gaming">Gaming</span><div class="vtitle">Inox Zombie — 48h pour survivre</div><div class="vstat">👁 29 000 000 vues</div><div class="vmeta">Cadrage</div></div>
+        </a>
+      </div>
+
+      <!-- Mix YouTube + M6 + Insta verticaux : 4 cartes 9:16 -->
+      <div class="grid-vert-4 rev d1">
+        <!-- M6 Pitch Addict -->
+        <a href="https://youtu.be/gScglMnLYms" target="_blank" class="vcard">
+          <div class="vthumb vthumb-916"><img class="vthumb-img" src="./iFOCUS_files/maxresdefault(2).jpg" alt="Pitch Addict M6"><div class="vover"></div><div class="vplay">▶</div><div class="m6b">M6</div></div>
+          <div class="vinfo"><span class="vtag football">Football</span><div class="vtitle">Pitch Addict — Real Madrid &amp; FIFA</div><div class="vmeta">iPhone · DJI Drone · M6 · 6M abonnés</div><div class="vstat">👁 19 000 vues · 2M TV</div></div>
+        </a>
+        <!-- M6 Naya -->
+        <a href="https://youtu.be/Jyg0kF7b7nY" target="_blank" class="vcard">
+          <div class="vthumb vthumb-916"><img class="vthumb-img" src="./iFOCUS_files/maxresdefault(3).jpg" alt="Naya M6"><div class="vover"></div><div class="vplay">▶</div><div class="m6b">M6</div></div>
+          <div class="vinfo"><span class="vtag tv">Reportage TV</span><div class="vtitle">Naya — Jeans pour stars</div><div class="vmeta">Hakimi · Aya Nakamura · Gunna · M6</div><div class="vstat">👁 215 000 vues · 2M TV</div></div>
+        </a>
+        <!-- Insta MBM Cars -->
+        <a href="https://youtube.com/shorts/5aP-68-fgOM" target="_blank" class="vcard">
+          <div class="vthumb vthumb-916"><img class="vthumb-img" src="./iFOCUS_files/maxresdefault(4).jpg" alt="MBM Cars AMG GT"><div class="vover"></div><div class="vplay">▶</div></div>
+          <div class="vinfo"><span class="vtag cars">Cars</span><div class="vtitle">MBM Cars — AMG GT</div><div class="vmeta">Réalisation · Tournage · Montage</div></div>
+        </a>
+        <!-- Insta Dubaï Edit -->
+        <a href="https://youtube.com/shorts/cFp9WKpDGGU" target="_blank" class="vcard">
+          <div class="vthumb vthumb-916"><img class="vthumb-img" src="./iFOCUS_files/maxresdefault(5).jpg" alt="Just an edit in Dubai"><div class="vover"></div><div class="vplay">▶</div></div>
+          <div class="vinfo"><span class="vtag vlog">Lifestyle</span><div class="vtitle">JUST AN EDIT IN DUBAÏ</div><div class="vmeta">Réalisation · Tournage · Montage</div></div>
+        </a>
+      </div>
+
+      <!-- Blue Magic + Michou : 3 cartes horizontales -->
+      <div class="grid-3 rev d2">
+        <a href="https://www.youtube.com/watch?v=LInadEbX7JQ" target="_blank" class="vcard">
+          <div class="vthumb vthumb-16"><img class="vthumb-img" src="./iFOCUS_files/maxresdefault(6).jpg" alt="Blue Magic #1"><div class="vover"></div><div class="vplay">▶</div></div>
+          <div class="vinfo"><span class="vtag vlog">Vlog</span><div class="vtitle">LE BLUE MAGIC 🛜 #1 — 24h à Dubaï</div><div class="vmeta">Isma · Réalisation · Montage</div></div>
+        </a>
+        <a href="https://youtu.be/8njvFXxJ4-E" target="_blank" class="vcard">
+          <div class="vthumb vthumb-16"><img class="vthumb-img" src="./iFOCUS_files/maxresdefault(7).jpg" alt="Michou Among Us 1"><div class="vover"></div><div class="vplay">▶</div></div>
+          <div class="vinfo"><span class="vtag gaming">Gaming</span><div class="vtitle">Michou Among Us — Ep. 1</div><div class="vmeta">Équipe de prod · Mothaiba</div><div class="vstat">👁 7M vues</div></div>
+        </a>
+        <a href="https://youtu.be/8awSTPaP-28" target="_blank" class="vcard">
+          <div class="vthumb vthumb-16"><img class="vthumb-img" src="./iFOCUS_files/maxresdefault(8).jpg" alt="BSA Academy"><div class="vover"></div><div class="vplay">▶</div></div>
+          <div class="vinfo"><span class="vtag yt">YouTube</span><div class="vtitle">BSA Academy — Le Film</div><div class="vmeta">Réalisateur · Long format</div><div class="vmeta" style="color:var(--accent);font-size:.7rem;margin-top:3px">🎬 Diffusé en cinéma</div></div>
+        </a>
+      </div>
+
+      <!-- Mix Insta + Snapchat verticaux : 4 cartes 9:16 -->
+      <div class="grid-vert-4 rev d3">
+        <a href="https://youtube.com/shorts/CMAlEHSHHBk" target="_blank" class="vcard">
+          <div class="vthumb vthumb-916"><img class="vthumb-img" src="./iFOCUS_files/maxresdefault(9).jpg" alt="Injouables Teaser"><div class="vover"></div><div class="vplay">▶</div></div>
+          <div class="vinfo"><span class="vtag brand">Branding</span><div class="vtitle">Injouables — Teaser</div><div class="vmeta">Réalisation · Tournage · Montage</div></div>
+        </a>
+        <a href="https://youtube.com/shorts/1lHNV-TUglw" target="_blank" class="vcard">
+          <div class="vthumb vthumb-916"><img class="vthumb-img" src="./iFOCUS_files/maxresdefault(10).jpg" alt="Alyxa 1"><div class="vover"></div><div class="vplay">▶</div></div>
+          <div class="vinfo"><span class="vtag brand">Branding</span><div class="vtitle">Alyxa — Série 5 vidéos</div><div class="vmeta">Réalisation · Tournage · Montage</div></div>
+        </a>
+        <!-- Snapchat HMI -->
+        <div class="vcard">
+          <div class="vthumb vthumb-916"><div class="vi c4"></div><div class="vover"></div><div class="vplay">▶</div></div>
+          <div class="vinfo"><span class="vtag social">Snapchat</span><div class="vtitle">HMI House 3</div><div class="vmeta">Réalisation</div></div>
+        </div>
+        <!-- Snapchat Maissa -->
+        <div class="vcard">
+          <div class="vthumb vthumb-916"><div class="vi c6"></div><div class="vover"></div><div class="vplay">▶</div></div>
+          <div class="vinfo"><span class="vtag music">Clip</span><div class="vtitle">Maissa × Zizou</div><div class="vmeta">Réalisation · Clip musical</div></div>
+        </div>
+      </div>
+
+      <!-- Mini grid de photos teaser pour donner envie d'aller voir l'onglet -->
+      <div class="rev d4" style="margin-top:1.2rem">
+        <div style="font-family:var(--fh);font-size:.72rem;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--muted);margin-bottom:.8rem;display:flex;align-items:center;gap:10px">
+          <span style="display:block;width:20px;height:1px;background:var(--muted)"></span>
+          <span>Aussi en photo</span>
+        </div>
+        <div class="photo-grid">
+          <div class="pcard" onclick="openGallery(&#39;miami&#39;)"><div class="pinner c1"><div class="pemoji">🏝️</div><div class="plbl">MIAMI 🏝️</div></div></div>
+          <div class="pcard" onclick="openGallery(&#39;dubai&#39;)"><div class="pinner c3"><div class="pemoji">🌇</div><div class="plbl">DUBAÏ 🌇</div></div></div>
+          <div class="pcard" onclick="openGallery(&#39;amg&#39;)"><div class="pinner c5"><div class="pemoji">🚘</div><div class="plbl">MERCEDES - AMG GT 🚘</div></div></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- YOUTUBE -->
+    <div class="port-panel" id="tab-yt">
+      <div class="grid-2 rev">
+        <a href="https://youtu.be/r0zvh0ElcnM" target="_blank" class="vcard">
+          <div class="vthumb vthumb-hero"><img class="vthumb-img" src="./iFOCUS_files/maxresdefault.jpg" alt="Pitch Addict ft. Gradur"><div class="vover"></div><div class="vplay vplay-lg">▶</div></div>
+          <div class="vinfo"><span class="vtag football">Football</span><div class="vtitle" style="font-size:1.1rem">Pitch Addict ft. Gradur</div><div class="vmeta">6M abonnés · Chef opérateur &amp; assistant cam</div><div class="vstat">👁 600 000 vues</div></div>
+        </a>
+        <a href="https://youtu.be/ggAgLZ9CMU4" target="_blank" class="vcard">
+          <div class="vthumb vthumb-hero"><img class="vthumb-img" src="./iFOCUS_files/maxresdefault(1).jpg" alt="Inox Zombie 48h"><div class="vover"></div><div class="vplay vplay-lg">▶</div></div>
+          <div class="vinfo"><span class="vtag gaming">Gaming</span><div class="vtitle" style="font-size:1.1rem">Inox Zombie — 48h pour survivre</div><div class="vstat">👁 29 000 000 vues</div><div class="vmeta">Cadrage</div></div>
+        </a>
+      </div>
+
+      <!-- BLUE MAGIC d'ISMA - 3 épisodes -->
+      <div class="grid-3 rev d1">
+        <a href="https://www.youtube.com/watch?v=LInadEbX7JQ" target="_blank" class="vcard">
+          <div class="vthumb vthumb-16"><img class="vthumb-img" src="./iFOCUS_files/maxresdefault(6).jpg" alt="Blue Magic #1 Dubaï"><div class="vover"></div><div class="vplay">▶</div></div>
+          <div class="vinfo"><span class="vtag vlog">Vlog</span><div class="vtitle">LE BLUE MAGIC 🛜 #1<br>24h à Dubaï</div><div class="vmeta">Isma · Réalisation · Tournage · Montage</div></div>
+        </a>
+        <a href="https://www.youtube.com/watch?v=2tj5aINKkTA" target="_blank" class="vcard">
+          <div class="vthumb vthumb-16"><img class="vthumb-img" src="./iFOCUS_files/maxresdefault(11).jpg" alt="Blue Magic #2 Abu Dhabi"><div class="vover"></div><div class="vplay">▶</div></div>
+          <div class="vinfo"><span class="vtag vlog">Vlog</span><div class="vtitle">LE BLUE MAGIC 🛜 #2<br>24h pilote F1 Abu Dhabi</div><div class="vmeta">Isma · Réalisation · Tournage · Montage</div></div>
+        </a>
+        <div class="vcard" style="cursor:none">
+          <div class="vthumb vthumb-16">
+            <div class="coming-soon">
+              <div class="coming-soon-lbl">● Bientôt disponible</div>
+              <div class="coming-soon-title">LE BLUE MAGIC 🛜 #3<br>Makoumbou</div>
+            </div>
+          </div>
+          <div class="vinfo"><span class="vtag vlog">Vlog</span><div class="vtitle">LE BLUE MAGIC 🛜 #3<br>Makoumbou</div><div class="vmeta">Isma · À venir prochainement</div></div>
+        </div>
+      </div>
+
+      <!-- Autres YouTube -->
+      <div class="grid-4 rev d2">
+        <a href="https://youtu.be/8awSTPaP-28" target="_blank" class="vcard">
+          <div class="vthumb vthumb-16"><img class="vthumb-img" src="./iFOCUS_files/maxresdefault(8).jpg" alt="BSA Academy"><div class="vover"></div><div class="vplay vplay-sm">▶</div></div>
+          <div class="vinfo"><span class="vtag yt">YouTube</span><div class="vtitle">BSA Academy — Le Film</div><div class="vmeta">Réalisateur · Long format</div><div class="vmeta" style="color:var(--accent);font-size:.7rem;margin-top:3px">🎬 Diffusé en cinéma</div></div>
+        </a>
+        <a href="https://youtu.be/D24TU9QvIf8" target="_blank" class="vcard">
+          <div class="vthumb vthumb-16"><img class="vthumb-img" src="./iFOCUS_files/maxresdefault(12).jpg" alt="BS Academy Live"><div class="vover"></div><div class="vplay vplay-sm">▶</div></div>
+          <div class="vinfo"><span class="vtag yt">YouTube</span><div class="vtitle">BS Academy Live Twitch</div><div class="vmeta">Réalisateur &amp; Host</div><div class="vstat">👁 77 000 vues</div></div>
+        </a>
+        <a href="https://youtu.be/8njvFXxJ4-E" target="_blank" class="vcard">
+          <div class="vthumb vthumb-16"><img class="vthumb-img" src="./iFOCUS_files/maxresdefault(7).jpg" alt="Michou Among Us 1"><div class="vover"></div><div class="vplay vplay-sm">▶</div></div>
+          <div class="vinfo"><span class="vtag gaming">Gaming</span><div class="vtitle">Michou Among Us — Ep. 1</div><div class="vmeta">Équipe de prod · Mothaiba</div><div class="vstat">👁 7 000 000 vues</div></div>
+        </a>
+        <a href="https://youtu.be/TZjqnNS0NwY" target="_blank" class="vcard">
+          <div class="vthumb vthumb-16"><img class="vthumb-img" src="./iFOCUS_files/maxresdefault(13).jpg" alt="Michou Among Us 2"><div class="vover"></div><div class="vplay vplay-sm">▶</div></div>
+          <div class="vinfo"><span class="vtag gaming">Gaming</span><div class="vtitle">Michou Among Us — Ep. 2</div><div class="vmeta">Équipe de prod · Mothaiba</div><div class="vstat">👁 18 000 000 vues</div></div>
+        </a>
+      </div>
+
+      <div class="grid-4 rev d3">
+        <a href="https://youtu.be/8H2NTNvwLk0" target="_blank" class="vcard">
+          <div class="vthumb vthumb-16"><img class="vthumb-img" src="./iFOCUS_files/maxresdefault(14).jpg" alt="Michou Among Us IRL"><div class="vover"></div><div class="vplay vplay-sm">▶</div></div>
+          <div class="vinfo"><span class="vtag gaming">Gaming</span><div class="vtitle">Michou Among Us IRL</div><div class="vmeta">Équipe de prod · Mothaiba</div><div class="vstat">👁 6 000 000 vues</div></div>
+        </a>
+        <a href="https://youtu.be/Hsc6SU_VLHE" target="_blank" class="vcard">
+          <div class="vthumb vthumb-16"><img class="vthumb-img" src="./iFOCUS_files/maxresdefault(15).jpg" alt="Hamza Kerdaloko"><div class="vover"></div><div class="vplay vplay-sm">▶</div></div>
+          <div class="vinfo"><span class="vtag music">Clip</span><div class="vtitle">Hamza — Kerdaloko</div><div class="vmeta">Chef opérateur</div><div class="vstat">👁 450 000 vues</div></div>
+        </a>
+      </div>
+    </div>
+
+    <!-- ============ INSTAGRAM (ex-Lifestyle) - format 9:16 ============ -->
+    <div class="port-panel" id="tab-insta">
+      <div class="grid-vert-4 rev">
+        <!-- Alyxa - CARROUSEL 5 vidéos avec vraies miniatures YouTube -->
+        <div class="carousel-card" data-current="0">
+          <div class="carousel-track">
+            <a href="https://youtube.com/shorts/1lHNV-TUglw" target="_blank" class="carousel-link" data-link="">
+              <div class="carousel-slide active"><img src="./iFOCUS_files/maxresdefault(10).jpg" alt="Alyxa 1"></div>
+              <div class="carousel-slide"><img src="./iFOCUS_files/maxresdefault(16).jpg" alt="Alyxa 2"></div>
+              <div class="carousel-slide"><img src="./iFOCUS_files/maxresdefault(17).jpg" alt="Alyxa 3"></div>
+              <div class="carousel-slide"><img src="./iFOCUS_files/maxresdefault(18).jpg" alt="Alyxa 4"></div>
+              <div class="carousel-slide"><img src="./iFOCUS_files/maxresdefault(19).jpg" alt="Alyxa 5"></div>
+            </a>
+            <div class="vplay" style="pointer-events:none">▶</div>
+            <div class="carousel-badge">📂 5 vidéos</div>
+            <button class="carousel-arrow prev" onclick="carouselNav(this,-1)">‹</button>
+            <button class="carousel-arrow next" onclick="carouselNav(this,1)">›</button>
+            <div class="carousel-dots">
+              <button class="carousel-dot active" onclick="carouselGo(this,0)"></button>
+              <button class="carousel-dot" onclick="carouselGo(this,1)"></button>
+              <button class="carousel-dot" onclick="carouselGo(this,2)"></button>
+              <button class="carousel-dot" onclick="carouselGo(this,3)"></button>
+              <button class="carousel-dot" onclick="carouselGo(this,4)"></button>
+            </div>
+          </div>
+          <div class="vinfo">
+            <span class="vtag brand">Branding</span>
+            <div class="vtitle">Alyxa — Série de 5 vidéos</div>
+            <div class="vmeta">Réalisation · Tournage · Montage</div>
+          </div>
+        </div>
+
+        <!-- Injouables Teaser -->
+        <a href="https://youtube.com/shorts/CMAlEHSHHBk" target="_blank" class="vcard">
+          <div class="vthumb vthumb-916"><img class="vthumb-img" src="./iFOCUS_files/maxresdefault(9).jpg" alt="Injouables Teaser"><div class="vover"></div><div class="vplay">▶</div></div>
+          <div class="vinfo"><span class="vtag brand">Branding</span><div class="vtitle">Injouables — Teaser</div><div class="vmeta">Réalisation · Tournage · Montage</div></div>
+        </a>
+
+        <!-- Injouables VRAI OU FAUX -->
+        <a href="https://youtube.com/shorts/6WdvtkzeIFU" target="_blank" class="vcard">
+          <div class="vthumb vthumb-916"><img class="vthumb-img" src="./iFOCUS_files/maxresdefault(20).jpg" alt="Injouables Vrai ou Faux"><div class="vover"></div><div class="vplay">▶</div></div>
+          <div class="vinfo"><span class="vtag brand">Branding</span><div class="vtitle">Injouables — VRAI OU FAUX</div><div class="vmeta">Réalisation · Tournage · Montage</div></div>
+        </a>
+
+        <!-- MBM Cars AMG GT -->
+        <a href="https://youtube.com/shorts/5aP-68-fgOM" target="_blank" class="vcard">
+          <div class="vthumb vthumb-916"><img class="vthumb-img" src="./iFOCUS_files/maxresdefault(4).jpg" alt="MBM Cars AMG GT"><div class="vover"></div><div class="vplay">▶</div></div>
+          <div class="vinfo"><span class="vtag cars">Cars</span><div class="vtitle">MBM Cars — AMG GT</div><div class="vmeta">Réalisation · Tournage · Montage</div></div>
+        </a>
+      </div>
+
+      <div class="grid-vert-4 rev d1">
+        <!-- JUST AN EDIT IN DUBAÏ -->
+        <a href="https://youtube.com/shorts/cFp9WKpDGGU" target="_blank" class="vcard">
+          <div class="vthumb vthumb-916"><img class="vthumb-img" src="./iFOCUS_files/maxresdefault(5).jpg" alt="Just an Edit in Dubai"><div class="vover"></div><div class="vplay">▶</div></div>
+          <div class="vinfo"><span class="vtag vlog">Lifestyle</span><div class="vtitle">JUST AN EDIT IN DUBAÏ</div><div class="vmeta">Réalisation · Tournage · Montage</div></div>
+        </a>
+
+        <!-- Injouables FAQ (lien Drive en attente upload) -->
+        <a href="file:///Users/hichamtahir/Downloads/index_1.html#" data-drive-link="https://drive.google.com/file/d/1GbrRn0qMjaP2bcTasnZlnypCBaGngrN3/view" target="_blank" class="vcard">
+          <div class="vthumb vthumb-916"><div class="vi c4"></div><div class="vover"></div><div class="vplay">▶</div></div>
+          <div class="vinfo"><span class="vtag brand">Branding</span><div class="vtitle">Injouables — FAQ</div><div class="vmeta">Réalisation · Tournage · Montage</div></div>
+        </a>
+
+        <!-- Injouables PODCAST PRO -->
+        <a href="https://youtube.com/shorts/gk9Yn_tnY2A" target="_blank" class="vcard">
+          <div class="vthumb vthumb-916"><img class="vthumb-img" src="./iFOCUS_files/maxresdefault(21).jpg" alt="Injouables Podcast Pro"><div class="vover"></div><div class="vplay">▶</div></div>
+          <div class="vinfo"><span class="vtag brand">Branding</span><div class="vtitle">Injouables — PODCAST PRO</div><div class="vmeta">Réalisation · Tournage · Montage</div></div>
+        </a>
+
+        <!-- Injouables PODCAST PERSO -->
+        <a href="https://youtube.com/shorts/vFhOtZ3YUjM" target="_blank" class="vcard">
+          <div class="vthumb vthumb-916"><img class="vthumb-img" src="./iFOCUS_files/maxresdefault(22).jpg" alt="Injouables Podcast Perso"><div class="vover"></div><div class="vplay">▶</div></div>
+          <div class="vinfo"><span class="vtag brand">Branding</span><div class="vtitle">Injouables — PODCAST PERSO</div><div class="vmeta">Réalisation · Tournage · Montage</div></div>
+        </a>
+      </div>
+
+      <div class="grid-vert-4 rev d2">
+        <!-- TEASER BAKARY SAKO -->
+        <a href="https://youtube.com/shorts/K5vXW8ouHKw" target="_blank" class="vcard">
+          <div class="vthumb vthumb-916"><img class="vthumb-img" src="./iFOCUS_files/maxresdefault(23).jpg" alt="Teaser Bakary Sako"><div class="vover"></div><div class="vplay">▶</div></div>
+          <div class="vinfo"><span class="vtag football">Football</span><div class="vtitle">TEASER — BAKARY SAKO</div><div class="vmeta">Réalisation · Tournage · Montage</div></div>
+        </a>
+
+        <!-- Injouables JEU CONCOURS -->
+        <a href="https://youtube.com/shorts/Xmvg93kPhP4" target="_blank" class="vcard">
+          <div class="vthumb vthumb-916"><img class="vthumb-img" src="./iFOCUS_files/maxresdefault(24).jpg" alt="Injouables Jeu Concours"><div class="vover"></div><div class="vplay">▶</div></div>
+          <div class="vinfo"><span class="vtag brand">Branding</span><div class="vtitle">Injouables — JEU CONCOURS</div><div class="vmeta">Réalisation · Tournage · Montage</div></div>
+        </a>
+
+        <!-- TEASER ANAIS YOUSRA LKH FARAH -->
+        <a href="https://youtube.com/shorts/VzjwtGDsVFk" target="_blank" class="vcard">
+          <div class="vthumb vthumb-916"><img class="vthumb-img" src="./iFOCUS_files/maxresdefault(25).jpg" alt="Teaser Anaïs Yousra Farah"><div class="vover"></div><div class="vplay">▶</div></div>
+          <div class="vinfo"><span class="vtag vlog">Lifestyle</span><div class="vtitle">TEASER — ANAÏS, YOUSRA LKH &amp; FARAH</div><div class="vmeta">Réalisation · Tournage · Montage</div></div>
+        </a>
+
+        <!-- Le Cercle Football - Placeholder bientôt -->
+        <div class="vcard" style="cursor:none">
+          <div class="vthumb vthumb-916">
+            <div class="coming-soon">
+              <div class="coming-soon-lbl">● Bientôt disponible</div>
+              <div class="coming-soon-title">Le Cercle Football</div>
+            </div>
+          </div>
+          <div class="vinfo"><span class="vtag football">Football</span><div class="vtitle">Le Cercle Football</div><div class="vmeta">À venir prochainement</div></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ============ M6 - format 9:16 (reels Insta) ============ -->
+    <div class="port-panel" id="tab-m6">
+      <div class="grid-vert-4 rev">
+        <a href="https://youtu.be/Jyg0kF7b7nY" target="_blank" class="vcard">
+          <div class="vthumb vthumb-916"><img class="vthumb-img" src="./iFOCUS_files/maxresdefault(3).jpg" alt="Naya M6"><div class="vover"></div><div class="vplay">▶</div><div class="m6b">M6</div></div>
+          <div class="vinfo"><span class="vtag tv">Reportage TV</span><div class="vtitle">Naya — Jeans pour stars</div><div class="vmeta">Hakimi · Aya Nakamura · Gunna · iPhone · M6</div><div class="vstat">👁 215 000 vues · 2M TV</div></div>
+        </a>
+        <a href="https://youtu.be/QSK8HFDjEpk" target="_blank" class="vcard">
+          <div class="vthumb vthumb-916"><img class="vthumb-img" src="./iFOCUS_files/maxresdefault(26).jpg" alt="Marc Gostoli M6"><div class="vover"></div><div class="vplay">▶</div><div class="m6b">M6</div></div>
+          <div class="vinfo"><span class="vtag tv">Reportage TV</span><div class="vtitle">Marc Gostoli — Skis adaptés</div><div class="vmeta">Sony FX3 · M6 · 2M audience TV</div><div class="vstat">👁 10 300 vues · 2M TV</div></div>
+        </a>
+        <a href="https://youtu.be/gScglMnLYms" target="_blank" class="vcard">
+          <div class="vthumb vthumb-916"><img class="vthumb-img" src="./iFOCUS_files/maxresdefault(2).jpg" alt="Pitch Addict M6"><div class="vover"></div><div class="vplay">▶</div><div class="m6b">M6</div></div>
+          <div class="vinfo"><span class="vtag football">Football</span><div class="vtitle">Pitch Addict — Real Madrid &amp; FIFA</div><div class="vmeta">iPhone · DJI Drone · M6 · 6M abonnés</div><div class="vstat">👁 19 000 vues · 2M TV</div></div>
+        </a>
+      </div>
+    </div>
+
+    <!-- ============ SNAPCHAT - format 9:16 ============ -->
+    <!-- Les vidéos Drive seront remplacées par les liens GitHub une fois uploadées -->
+    <div class="port-panel" id="tab-snap">
+      <div class="grid-vert-4 rev">
+        <!-- HMI House 3 (pas de vidéo, juste miniature à venir) -->
+        <div class="vcard" style="cursor:none">
+          <div class="vthumb vthumb-916">
+            <div class="vi c4"></div>
+            <div class="vover" style="opacity:.5"></div>
+            <div class="vplay" style="opacity:.4">▶</div>
+          </div>
+          <div class="vinfo"><span class="vtag social">Snapchat</span><div class="vtitle">HMI House 3</div><div class="vmeta">Réalisation</div></div>
+        </div>
+
+        <!-- Finale HMI - pas encore en ligne -->
+        <div class="vcard" style="cursor:none">
+          <div class="vthumb vthumb-916">
+            <div class="coming-soon">
+              <div class="coming-soon-lbl">● Bientôt disponible</div>
+              <div class="coming-soon-title">Finale HMI House<br>Feliccia Brulux · Costa Rica</div>
+            </div>
+          </div>
+          <div class="vinfo"><span class="vtag social">Snapchat</span><div class="vtitle">Finale HMI House — Costa Rica</div><div class="vmeta">À venir prochainement</div></div>
+        </div>
+
+        <!-- Clip Maissa × Zizou (vidéo Drive en attente d'upload GitHub) -->
+        <a href="file:///Users/hichamtahir/Downloads/index_1.html#" data-drive-link="https://drive.google.com/file/d/1uoUqfWDnmryZ5xmzgACSTfMPkQPVOdXw/view" target="_blank" class="vcard">
+          <div class="vthumb vthumb-916"><div class="vi c6"></div><div class="vover"></div><div class="vplay">▶</div></div>
+          <div class="vinfo"><span class="vtag music">Clip</span><div class="vtitle">CLIP — Maissa × Zizou</div><div class="vmeta">Réalisation · Clip musical</div></div>
+        </a>
+
+        <!-- Feliccia Nanou (vidéo Drive en attente d'upload GitHub) -->
+        <a href="file:///Users/hichamtahir/Downloads/index_1.html#" data-drive-link="https://drive.google.com/file/d/1adi0ke6c_INDi9OliPU27KYkkuOZpmED/view" target="_blank" class="vcard">
+          <div class="vthumb vthumb-916"><div class="vi c7"></div><div class="vover"></div><div class="vplay">▶</div></div>
+          <div class="vinfo"><span class="vtag music">Clip</span><div class="vtitle">Feliccia Nanou</div><div class="vmeta">Réalisation · Clip musical</div></div>
+        </a>
+      </div>
+    </div>
+
+    <!-- PHOTOS - galerie cliquable -->
+    <div class="port-panel" id="tab-photo">
+      <div class="photo-grid rev">
+        <div class="pcard" onclick="openGallery(&#39;miami&#39;)"><div class="pinner c1"><div class="pemoji">🏝️</div><div class="pcount" id="count-miami">3 photos</div><div class="plbl">MIAMI 🏝️</div></div></div>
+        <div class="pcard" onclick="openGallery(&#39;dubai&#39;)"><div class="pinner c3"><div class="pemoji">🌇</div><div class="pcount" id="count-dubai">3 photos</div><div class="plbl">DUBAÏ 🌇</div></div></div>
+        <div class="pcard" onclick="openGallery(&#39;amg&#39;)"><div class="pinner c5"><div class="pemoji">🚘</div><div class="pcount" id="count-amg">1 photo</div><div class="plbl">MERCEDES - AMG GT 🚘</div></div></div>
+        <div class="pcard" onclick="openGallery(&#39;football&#39;)"><div class="pinner c2"><div class="pemoji">⚽</div><div class="pcount" id="count-football">1 photo</div><div class="plbl">TheFootballCircle ⚽</div></div></div>
+        <div class="pcard" onclick="openGallery(&#39;lambo&#39;)"><div class="pinner c4"><div class="pemoji">🚘</div><div class="pcount" id="count-lambo">1 photo</div><div class="plbl">LAMBORGHINI &amp; MASERATTI 🚘</div></div></div>
+        <div class="pcard" onclick="openGallery(&#39;padel&#39;)"><div class="pinner c9"><div class="pemoji">🎾</div><div class="pcount" id="count-padel">1 photo</div><div class="plbl">PADEL 🎾</div></div></div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- 2. ONGLETS EN BAS -->
+  <div class="port-tabs-wrap rev">
+    <div class="port-tabs">
+      <button class="tab active" onclick="switchTab(&#39;tout&#39;,this)"><span>TOUT</span></button>
+      <button class="tab" onclick="switchTab(&#39;yt&#39;,this)"><span>YouTube</span></button>
+      <button class="tab" onclick="switchTab(&#39;insta&#39;,this)"><span>Instagram</span></button>
+      <button class="tab" onclick="switchTab(&#39;m6&#39;,this)"><span>M6</span></button>
+      <button class="tab" onclick="switchTab(&#39;snap&#39;,this)"><span>Snapchat</span></button>
+      <button class="tab" onclick="switchTab(&#39;photo&#39;,this)"><span>Photos</span></button>
+    </div>
+  </div>
+
+  <!-- 3. CTA EN BAS -->
+  <div class="port-cta-wrap rev">
+    <a href="https://wa.me/VOTRE_NUMERO?text=Bonjour%2C%20j%27ai%20vu%20votre%20portfolio%20et%20je%20veux%20collaborer." target="_blank" class="port-cta">
+      <span data-i18n="work_together">Travaillons ensemble →</span>
+    </a>
+  </div>
+</section>
+
+<!-- ============= LIGHTBOX GALERIE ============= -->
+<div class="lightbox" id="lightbox" onclick="closeLightboxBg(event)">
+  <div class="lightbox-inner" onclick="event.stopPropagation()">
+    <div class="lightbox-counter" id="lbCounter">1 / 1</div>
+    <button class="lightbox-close" onclick="closeLightbox()">✕</button>
+    <button class="lightbox-arrow prev" onclick="lbNav(-1)">‹</button>
+    <button class="lightbox-arrow next" onclick="lbNav(1)">›</button>
+    <img class="lightbox-img" id="lbImg" src="file:///Users/hichamtahir/Downloads/index_1.html" alt="">
+    <div class="lightbox-caption" id="lbCaption"></div>
+  </div>
+</div>
+
+<section class="proc-sec sec" id="process">
+  <div class="rev"><div class="elbl" data-i18n="proc_label">Comment ça marche</div><h2 data-i18n="proc_h2">De l'idée<br><span>à l'écran.</span></h2></div>
+  <div class="proc-grid">
+    <div class="pc rev d1"><div class="pn">01</div><span class="pi">💬</span><h3 data-i18n="p1_title">Brief</h3><p data-i18n="p1_desc">On échange sur votre projet, vos objectifs, votre audience. Pas de blabla — on va droit au but.</p></div>
+    <div class="pc rev d2"><div class="pn">02</div><span class="pi">🎬</span><h3 data-i18n="p2_title">Tournage</h3><p data-i18n="p2_desc">On se déplace où vous êtes. iPhone, Sony FX3, drone — l'équipement s'adapte au projet, pas l'inverse.</p></div>
+    <div class="pc rev d3"><div class="pn">03</div><span class="pi">✂️</span><h3 data-i18n="p3_title">Montage</h3><p data-i18n="p3_desc">Chaque coupe, chaque transition, chaque effet est pensé pour maximiser l'impact sur votre audience.</p></div>
+    <div class="pc rev d4"><div class="pn">04</div><span class="pi">🚀</span><h3 data-i18n="p4_title">Livraison</h3><p data-i18n="p4_desc">Formats adaptés à chaque plateforme. Prêt à publier, prêt à performer.</p></div>
+  </div>
+</section>
+
+<div id="devis">
+  <div class="devis-wrap rev">
+    <div class="elbl" data-i18n="quote_label">Estimation</div>
+    <h2><span data-i18n="quote_h2_1">Votre projet,</span><br><span data-i18n="quote_h2_2">votre <span style="color:var(--accent)">devis</span></span></h2>
+    <p style="color:var(--muted);font-size:.86rem;margin-bottom:2rem" data-i18n="quote_sub">Configurez en 2 étapes — je vous reviens sous 24h avec une offre taillée sur mesure.</p>
+    <div class="devis-card">
+      <div class="prog-bar"><div class="prog-fill" id="progFill" style="width:50%"></div></div>
+      <div class="dsteps-row">
+        <button class="ds active" id="sb1" data-i18n="ds1">1. Projet</button>
+        <button class="ds" id="sb2" data-i18n="ds3">2. Brief &amp; envoi</button>
+      </div>
+      <div class="dpage show" id="dp1">
+        <p style="font-size:.83rem;color:var(--muted);margin-bottom:1.2rem" data-i18n="q1_intro">Quel type de contenu souhaitez-vous créer ?</p>
+        <div class="type-grid">
+          <div class="tcard sel" onclick="pickType(this,&#39;Reportage / Documentaire&#39;)"><div class="tcard-icon">🎥</div><div class="tcard-name" data-i18n="t1">Reportage</div><div class="tcard-desc" data-i18n="t1d">TV, docu, portrait</div></div>
+          <div class="tcard" onclick="pickType(this,&#39;Clip Musical&#39;)"><div class="tcard-icon">🎵</div><div class="tcard-name" data-i18n="t2">Clip Musical</div><div class="tcard-desc" data-i18n="t2d">Clip, teaser, concert</div></div>
+          <div class="tcard" onclick="pickType(this,&#39;Brand Film / Pub&#39;)"><div class="tcard-icon">✨</div><div class="tcard-name" data-i18n="t3">Brand Film</div><div class="tcard-desc" data-i18n="t3d">Marque, produit, lancement</div></div>
+          <div class="tcard" onclick="pickType(this,&#39;Podcast / Interview&#39;)"><div class="tcard-icon">🎙️</div><div class="tcard-name" data-i18n="t4">Podcast</div><div class="tcard-desc" data-i18n="t4d">Talk, interview, podcast</div></div>
+          <div class="tcard" onclick="pickType(this,&#39;Contenu Social&#39;)"><div class="tcard-icon">📱</div><div class="tcard-name" data-i18n="t5">Social Media</div><div class="tcard-desc" data-i18n="t5d">Reels, TikTok, Shorts</div></div>
+          <div class="tcard" onclick="pickType(this,&#39;Vlog / Lifestyle&#39;)"><div class="tcard-icon">🌍</div><div class="tcard-name" data-i18n="t6">Vlog / Lifestyle</div><div class="tcard-desc" data-i18n="t6d">Voyage, events, lifestyle</div></div>
+        </div>
+        <div class="qty-row">
+          <div><div class="qty-lbl" data-i18n="nb_videos">Nombre de vidéos</div><div class="qty-sub" data-i18n="nb_videos_sub">Vidéos longues (&gt;2 min)</div></div>
+          <div class="qty-ctrl"><button class="qbtn" onclick="cQty(-1)">−</button><div class="qnum" id="qnum">1</div><button class="qbtn" onclick="cQty(1)">+</button></div>
+        </div>
+        <div class="dbtns"><button class="dnext" onclick="goStep(2)" data-i18n="next">Suivant →</button></div>
+      </div>
+      <div class="dpage" id="dp2">
+        <p style="font-size:.83rem;color:var(--muted);margin-bottom:1.2rem" data-i18n="q3_intro">Décrivez votre projet — je vous réponds sous 24h avec une offre personnalisée.</p>
+        <input class="bref-input" type="text" id="bname" placeholder="Votre nom / pseudo">
+        <textarea class="bref-area" id="bdesc" placeholder="Ex : Je suis créateur YouTube avec 100k abonnés, je veux un vlog de voyage à Dubai avec drone et étalonnage cinématique..."></textarea>
+        <div class="sum-box">
+          <div class="sum-row"><span data-i18n="sum1">Type</span><span class="sum-val" id="s-type">—</span></div>
+          <div class="sum-row"><span data-i18n="sum2">Vidéos</span><span class="sum-val" id="s-qty">1</span></div>
+        </div>
+        <a href="https://wa.me/VOTRE_NUMERO?text=Bonjour%20%F0%9F%91%8B%0A%0ADemande%20de%20devis%20iFOCUS%20%3A%0A%0A%F0%9F%93%8C%20Type%20%3A%20Reportage%20%2F%20Documentaire%0A%F0%9F%93%B9%20Vid%C3%A9os%20%3A%201%0A%F0%9F%91%A4%20Nom%20%3A%20%E2%80%94%0A%F0%9F%92%AC%20Projet%20%3A%20%E2%80%94%0A%0AMerci%20!" id="wa-btn" target="_blank" class="dwa">
+          <svg viewBox="0 0 24 24"><path class="wa" d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347zM12 0C5.373 0 0 5.373 0 12c0 2.123.553 4.116 1.522 5.845L.057 23.486a.5.5 0 00.598.665l5.968-1.553A11.932 11.932 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.888a9.876 9.876 0 01-5.031-1.375l-.36-.214-3.742.974.998-3.636-.235-.374A9.847 9.847 0 012.112 12C2.112 6.539 6.539 2.112 12 2.112S21.888 6.539 21.888 12 17.461 21.888 12 21.888z"></path></svg>
+          <span data-i18n="send_wa">Envoyer ma demande sur WhatsApp</span>
+        </a>
+        <div class="dbtns" style="margin-top:1rem"><button class="dback" onclick="goStep(1)" data-i18n="back">← Retour</button></div>
+        <div class="dwa-note"><div class="gdot"></div><span data-i18n="wa_note">Réponse sous 24h · Devis gratuit &amp; sans engagement</span></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div id="faq" style="background:var(--bg2)">
+  <div class="faq-wrap">
+    <div class="rev"><div class="elbl">FAQ</div><h2 style="margin-bottom:3rem"><span data-i18n="faq_h2_1">Toutes vos</span> <span style="color:var(--accent)" data-i18n="faq_h2_2">questions</span></h2></div>
+    <div class="fi rev" onclick="tFaq(this)"><div class="fq"><span data-i18n="fq1">Vous faites uniquement le montage ou aussi le tournage ?</span><span class="ftog">+</span></div><div class="fa" data-i18n="fa1">Les deux — et bien plus. On peut intervenir sur l'intégralité d'un projet : réalisation, tournage (iPhone, Sony FX3, drone DJI Mini 3 Pro), montage, motion design et étalonnage. Si vous avez déjà vos rushes, on s'occupe uniquement du post. C'est vous qui décidez.</div></div>
+    <div class="fi rev" onclick="tFaq(this)"><div class="fq"><span data-i18n="fq2">Vous vous déplacez pour les tournages ?</span><span class="ftog">+</span></div><div class="fa" data-i18n="fa2">Oui. On s'est déplacé à Miami, au Costa Rica, à Paris, Dubai et bien d'autres. Si votre projet le demande, on vient à vous. Discutons-en.</div></div>
+    <div class="fi rev" onclick="tFaq(this)"><div class="fq"><span data-i18n="fq3">Quels types de fichiers acceptez-vous ?</span><span class="ftog">+</span></div><div class="fa" data-i18n="fa3">Tous les formats courants : MP4, MOV, MXF, R3D, BRAW. Que ce soit de l'iPhone ou d'une caméra de cinéma, on gère. Envoi via WeTransfer, Google Drive ou Frame.io.</div></div>
+    <div class="fi rev" onclick="tFaq(this)"><div class="fq"><span data-i18n="fq4">Quel niveau de qualité puis-je espérer ?</span><span class="ftog">+</span></div><div class="fa" data-i18n="fa4">Le même niveau que ce que vous avez vu dans le portfolio — diffusé sur M6, publié pour des créateurs à millions d'abonnés. Chaque projet est traité avec la même exigence, qu'il s'agisse d'un reel de 30 secondes ou d'un documentaire de 30 minutes.</div></div>
+    <div class="fi rev" onclick="tFaq(this)"><div class="fq"><span data-i18n="fq5">Combien de révisions sont incluses ?</span><span class="ftog">+</span></div><div class="fa" data-i18n="fa5">Minimum 2 à 3 rounds selon le projet. On ne lâche pas tant que vous n'êtes pas satisfait. Les retours se font par annotation directe sur la vidéo — simple, précis, sans logiciel.</div></div>
+    <div class="fi rev" onclick="tFaq(this)"><div class="fq"><span data-i18n="fq6">Comment démarrer ?</span><span class="ftog">+</span></div><div class="fa" data-i18n="fa6">Un message WhatsApp. Décrivez votre projet en 2 lignes et on revient vers vous sous 24h avec une proposition. Pas de formulaire compliqué, pas d'attente. Direct.</div></div>
+  </div>
+</div>
+
+<section class="cta-sec">
+  <div class="cta-glow"></div>
+  <div class="rev">
+    <div class="elbl" style="justify-content:center" data-i18n="cta_label">On démarre ?</div>
+    <h2><span data-i18n="cta_h2_1">Prêt à créer quelque</span><br><span data-i18n="cta_h2_2">chose qui <span style="color:var(--accent)">frappe ?</span></span></h2>
+    <p class="cta-sub" data-i18n="cta_sub">Un message suffit. Zéro engagement. Réponse garantie sous 24h.</p>
+    <div class="cta-24"><div class="gdot"></div><span data-i18n="resp_tag">Réponse garantie sous 24 heures</span></div>
+    <a href="https://wa.me/VOTRE_NUMERO?text=Bonjour%2C%20je%20souhaite%20travailler%20avec%20iFOCUS." target="_blank" class="cta-btn" id="cta-wa-btn">
+      <svg viewBox="0 0 24 24"><path class="wa" d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347zM12 0C5.373 0 0 5.373 0 12c0 2.123.553 4.116 1.522 5.845L.057 23.486a.5.5 0 00.598.665l5.968-1.553A11.932 11.932 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.888a9.876 9.876 0 01-5.031-1.375l-.36-.214-3.742.974.998-3.636-.235-.374A9.847 9.847 0 012.112 12C2.112 6.539 6.539 2.112 12 2.112S21.888 6.539 21.888 12 17.461 21.888 12 21.888z"></path></svg>
+      <span data-i18n="cta_btn">Envoyer un message WhatsApp</span>
+    </a>
+    <div class="cta-socials">
+      <a href="file:///Users/hichamtahir/Downloads/index_1.html#" class="cl">Instagram</a>
+      <a href="file:///Users/hichamtahir/Downloads/index_1.html#" class="cl">YouTube</a>
+      <a href="file:///Users/hichamtahir/Downloads/index_1.html#" class="cl">TikTok</a>
+      <a href="file:///Users/hichamtahir/Downloads/index_1.html#" class="cl">contact@ifocus.ae</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="logo-wrap"><a href="file:///Users/hichamtahir/Downloads/index_1.html#" class="flogo">i<span>FOCUS</span></a><span class="logo-sub">Basé à Dubaï</span></div>
+  <p data-i18n="footer_copy">© 2025 iFOCUS · Tous droits réservés</p>
+  <p style="font-size:.7rem">Dubai · Remote worldwide</p>
+</footer>
+
+<script>
+/* ============= GALERIE PHOTO - DONNÉES ============= */
+/* Tu pourras ajouter tes vraies photos ici quand tu m'envoies le Google Drive.
+   Pour l'instant, j'ai mis des placeholders Unsplash de qualité. */
+const GALLERIES = {
+  miami: {
+    title: 'MIAMI 🏝️',
+    photos: [
+      {src:'https://images.unsplash.com/photo-1535498730771-e735b998cd64?w=1600',caption:'Miami Beach'},
+      {src:'https://images.unsplash.com/photo-1605723517503-3cadb5818a0c?w=1600',caption:'South Beach sunset'},
+      {src:'https://images.unsplash.com/photo-1568515387631-8b650bbcdb90?w=1600',caption:'Downtown Miami'}
+    ]
+  },
+  dubai: {
+    title: 'DUBAÏ 🌇',
+    photos: [
+      {src:'https://images.unsplash.com/photo-1512453979798-5ea266f8880c?w=1600',caption:'Burj Khalifa'},
+      {src:'https://images.unsplash.com/photo-1518684079-3c830dcef090?w=1600',caption:'Marina'},
+      {src:'https://images.unsplash.com/photo-1546412414-e1885259563a?w=1600',caption:'Skyline'}
+    ]
+  },
+  amg: {
+    title: 'MERCEDES - AMG GT 🚘',
+    photos: [
+      {src:'https://images.unsplash.com/photo-1617531653332-bd46c24f2068?w=1600',caption:'AMG GT'}
+    ]
+  },
+  football: {
+    title: 'TheFootballCircle ⚽',
+    photos: [
+      {src:'https://images.unsplash.com/photo-1551958219-acbc608c6377?w=1600',caption:'Match'}
+    ]
+  },
+  lambo: {
+    title: 'LAMBORGHINI & MASERATTI 🚘',
+    photos: [
+      {src:'https://images.unsplash.com/photo-1544829099-b9a0c07fad1a?w=1600',caption:'Huracán'}
+    ]
+  },
+  padel: {
+    title: 'PADEL 🎾',
+    photos: [
+      {src:'https://images.unsplash.com/photo-1554068865-24cecd4e34b8?w=1600',caption:'Padel court'}
+    ]
+  }
+};
+
+/* Update photo counts */
+Object.keys(GALLERIES).forEach(k=>{
+  const el=document.getElementById('count-'+k);
+  if(el)el.textContent=GALLERIES[k].photos.length+' photo'+(GALLERIES[k].photos.length>1?'s':'');
+});
+
+/* ============= LIGHTBOX ============= */
+let lbState={photos:[],idx:0,title:''};
+function openGallery(key){
+  const g=GALLERIES[key];if(!g)return;
+  lbState.photos=g.photos;lbState.idx=0;lbState.title=g.title;
+  showLb();
+  document.body.classList.add('lock');
+  document.getElementById('lightbox').classList.add('open');
+}
+function showLb(){
+  const p=lbState.photos[lbState.idx];if(!p)return;
+  document.getElementById('lbImg').src=p.src;
+  document.getElementById('lbImg').alt=p.caption||'';
+  document.getElementById('lbCaption').textContent=lbState.title+(p.caption?' · '+p.caption:'');
+  document.getElementById('lbCounter').textContent=(lbState.idx+1)+' / '+lbState.photos.length;
+  /* Hide arrows if only 1 photo */
+  const showArrows=lbState.photos.length>1;
+  document.querySelectorAll('.lightbox-arrow').forEach(a=>a.style.display=showArrows?'flex':'none');
+}
+function lbNav(d){
+  lbState.idx=(lbState.idx+d+lbState.photos.length)%lbState.photos.length;
+  showLb();
+}
+function closeLightbox(){
+  document.getElementById('lightbox').classList.remove('open');
+  document.body.classList.remove('lock');
+}
+function closeLightboxBg(e){if(e.target.id==='lightbox')closeLightbox();}
+document.addEventListener('keydown',e=>{
+  if(!document.getElementById('lightbox').classList.contains('open'))return;
+  if(e.key==='Escape')closeLightbox();
+  if(e.key==='ArrowLeft')lbNav(-1);
+  if(e.key==='ArrowRight')lbNav(1);
+});
+
+/* ============= CARROUSEL ALYXA ============= */
+const ALYXA_VIDEOS=[
+  {link:'https://youtube.com/shorts/1lHNV-TUglw',title:'Alyxa - Vidéo 1'},
+  {link:'https://youtube.com/shorts/-1aw3Jhqg2Y',title:'Alyxa - Vidéo 2'},
+  {link:'https://youtube.com/shorts/cLIiO_IQtnI',title:'Alyxa - Vidéo 3'},
+  {link:'https://youtube.com/shorts/IGBFLf8q2Zo',title:'Alyxa - Vidéo 4'},
+  {link:'https://youtube.com/shorts/T1Gq542TYvg',title:'Alyxa - Vidéo 5'}
+];
+function updateCarousel(card){
+  const idx=parseInt(card.dataset.current||0);
+  card.querySelectorAll('.carousel-slide').forEach((s,i)=>s.classList.toggle('active',i===idx));
+  card.querySelectorAll('.carousel-dot').forEach((d,i)=>d.classList.toggle('active',i===idx));
+  const link=card.querySelector('[data-link]');
+  if(link&&ALYXA_VIDEOS[idx])link.href=ALYXA_VIDEOS[idx].link;
+}
+function carouselNav(btn,d){
+  const card=btn.closest('.carousel-card');
+  const slides=card.querySelectorAll('.carousel-slide').length;
+  let idx=parseInt(card.dataset.current||0);
+  idx=(idx+d+slides)%slides;
+  card.dataset.current=idx;
+  updateCarousel(card);
+}
+function carouselGo(btn,idx){
+  const card=btn.closest('.carousel-card');
+  card.dataset.current=idx;
+  updateCarousel(card);
+}
+/* Init carrousels */
+document.querySelectorAll('.carousel-card').forEach(updateCarousel);
+
+/* ============= I18N ============= */
+const T={
+  fr:{
+    nav_portfolio:"Portfolio",nav_process:"Process",nav_quote:"Devis",nav_cta:"Envoyer un message",
+    hero_badge:"Mettre en images vos idées.",hero_h1_1:"Notre caméra.",hero_h1_mid:"Notre montage.",hero_h1_2:"Votre résultat.",
+    hero_sub:"Tout type de contenu — chaque projet traité au moindre détail.",
+    proof_2:"1,3M vues Instagram",proof_3:"Michou · Inox Zombie · Pitch Addict...",
+    hero_cta:"Discutons de votre projet",hero_cta2:"▶ Voir nos prods",
+    resp_tag:"Réponse garantie sous 24 heures",
+    stat1:"Audience TV M6",stat2:"Vues Instagram",stat_yt:"Vues YouTube",stat3:"Sur mesure",
+    srv1_name:"Réalisation",srv1_desc:"Conception & direction",srv2_name:"Cadrage",srv2_desc:"On se déplace partout",
+    srv3_name:"Drone",srv3_desc:"DJI Mini 3 Pro",srv4_name:"Montage",srv4_desc:"Pro & précis",
+    srv5_name:"Motion Design",srv5_desc:"Animations custom",srv6_name:"Sound Design",srv6_desc:"Mixage & effets",
+    srv7_name:"Étalonnage",srv7_desc:"Color grading cinéma",
+    port_label:"Réalisations",port_h2_1:"Nos projets.",port_h2_2:"Leurs succès.",
+    work_together:"Travaillons ensemble →",
+    port_sub:"Chaque projet est livré avec le même niveau d'exigence, qu'il soit diffusé devant 2 millions de personnes ou sur vos réseaux sociaux.",
+    proc_label:"Comment ça marche",proc_h2:"De l'idée<br><span>à l'écran.</span>",
+    p1_title:"Brief",p1_desc:"On échange sur votre projet, vos objectifs, votre audience. Pas de blabla — on va droit au but.",
+    p2_title:"Tournage",p2_desc:"On se déplace où vous êtes. iPhone, Sony FX3, drone — l'équipement s'adapte au projet, pas l'inverse.",
+    p3_title:"Montage",p3_desc:"Chaque coupe, chaque transition, chaque effet est pensé pour maximiser l'impact sur votre audience.",
+    p4_title:"Livraison",p4_desc:"Formats adaptés à chaque plateforme. Prêt à publier, prêt à performer.",
+    quote_label:"Estimation",quote_h2_1:"Votre projet,",quote_h2_2:"votre devis",
+    quote_sub:"Configurez en 2 étapes — je vous reviens sous 24h avec une offre taillée sur mesure.",
+    ds1:"1. Projet",ds3:"2. Brief & envoi",q1_intro:"Quel type de contenu souhaitez-vous créer ?",
+    t1:"Reportage",t1d:"TV, docu, portrait",t2:"Clip Musical",t2d:"Clip, teaser, concert",
+    t3:"Brand Film",t3d:"Marque, produit, lancement",t4:"Podcast",t4d:"Talk, interview, podcast",
+    t5:"Social Media",t5d:"Reels, TikTok, Shorts",t6:"Vlog / Lifestyle",t6d:"Voyage, events, lifestyle",
+    nb_videos:"Nombre de vidéos",nb_videos_sub:"Vidéos longues (>2 min)",
+    next:"Suivant →",back:"← Retour",
+    q3_intro:"Décrivez votre projet — je vous réponds sous 24h avec une offre personnalisée.",
+    sum1:"Type",sum2:"Vidéos",send_wa:"Envoyer ma demande sur WhatsApp",wa_note:"Réponse sous 24h · Devis gratuit & sans engagement",
+    faq_h2_1:"Toutes vos",faq_h2_2:"questions",
+    fq1:"Vous faites uniquement le montage ou aussi le tournage ?",
+    fa1:"Les deux — et bien plus. On peut intervenir sur l'intégralité d'un projet : réalisation, tournage (iPhone, Sony FX3, drone DJI Mini 3 Pro), montage, motion design et étalonnage. Si vous avez déjà vos rushes, on s'occupe uniquement du post. C'est vous qui décidez.",
+    fq2:"Vous vous déplacez pour les tournages ?",fa2:"Oui. On s'est déplacé à Miami, au Costa Rica, à Paris, Dubai et bien d'autres. Si votre projet le demande, on vient à vous. Discutons-en.",
+    fq3:"Quels types de fichiers acceptez-vous ?",fa3:"Tous les formats courants : MP4, MOV, MXF, R3D, BRAW. Que ce soit de l'iPhone ou d'une caméra de cinéma, on gère. Envoi via WeTransfer, Google Drive ou Frame.io.",
+    fq4:"Quel niveau de qualité puis-je espérer ?",fa4:"Le même niveau que ce que vous avez vu dans le portfolio — diffusé sur M6, publié pour des créateurs à millions d'abonnés. Chaque projet est traité avec la même exigence, qu'il s'agisse d'un reel de 30 secondes ou d'un documentaire de 30 minutes.",
+    fq5:"Combien de révisions sont incluses ?",fa5:"Minimum 2 à 3 rounds selon le projet. On ne lâche pas tant que vous n'êtes pas satisfait. Les retours se font par annotation directe sur la vidéo — simple, précis, sans logiciel.",
+    fq6:"Comment démarrer ?",fa6:"Un message WhatsApp. Décrivez votre projet en 2 lignes et on revient vers vous sous 24h avec une proposition. Pas de formulaire compliqué, pas d'attente. Direct.",
+    cta_label:"On démarre ?",cta_h2_1:"Prêt à créer quelque",cta_h2_2:"chose qui frappe ?",
+    cta_sub:"Un message suffit. Zéro engagement. Réponse garantie sous 24h.",
+    cta_btn:"Envoyer un message WhatsApp",footer_copy:"© 2025 iFOCUS · Tous droits réservés"
+  },
+  en:{
+    nav_portfolio:"Portfolio",nav_process:"Process",nav_quote:"Quote",nav_cta:"Send a message",
+    hero_badge:"Bringing your ideas to life.",hero_h1_1:"Our camera.",hero_h1_mid:"Our edit.",hero_h1_2:"Your result.",
+    hero_sub:"Every type of content — every project handled with obsessive attention to detail.",
+    proof_2:"1.3M Instagram views",proof_3:"Michou · Inox Zombie · Pitch Addict...",
+    hero_cta:"Let's talk about your project",hero_cta2:"▶ View our work",
+    resp_tag:"Response guaranteed within 24 hours",
+    stat1:"M6 TV Audience",stat2:"Instagram Views",stat_yt:"YouTube Views",stat3:"Fully custom",
+    srv1_name:"Direction",srv1_desc:"Vision & creative lead",srv2_name:"Camera",srv2_desc:"We travel anywhere",
+    srv3_name:"Drone",srv3_desc:"DJI Mini 3 Pro",srv4_name:"Editing",srv4_desc:"Precise & pro",
+    srv5_name:"Motion Design",srv5_desc:"Custom animations",srv6_name:"Sound Design",srv6_desc:"Mixing & effects",
+    srv7_name:"Color Grading",srv7_desc:"Cinematic look",
+    port_label:"Work",port_h2_1:"Our projects.",port_h2_2:"Their success.",work_together:"Let's work together →",
+    port_sub:"Every project is delivered with the same standard of quality — whether broadcast to 2 million people or published on your social media.",
+    proc_label:"How it works",proc_h2:"From idea<br><span>to screen.</span>",
+    p1_title:"Brief",p1_desc:"We talk about your project, goals and audience. No fluff — straight to the point.",
+    p2_title:"Shooting",p2_desc:"We travel to you. iPhone, Sony FX3, drone — gear adapts to the project, not the other way around.",
+    p3_title:"Editing",p3_desc:"Every cut, every transition, every effect is designed to maximize impact on your audience.",
+    p4_title:"Delivery",p4_desc:"Exported in all platform formats. Ready to post, ready to perform.",
+    quote_label:"Quote",quote_h2_1:"Your project,",quote_h2_2:"your quote",
+    quote_sub:"Build yours in 2 steps — I'll come back to you within 24h with a tailored offer.",
+    ds1:"1. Project",ds3:"2. Brief & send",q1_intro:"What type of content do you want to create?",
+    t1:"Report",t1d:"TV, documentary, portrait",t2:"Music Video",t2d:"Clip, teaser, concert",
+    t3:"Brand Film",t3d:"Brand, product, launch",t4:"Podcast",t4d:"Talk, interview, podcast",
+    t5:"Social Media",t5d:"Reels, TikTok, Shorts",t6:"Vlog / Lifestyle",t6d:"Travel, events, lifestyle",
+    nb_videos:"Number of videos",nb_videos_sub:"Long videos (>2 min)",
+    next:"Next →",back:"← Back",
+    q3_intro:"Describe your project — I'll reply within 24h with a personalized quote.",
+    sum1:"Type",sum2:"Videos",send_wa:"Send my request on WhatsApp",wa_note:"Reply within 24h · Free quote · No commitment",
+    faq_h2_1:"Your",faq_h2_2:"questions",
+    fq1:"Do you only edit, or do you also shoot?",fa1:"Both — and much more. We can handle an entire project: direction, shooting (iPhone, Sony FX3, DJI drone), editing, motion design and color grading. If you already have your footage, we handle post only. You decide.",
+    fq2:"Do you travel for shoots?",fa2:"Yes. We've shot in Miami, Costa Rica, Paris, Dubai and more. If your project requires it, we come to you. Let's talk.",
+    fq3:"What file formats do you accept?",fa3:"All standard formats: MP4, MOV, MXF, R3D, BRAW. iPhone or cinema camera — we handle it all. Send via WeTransfer, Google Drive or Frame.io.",
+    fq4:"What level of quality can I expect?",fa4:"The same level you've seen in the portfolio — broadcast on M6, published for million-subscriber creators. Every project gets the same obsessive attention to detail, whether it's a 30-second reel or a 30-minute documentary.",
+    fq5:"How many revision rounds are included?",fa5:"A minimum of 2–3 rounds depending on the project. We don't stop until you're satisfied. Feedback is done through direct video annotation — simple, precise, no software needed.",
+    fq6:"How do I get started?",fa6:"Send us a WhatsApp message. Describe your project in 2 lines and we'll get back to you within 24 hours with a proposal. No complicated forms, no waiting. Direct.",
+    cta_label:"Ready?",cta_h2_1:"Ready to create something",cta_h2_2:"that hits hard?",
+    cta_sub:"One message is all it takes. Zero commitment. Reply guaranteed within 24h.",
+    cta_btn:"Send a WhatsApp message",footer_copy:"© 2025 iFOCUS · All rights reserved"
+  }
+};
+
+let lang='fr';
+function setLang(l){
+  lang=l;
+  document.documentElement.lang=l;
+  document.querySelectorAll('.lang-btn').forEach(b=>b.classList.toggle('active',b.textContent===l.toUpperCase()));
+  document.querySelectorAll('[data-i18n]').forEach(el=>{const k=el.getAttribute('data-i18n');if(T[l][k]!==undefined)el.innerHTML=T[l][k];});
+  document.title='iFOCUS';
+  const waMsg=l==='fr'?'Bonjour%2C%20je%20souhaite%20en%20savoir%20plus%20sur%20iFOCUS.':'Hello%2C%20I%27d%20like%20to%20know%20more%20about%20iFOCUS.';
+  ['nav-wa-btn','hero-wa-btn','cta-wa-btn'].forEach(id=>{const el=document.getElementById(id);if(el)el.href=`https://wa.me/VOTRE_NUMERO?text=${waMsg}`;});
+  buildWaLink();
+}
+(function(){const bl=(navigator.language||'fr').toLowerCase();if(!bl.startsWith('fr'))setLang('en');})();
+
+/* CURSEUR */
+const cur=document.getElementById('cur'),ring=document.getElementById('curRing');
+let mx=0,my=0,rx=0,ry=0;
+document.addEventListener('mousemove',e=>{mx=e.clientX;my=e.clientY;cur.style.transform=`translate(${mx}px,${my}px) translate(-50%,-50%)`;});
+(function loop(){rx+=(mx-rx)*.12;ry+=(my-ry)*.12;ring.style.transform=`translate(${rx}px,${ry}px) translate(-50%,-50%)`;requestAnimationFrame(loop);})();
+document.querySelectorAll('a,button,.vcard,.fi,.tcard,.pcard,.srv,.carousel-card').forEach(el=>{
+  el.addEventListener('mouseenter',()=>{ring.style.width='50px';ring.style.height='50px';});
+  el.addEventListener('mouseleave',()=>{ring.style.width='30px';ring.style.height='30px';});
+});
+
+function toggleMenu(){
+  const l=document.querySelector('.nav-links'),r=document.querySelector('.nav-right');
+  if(l.style.display==='flex'){l.style.display='none';r.style.display='none';}
+  else{l.style.cssText='display:flex;flex-direction:column;position:absolute;top:64px;left:0;right:0;background:var(--bg2);padding:1.8rem;gap:1.2rem;border-bottom:1px solid var(--border);z-index:200;';r.style.cssText='display:flex;flex-direction:column;gap:.6rem;position:absolute;top:calc(64px + 200px);left:0;right:0;background:var(--bg2);padding:1rem 1.8rem 1.8rem;z-index:200;';}
+}
+
+const io=new IntersectionObserver(e=>{e.forEach(x=>{if(x.isIntersecting)x.target.classList.add('vis');});},{threshold:.08});
+document.querySelectorAll('.rev').forEach(r=>io.observe(r));
+
+function switchTab(id,btn){
+  document.querySelectorAll('.port-panel').forEach(p=>p.classList.remove('show'));
+  document.querySelectorAll('.tab').forEach(t=>t.classList.remove('active'));
+  document.getElementById('tab-'+id).classList.add('show');
+  btn.classList.add('active');
+  /* Scroll fluide vers le haut du portfolio */
+  document.getElementById('portfolio').scrollIntoView({behavior:'smooth',block:'start'});
+}
+
+function tFaq(item){
+  const open=item.classList.contains('open');
+  document.querySelectorAll('.fi').forEach(i=>i.classList.remove('open'));
+  if(!open)item.classList.add('open');
+}
+
+document.querySelectorAll('a[href^="#"]').forEach(a=>{
+  a.addEventListener('click',e=>{
+    const h=a.getAttribute('href');
+    if(h==='#'||h===''||a.id==='wa-btn'||a.id==='nav-wa-btn'||a.id==='hero-wa-btn'||a.id==='cta-wa-btn')return;
+    e.preventDefault();
+    const t=document.querySelector(h);
+    if(t)t.scrollIntoView({behavior:'smooth'});
+  });
+});
+
+/* DEVIS */
+let selectedProjectType='Reportage / Documentaire',qty=1;
+function goStep(n){
+  if(n===2)buildSummary();
+  document.querySelectorAll('.dpage').forEach(p=>p.classList.remove('show'));
+  document.getElementById('dp'+n).classList.add('show');
+  document.querySelectorAll('.ds').forEach((s,i)=>{s.classList.remove('active','done');if(i+1===n)s.classList.add('active');else if(i+1<n)s.classList.add('done');});
+  document.getElementById('progFill').style.width=(n/2*100)+'%';
+  if(n===2)buildWaLink();
+}
+function pickType(el,name){document.querySelectorAll('.tcard').forEach(c=>c.classList.remove('sel'));el.classList.add('sel');selectedProjectType=name;}
+function cQty(d){qty=Math.max(1,Math.min(20,qty+d));document.getElementById('qnum').textContent=qty;}
+function buildSummary(){
+  document.getElementById('s-type').textContent=selectedProjectType;
+  document.getElementById('s-qty').textContent=qty+(lang==='fr'?' vidéo'+(qty>1?'s':''):' video'+(qty>1?'s':''));
+}
+function buildWaLink(){
+  const name=document.getElementById('bname').value||'—';
+  const desc=document.getElementById('bdesc').value||'—';
+  let msg=lang==='fr'?`Bonjour 👋\n\nDemande de devis iFOCUS :\n\n📌 Type : ${selectedProjectType}\n📹 Vidéos : ${qty}\n👤 Nom : ${name}\n💬 Projet : ${desc}\n\nMerci !`:`Hello 👋\n\nQuote request for iFOCUS:\n\n📌 Type: ${selectedProjectType}\n📹 Videos: ${qty}\n👤 Name: ${name}\n💬 Project: ${desc}\n\nThank you!`;
+  document.getElementById('wa-btn').href='https://wa.me/VOTRE_NUMERO?text='+encodeURIComponent(msg);
+}
+document.getElementById('bname').addEventListener('input',buildWaLink);
+document.getElementById('bdesc').addEventListener('input',buildWaLink);
+buildWaLink();
+</script>
+
+
+</body></html>
