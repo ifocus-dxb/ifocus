@@ -1,11 +1,12 @@
 <!DOCTYPE html>
-<!-- saved from url=(0048)file:///Users/hichamtahir/Downloads/index_1.html -->
-<html lang="fr"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>iFOCUS</title>
-<link rel="preconnect" href="https://fonts.googleapis.com/">
-<link href="./iFOCUS_files/css2" rel="stylesheet">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&display=swap" rel="stylesheet">
 <style>
 *,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
 :root{
@@ -25,9 +26,15 @@
   --tag-yt:#F0EFB8;--tag-yt-text:#3d3a17;
   --tag-cars:#FFE0B8;--tag-cars-text:#3d2917;
 }
-html{scroll-behavior:smooth}
+html{scroll-behavior:smooth;scroll-padding-top:80px}
 body{background:var(--bg);color:var(--text);font-family:var(--fb);overflow-x:hidden;cursor:none;font-size:16px;line-height:1.6}
 body.lock{overflow:hidden}
+/* Offset pour ancrages avec nav fixe */
+#portfolio,#process,#devis,#faq{scroll-margin-top:80px}
+@media(max-width:768px){
+  html{scroll-padding-top:72px}
+  #portfolio,#process,#devis,#faq{scroll-margin-top:72px}
+}
 .cur{width:10px;height:10px;background:var(--accent);border-radius:50%;position:fixed;top:0;left:0;pointer-events:none;z-index:9999;transform:translate(-50%,-50%)}
 .cur-ring{width:30px;height:30px;border:1.5px solid rgba(232,255,74,.38);border-radius:50%;position:fixed;top:0;left:0;pointer-events:none;z-index:9998;transform:translate(-50%,-50%);transition:width .22s,height .22s}
 nav{position:fixed;top:0;left:0;right:0;z-index:200;padding:1.3rem 4rem 1.3rem 2rem;display:flex;align-items:center;justify-content:space-between;backdrop-filter:blur(24px);background:rgba(7,7,7,.82);border-bottom:1px solid var(--border)}
@@ -212,7 +219,7 @@ h2 span{color:var(--accent)}
 .lightbox-inner{position:relative;width:70vw;height:70vh;max-width:1400px;display:flex;align-items:center;justify-content:center;animation:lbScale .4s cubic-bezier(.2,.8,.2,1)}
 @keyframes lbScale{from{opacity:0;transform:scale(.94)}to{opacity:1;transform:scale(1)}}
 .lightbox-img{max-width:100%;max-height:100%;object-fit:contain;box-shadow:0 30px 90px rgba(0,0,0,.6);border-radius:4px}
-.lightbox-close{position:absolute;top:-2.5rem;right:-1rem;width:42px;height:42px;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.18);color:#fff;font-size:1.3rem;display:flex;align-items:center;justify-content:center;cursor:none;transition:background .2s,border-color .2s,transform .2s;border-radius:50%;backdrop-filter:blur(8px)}
+.lightbox-close{position:absolute;top:-2.5rem;right:-1rem;width:42px;height:42px;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.18);color:#fff;font-size:1.3rem;display:flex;align-items:center;justify-content:center;cursor:none;transition:background .2s,border-color .2s,transform .2s;border-radius:50%;backdrop-filter:blur(8px);z-index:10}
 .lightbox-close:hover{background:var(--accent);border-color:var(--accent);color:#000;transform:rotate(90deg)}
 .lightbox-arrow{position:absolute;top:50%;width:50px;height:50px;background:rgba(255,255,255,.08);backdrop-filter:blur(8px);border:1px solid rgba(255,255,255,.18);color:#fff;font-size:1.4rem;display:flex;align-items:center;justify-content:center;cursor:none;z-index:5;transition:background .2s,border-color .2s;transform:translateY(-50%);border-radius:50%}
 .lightbox-arrow:hover{background:var(--accent);border-color:var(--accent);color:#000}
@@ -220,6 +227,19 @@ h2 span{color:var(--accent)}
 .lightbox-arrow.next{right:-5rem}
 .lightbox-caption{position:absolute;bottom:-2.5rem;left:0;right:0;text-align:center;font-family:var(--fh);font-size:.78rem;font-weight:600;color:rgba(255,255,255,.7);letter-spacing:.08em}
 .lightbox-counter{position:absolute;top:-2.5rem;left:0;font-family:var(--fh);font-size:.72rem;font-weight:700;color:var(--accent);letter-spacing:.12em;text-transform:uppercase}
+
+/* LIGHTBOX VIDEO - lecteur YouTube intégré */
+.lightbox-video{position:fixed;inset:0;z-index:1000;display:none;align-items:center;justify-content:center;padding:2rem;background:rgba(7,7,7,.55);backdrop-filter:blur(18px) saturate(140%);-webkit-backdrop-filter:blur(18px) saturate(140%);animation:lbFade .35s ease}
+.lightbox-video.open{display:flex}
+.lbv-inner{position:relative;animation:lbScale .4s cubic-bezier(.2,.8,.2,1);max-width:90vw;max-height:85vh}
+.lbv-inner.format-16{width:min(70vw,1200px);aspect-ratio:16/9}
+.lbv-inner.format-916{height:min(80vh,800px);aspect-ratio:9/16}
+.lbv-frame{width:100%;height:100%;border:none;background:#000;box-shadow:0 30px 90px rgba(0,0,0,.7);border-radius:6px}
+.lbv-close{position:absolute;top:-3rem;right:0;width:42px;height:42px;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.18);color:#fff;font-size:1.3rem;display:flex;align-items:center;justify-content:center;cursor:none;transition:background .2s,border-color .2s,transform .2s;border-radius:50%;backdrop-filter:blur(8px);z-index:10}
+.lbv-close:hover{background:var(--accent);border-color:var(--accent);color:#000;transform:rotate(90deg)}
+.lbv-caption{position:absolute;bottom:-2.5rem;left:0;right:0;text-align:center;font-family:var(--fh);font-size:.82rem;font-weight:700;color:rgba(255,255,255,.85);letter-spacing:.04em}
+.lbv-yt-link{position:absolute;top:-2.6rem;left:0;font-family:var(--fh);font-size:.7rem;font-weight:600;color:var(--accent);letter-spacing:.1em;text-transform:uppercase;text-decoration:none;display:inline-flex;align-items:center;gap:6px;padding:.4rem .8rem;background:rgba(232,255,74,.06);border:1px solid rgba(232,255,74,.2);border-radius:3px;cursor:none;transition:background .2s}
+.lbv-yt-link:hover{background:rgba(232,255,74,.12)}
 
 /* PROCESS */
 .proc-sec{background:var(--bg2)}
@@ -359,38 +379,38 @@ footer p{font-size:.75rem;color:var(--muted)}
 </head>
 <body>
 
-<div class="cur" id="cur" style="transform: translate(1283px, 0px) translate(-50%, -50%);"></div>
-<div class="cur-ring" id="curRing" style="transform: translate(1283px, 0.000625652px) translate(-50%, -50%); width: 30px; height: 30px;"></div>
+<div class="cur" id="cur"></div>
+<div class="cur-ring" id="curRing"></div>
 
 <nav>
   <div class="logo-wrap">
-    <a href="file:///Users/hichamtahir/Downloads/index_1.html#" class="logo">i<span>FOCUS</span></a>
+    <a href="#" class="logo">i<span>FOCUS</span></a>
     <span class="logo-sub">Basé à Dubaï</span>
   </div>
   <ul class="nav-links">
-    <li><a href="file:///Users/hichamtahir/Downloads/index_1.html#portfolio" data-i18n="nav_portfolio">Portfolio</a></li>
-    <li><a href="file:///Users/hichamtahir/Downloads/index_1.html#process" data-i18n="nav_process">Process</a></li>
-    <li><a href="file:///Users/hichamtahir/Downloads/index_1.html#devis" data-i18n="nav_quote">Devis</a></li>
-    <li><a href="file:///Users/hichamtahir/Downloads/index_1.html#faq">FAQ</a></li>
+    <li><a href="#portfolio" data-i18n="nav_portfolio">Portfolio</a></li>
+    <li><a href="#process" data-i18n="nav_process">Process</a></li>
+    <li><a href="#devis" data-i18n="nav_quote">Devis</a></li>
+    <li><a href="#faq">FAQ</a></li>
   </ul>
   <div class="nav-right">
-    <button class="lang-btn active" onclick="setLang(&#39;fr&#39;)">FR</button>
-    <button class="lang-btn" onclick="setLang(&#39;en&#39;)">EN</button>
+    <button class="lang-btn active" onclick="setLang('fr')">FR</button>
+    <button class="lang-btn" onclick="setLang('en')">EN</button>
     <a href="https://wa.me/VOTRE_NUMERO?text=Bonjour%2C%20je%20souhaite%20en%20savoir%20plus%20sur%20iFOCUS." target="_blank" class="nav-wa" id="nav-wa-btn">
-      <svg viewBox="0 0 24 24"><path class="wa" d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347zM12 0C5.373 0 0 5.373 0 12c0 2.123.553 4.116 1.522 5.845L.057 23.486a.5.5 0 00.598.665l5.968-1.553A11.932 11.932 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.888a9.876 9.876 0 01-5.031-1.375l-.36-.214-3.742.974.998-3.636-.235-.374A9.847 9.847 0 012.112 12C2.112 6.539 6.539 2.112 12 2.112S21.888 6.539 21.888 12 17.461 21.888 12 21.888z"></path></svg>
+      <svg viewBox="0 0 24 24"><path class="wa" d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347zM12 0C5.373 0 0 5.373 0 12c0 2.123.553 4.116 1.522 5.845L.057 23.486a.5.5 0 00.598.665l5.968-1.553A11.932 11.932 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.888a9.876 9.876 0 01-5.031-1.375l-.36-.214-3.742.974.998-3.636-.235-.374A9.847 9.847 0 012.112 12C2.112 6.539 6.539 2.112 12 2.112S21.888 6.539 21.888 12 17.461 21.888 12 21.888z"/></svg>
       <span data-i18n="nav_cta">Envoyer un message</span>
     </a>
   </div>
   <div class="nav-mobile">
-    <button class="lang-btn active" onclick="setLang(&#39;fr&#39;)">FR</button>
-    <button class="lang-btn" onclick="setLang(&#39;en&#39;)">EN</button>
+    <button class="lang-btn active" onclick="setLang('fr')">FR</button>
+    <button class="lang-btn" onclick="setLang('en')">EN</button>
     <button class="burger" onclick="toggleMenu()"><span></span><span></span><span></span></button>
   </div>
 </nav>
 
 <section class="hero">
   <div class="hero-grid"></div>
-  <div class="hero-timeline" aria-hidden="true"><svg width="100%" height="100%" xmlns="http://www.w3.org/2000/svg"><defs><pattern id="tl" x="0" y="0" width="120" height="48" patternUnits="userSpaceOnUse"><rect x="0" y="8" width="80" height="12" rx="2" fill="#E8FF4A"></rect><rect x="85" y="8" width="30" height="12" rx="2" fill="#E8FF4A" opacity=".5"></rect><rect x="0" y="28" width="40" height="12" rx="2" fill="#fff" opacity=".3"></rect><rect x="45" y="28" width="65" height="12" rx="2" fill="#fff" opacity=".2"></rect><line x1="0" y1="0" x2="120" y2="0" stroke="#E8FF4A" stroke-width=".5"></line><line x1="0" y1="48" x2="120" y2="48" stroke="#E8FF4A" stroke-width=".3"></line></pattern></defs><rect width="100%" height="100%" fill="url(#tl)"></rect></svg></div>
+  <div class="hero-timeline" aria-hidden="true"><svg width="100%" height="100%" xmlns="http://www.w3.org/2000/svg"><defs><pattern id="tl" x="0" y="0" width="120" height="48" patternUnits="userSpaceOnUse"><rect x="0" y="8" width="80" height="12" rx="2" fill="#E8FF4A"/><rect x="85" y="8" width="30" height="12" rx="2" fill="#E8FF4A" opacity=".5"/><rect x="0" y="28" width="40" height="12" rx="2" fill="#fff" opacity=".3"/><rect x="45" y="28" width="65" height="12" rx="2" fill="#fff" opacity=".2"/><line x1="0" y1="0" x2="120" y2="0" stroke="#E8FF4A" stroke-width=".5"/><line x1="0" y1="48" x2="120" y2="48" stroke="#E8FF4A" stroke-width=".3"/></pattern></defs><rect width="100%" height="100%" fill="url(#tl)"/></svg></div>
   <div class="hero-glow"></div>
   <div class="hero-eyebrow"><div class="bdot"></div><span data-i18n="hero_badge">Mettre en images vos idées.</span></div>
   <h1>
@@ -405,10 +425,10 @@ footer p{font-size:.75rem;color:var(--muted)}
   </div>
   <div class="hero-btns">
     <a href="https://wa.me/VOTRE_NUMERO?text=Bonjour%2C%20je%20souhaite%20en%20savoir%20plus%20sur%20iFOCUS." target="_blank" class="btn-y" id="hero-wa-btn">
-      <svg viewBox="0 0 24 24"><path class="wa" d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347zM12 0C5.373 0 0 5.373 0 12c0 2.123.553 4.116 1.522 5.845L.057 23.486a.5.5 0 00.598.665l5.968-1.553A11.932 11.932 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.888a9.876 9.876 0 01-5.031-1.375l-.36-.214-3.742.974.998-3.636-.235-.374A9.847 9.847 0 012.112 12C2.112 6.539 6.539 2.112 12 2.112S21.888 6.539 21.888 12 17.461 21.888 12 21.888z"></path></svg>
+      <svg viewBox="0 0 24 24"><path class="wa" d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347zM12 0C5.373 0 0 5.373 0 12c0 2.123.553 4.116 1.522 5.845L.057 23.486a.5.5 0 00.598.665l5.968-1.553A11.932 11.932 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.888a9.876 9.876 0 01-5.031-1.375l-.36-.214-3.742.974.998-3.636-.235-.374A9.847 9.847 0 012.112 12C2.112 6.539 6.539 2.112 12 2.112S21.888 6.539 21.888 12 17.461 21.888 12 21.888z"/></svg>
       <span data-i18n="hero_cta">Discutons de votre projet</span>
     </a>
-    <a href="file:///Users/hichamtahir/Downloads/index_1.html#portfolio" class="btn-g"><span data-i18n="hero_cta2">▶ Voir nos prods</span></a>
+    <a href="#portfolio" class="btn-g"><span data-i18n="hero_cta2">▶ Voir nos prods</span></a>
   </div>
   <div class="resp-tag"><div class="gdot"></div><span data-i18n="resp_tag">Réponse garantie sous 24 heures</span></div>
   <div class="hero-stats">
@@ -420,12 +440,12 @@ footer p{font-size:.75rem;color:var(--muted)}
 </section>
 
 <div class="services-strip rev">
-  <div class="srv"><div class="srv-icon">🎥</div><div class="srv-name" data-i18n="srv1_name">Réalisation</div><div class="srv-desc" data-i18n="srv1_desc">Conception &amp; direction</div></div>
+  <div class="srv"><div class="srv-icon">🎥</div><div class="srv-name" data-i18n="srv1_name">Réalisation</div><div class="srv-desc" data-i18n="srv1_desc">Conception & direction</div></div>
   <div class="srv"><div class="srv-icon">📷</div><div class="srv-name" data-i18n="srv2_name">Cadrage</div><div class="srv-desc" data-i18n="srv2_desc">On se déplace partout</div></div>
   <div class="srv"><div class="srv-icon">🚁</div><div class="srv-name" data-i18n="srv3_name">Drone</div><div class="srv-desc" data-i18n="srv3_desc">DJI Mini 3 Pro</div></div>
-  <div class="srv"><div class="srv-icon">✂️</div><div class="srv-name" data-i18n="srv4_name">Montage</div><div class="srv-desc" data-i18n="srv4_desc">Pro &amp; précis</div></div>
+  <div class="srv"><div class="srv-icon">✂️</div><div class="srv-name" data-i18n="srv4_name">Montage</div><div class="srv-desc" data-i18n="srv4_desc">Pro & précis</div></div>
   <div class="srv"><div class="srv-icon">🎨</div><div class="srv-name" data-i18n="srv5_name">Motion Design</div><div class="srv-desc" data-i18n="srv5_desc">Animations custom</div></div>
-  <div class="srv"><div class="srv-icon">🎵</div><div class="srv-name" data-i18n="srv6_name">Sound Design</div><div class="srv-desc" data-i18n="srv6_desc">Mixage &amp; effets</div></div>
+  <div class="srv"><div class="srv-icon">🎵</div><div class="srv-name" data-i18n="srv6_name">Sound Design</div><div class="srv-desc" data-i18n="srv6_desc">Mixage & effets</div></div>
   <div class="srv"><div class="srv-icon">🌈</div><div class="srv-name" data-i18n="srv7_name">Étalonnage</div><div class="srv-desc" data-i18n="srv7_desc">Color grading cinéma</div></div>
 </div>
 
@@ -458,11 +478,11 @@ footer p{font-size:.75rem;color:var(--muted)}
       <!-- HERO : 2 grosses vidéos YouTube phares -->
       <div class="grid-2 rev">
         <a href="https://youtu.be/r0zvh0ElcnM" target="_blank" class="vcard">
-          <div class="vthumb vthumb-hero"><img class="vthumb-img" src="./iFOCUS_files/maxresdefault.jpg" alt="Pitch Addict ft. Gradur"><div class="vover"></div><div class="vplay vplay-lg">▶</div></div>
-          <div class="vinfo"><span class="vtag football">Football</span><div class="vtitle">Pitch Addict ft. Gradur</div><div class="vmeta">6M abonnés · Chef opérateur &amp; assistant cam</div><div class="vstat">👁 600 000 vues</div></div>
+          <div class="vthumb vthumb-hero"><img class="vthumb-img" src="https://img.youtube.com/vi/r0zvh0ElcnM/maxresdefault.jpg" alt="Pitch Addict ft. Gradur"><div class="vover"></div><div class="vplay vplay-lg">▶</div></div>
+          <div class="vinfo"><span class="vtag football">Football</span><div class="vtitle">Pitch Addict ft. Gradur</div><div class="vmeta">6M abonnés · Chef opérateur & assistant cam</div><div class="vstat">👁 600 000 vues</div></div>
         </a>
         <a href="https://youtu.be/ggAgLZ9CMU4" target="_blank" class="vcard">
-          <div class="vthumb vthumb-hero"><img class="vthumb-img" src="./iFOCUS_files/maxresdefault(1).jpg" alt="Inox Zombie 48h"><div class="vover"></div><div class="vplay vplay-lg">▶</div></div>
+          <div class="vthumb vthumb-hero"><img class="vthumb-img" src="https://img.youtube.com/vi/ggAgLZ9CMU4/maxresdefault.jpg" alt="Inox Zombie 48h"><div class="vover"></div><div class="vplay vplay-lg">▶</div></div>
           <div class="vinfo"><span class="vtag gaming">Gaming</span><div class="vtitle">Inox Zombie — 48h pour survivre</div><div class="vstat">👁 29 000 000 vues</div><div class="vmeta">Cadrage</div></div>
         </a>
       </div>
@@ -471,22 +491,22 @@ footer p{font-size:.75rem;color:var(--muted)}
       <div class="grid-vert-4 rev d1">
         <!-- M6 Pitch Addict -->
         <a href="https://youtu.be/gScglMnLYms" target="_blank" class="vcard">
-          <div class="vthumb vthumb-916"><img class="vthumb-img" src="./iFOCUS_files/maxresdefault(2).jpg" alt="Pitch Addict M6"><div class="vover"></div><div class="vplay">▶</div><div class="m6b">M6</div></div>
-          <div class="vinfo"><span class="vtag football">Football</span><div class="vtitle">Pitch Addict — Real Madrid &amp; FIFA</div><div class="vmeta">iPhone · DJI Drone · M6 · 6M abonnés</div><div class="vstat">👁 19 000 vues · 2M TV</div></div>
+          <div class="vthumb vthumb-916"><img class="vthumb-img" src="https://img.youtube.com/vi/gScglMnLYms/maxresdefault.jpg" alt="Pitch Addict M6"><div class="vover"></div><div class="vplay">▶</div><div class="m6b">M6</div></div>
+          <div class="vinfo"><span class="vtag football">Football</span><div class="vtitle">Pitch Addict — Real Madrid & FIFA</div><div class="vmeta">iPhone · DJI Drone · M6 · 6M abonnés</div><div class="vstat">👁 19 000 vues · 2M TV</div></div>
         </a>
         <!-- M6 Naya -->
         <a href="https://youtu.be/Jyg0kF7b7nY" target="_blank" class="vcard">
-          <div class="vthumb vthumb-916"><img class="vthumb-img" src="./iFOCUS_files/maxresdefault(3).jpg" alt="Naya M6"><div class="vover"></div><div class="vplay">▶</div><div class="m6b">M6</div></div>
+          <div class="vthumb vthumb-916"><img class="vthumb-img" src="https://img.youtube.com/vi/Jyg0kF7b7nY/maxresdefault.jpg" alt="Naya M6"><div class="vover"></div><div class="vplay">▶</div><div class="m6b">M6</div></div>
           <div class="vinfo"><span class="vtag tv">Reportage TV</span><div class="vtitle">Naya — Jeans pour stars</div><div class="vmeta">Hakimi · Aya Nakamura · Gunna · M6</div><div class="vstat">👁 215 000 vues · 2M TV</div></div>
         </a>
         <!-- Insta MBM Cars -->
         <a href="https://youtube.com/shorts/5aP-68-fgOM" target="_blank" class="vcard">
-          <div class="vthumb vthumb-916"><img class="vthumb-img" src="./iFOCUS_files/maxresdefault(4).jpg" alt="MBM Cars AMG GT"><div class="vover"></div><div class="vplay">▶</div></div>
+          <div class="vthumb vthumb-916"><img class="vthumb-img" src="https://img.youtube.com/vi/5aP-68-fgOM/maxresdefault.jpg" alt="MBM Cars AMG GT"><div class="vover"></div><div class="vplay">▶</div></div>
           <div class="vinfo"><span class="vtag cars">Cars</span><div class="vtitle">MBM Cars — AMG GT</div><div class="vmeta">Réalisation · Tournage · Montage</div></div>
         </a>
         <!-- Insta Dubaï Edit -->
         <a href="https://youtube.com/shorts/cFp9WKpDGGU" target="_blank" class="vcard">
-          <div class="vthumb vthumb-916"><img class="vthumb-img" src="./iFOCUS_files/maxresdefault(5).jpg" alt="Just an edit in Dubai"><div class="vover"></div><div class="vplay">▶</div></div>
+          <div class="vthumb vthumb-916"><img class="vthumb-img" src="https://img.youtube.com/vi/cFp9WKpDGGU/maxresdefault.jpg" alt="Just an edit in Dubai"><div class="vover"></div><div class="vplay">▶</div></div>
           <div class="vinfo"><span class="vtag vlog">Lifestyle</span><div class="vtitle">JUST AN EDIT IN DUBAÏ</div><div class="vmeta">Réalisation · Tournage · Montage</div></div>
         </a>
       </div>
@@ -494,15 +514,15 @@ footer p{font-size:.75rem;color:var(--muted)}
       <!-- Blue Magic + Michou : 3 cartes horizontales -->
       <div class="grid-3 rev d2">
         <a href="https://www.youtube.com/watch?v=LInadEbX7JQ" target="_blank" class="vcard">
-          <div class="vthumb vthumb-16"><img class="vthumb-img" src="./iFOCUS_files/maxresdefault(6).jpg" alt="Blue Magic #1"><div class="vover"></div><div class="vplay">▶</div></div>
+          <div class="vthumb vthumb-16"><img class="vthumb-img" src="https://img.youtube.com/vi/LInadEbX7JQ/maxresdefault.jpg" alt="Blue Magic #1"><div class="vover"></div><div class="vplay">▶</div></div>
           <div class="vinfo"><span class="vtag vlog">Vlog</span><div class="vtitle">LE BLUE MAGIC 🛜 #1 — 24h à Dubaï</div><div class="vmeta">Isma · Réalisation · Montage</div></div>
         </a>
         <a href="https://youtu.be/8njvFXxJ4-E" target="_blank" class="vcard">
-          <div class="vthumb vthumb-16"><img class="vthumb-img" src="./iFOCUS_files/maxresdefault(7).jpg" alt="Michou Among Us 1"><div class="vover"></div><div class="vplay">▶</div></div>
+          <div class="vthumb vthumb-16"><img class="vthumb-img" src="https://img.youtube.com/vi/8njvFXxJ4-E/maxresdefault.jpg" alt="Michou Among Us 1"><div class="vover"></div><div class="vplay">▶</div></div>
           <div class="vinfo"><span class="vtag gaming">Gaming</span><div class="vtitle">Michou Among Us — Ep. 1</div><div class="vmeta">Équipe de prod · Mothaiba</div><div class="vstat">👁 7M vues</div></div>
         </a>
         <a href="https://youtu.be/8awSTPaP-28" target="_blank" class="vcard">
-          <div class="vthumb vthumb-16"><img class="vthumb-img" src="./iFOCUS_files/maxresdefault(8).jpg" alt="BSA Academy"><div class="vover"></div><div class="vplay">▶</div></div>
+          <div class="vthumb vthumb-16"><img class="vthumb-img" src="https://img.youtube.com/vi/8awSTPaP-28/maxresdefault.jpg" alt="BSA Academy"><div class="vover"></div><div class="vplay">▶</div></div>
           <div class="vinfo"><span class="vtag yt">YouTube</span><div class="vtitle">BSA Academy — Le Film</div><div class="vmeta">Réalisateur · Long format</div><div class="vmeta" style="color:var(--accent);font-size:.7rem;margin-top:3px">🎬 Diffusé en cinéma</div></div>
         </a>
       </div>
@@ -510,11 +530,11 @@ footer p{font-size:.75rem;color:var(--muted)}
       <!-- Mix Insta + Snapchat verticaux : 4 cartes 9:16 -->
       <div class="grid-vert-4 rev d3">
         <a href="https://youtube.com/shorts/CMAlEHSHHBk" target="_blank" class="vcard">
-          <div class="vthumb vthumb-916"><img class="vthumb-img" src="./iFOCUS_files/maxresdefault(9).jpg" alt="Injouables Teaser"><div class="vover"></div><div class="vplay">▶</div></div>
+          <div class="vthumb vthumb-916"><img class="vthumb-img" src="https://img.youtube.com/vi/CMAlEHSHHBk/maxresdefault.jpg" alt="Injouables Teaser"><div class="vover"></div><div class="vplay">▶</div></div>
           <div class="vinfo"><span class="vtag brand">Branding</span><div class="vtitle">Injouables — Teaser</div><div class="vmeta">Réalisation · Tournage · Montage</div></div>
         </a>
         <a href="https://youtube.com/shorts/1lHNV-TUglw" target="_blank" class="vcard">
-          <div class="vthumb vthumb-916"><img class="vthumb-img" src="./iFOCUS_files/maxresdefault(10).jpg" alt="Alyxa 1"><div class="vover"></div><div class="vplay">▶</div></div>
+          <div class="vthumb vthumb-916"><img class="vthumb-img" src="https://img.youtube.com/vi/1lHNV-TUglw/maxresdefault.jpg" alt="Alyxa 1"><div class="vover"></div><div class="vplay">▶</div></div>
           <div class="vinfo"><span class="vtag brand">Branding</span><div class="vtitle">Alyxa — Série 5 vidéos</div><div class="vmeta">Réalisation · Tournage · Montage</div></div>
         </a>
         <!-- Snapchat HMI -->
@@ -536,9 +556,9 @@ footer p{font-size:.75rem;color:var(--muted)}
           <span>Aussi en photo</span>
         </div>
         <div class="photo-grid">
-          <div class="pcard" onclick="openGallery(&#39;miami&#39;)"><div class="pinner c1"><div class="pemoji">🏝️</div><div class="plbl">MIAMI 🏝️</div></div></div>
-          <div class="pcard" onclick="openGallery(&#39;dubai&#39;)"><div class="pinner c3"><div class="pemoji">🌇</div><div class="plbl">DUBAÏ 🌇</div></div></div>
-          <div class="pcard" onclick="openGallery(&#39;amg&#39;)"><div class="pinner c5"><div class="pemoji">🚘</div><div class="plbl">MERCEDES - AMG GT 🚘</div></div></div>
+          <div class="pcard" onclick="openGallery('miami')"><div class="pinner c1"><div class="pemoji">🏝️</div><div class="plbl">MIAMI 🏝️</div></div></div>
+          <div class="pcard" onclick="openGallery('dubai')"><div class="pinner c3"><div class="pemoji">🌇</div><div class="plbl">DUBAÏ 🌇</div></div></div>
+          <div class="pcard" onclick="openGallery('amg')"><div class="pinner c5"><div class="pemoji">🚘</div><div class="plbl">MERCEDES - AMG GT 🚘</div></div></div>
         </div>
       </div>
     </div>
@@ -547,11 +567,11 @@ footer p{font-size:.75rem;color:var(--muted)}
     <div class="port-panel" id="tab-yt">
       <div class="grid-2 rev">
         <a href="https://youtu.be/r0zvh0ElcnM" target="_blank" class="vcard">
-          <div class="vthumb vthumb-hero"><img class="vthumb-img" src="./iFOCUS_files/maxresdefault.jpg" alt="Pitch Addict ft. Gradur"><div class="vover"></div><div class="vplay vplay-lg">▶</div></div>
-          <div class="vinfo"><span class="vtag football">Football</span><div class="vtitle" style="font-size:1.1rem">Pitch Addict ft. Gradur</div><div class="vmeta">6M abonnés · Chef opérateur &amp; assistant cam</div><div class="vstat">👁 600 000 vues</div></div>
+          <div class="vthumb vthumb-hero"><img class="vthumb-img" src="https://img.youtube.com/vi/r0zvh0ElcnM/maxresdefault.jpg" alt="Pitch Addict ft. Gradur"><div class="vover"></div><div class="vplay vplay-lg">▶</div></div>
+          <div class="vinfo"><span class="vtag football">Football</span><div class="vtitle" style="font-size:1.1rem">Pitch Addict ft. Gradur</div><div class="vmeta">6M abonnés · Chef opérateur & assistant cam</div><div class="vstat">👁 600 000 vues</div></div>
         </a>
         <a href="https://youtu.be/ggAgLZ9CMU4" target="_blank" class="vcard">
-          <div class="vthumb vthumb-hero"><img class="vthumb-img" src="./iFOCUS_files/maxresdefault(1).jpg" alt="Inox Zombie 48h"><div class="vover"></div><div class="vplay vplay-lg">▶</div></div>
+          <div class="vthumb vthumb-hero"><img class="vthumb-img" src="https://img.youtube.com/vi/ggAgLZ9CMU4/maxresdefault.jpg" alt="Inox Zombie 48h"><div class="vover"></div><div class="vplay vplay-lg">▶</div></div>
           <div class="vinfo"><span class="vtag gaming">Gaming</span><div class="vtitle" style="font-size:1.1rem">Inox Zombie — 48h pour survivre</div><div class="vstat">👁 29 000 000 vues</div><div class="vmeta">Cadrage</div></div>
         </a>
       </div>
@@ -559,11 +579,11 @@ footer p{font-size:.75rem;color:var(--muted)}
       <!-- BLUE MAGIC d'ISMA - 3 épisodes -->
       <div class="grid-3 rev d1">
         <a href="https://www.youtube.com/watch?v=LInadEbX7JQ" target="_blank" class="vcard">
-          <div class="vthumb vthumb-16"><img class="vthumb-img" src="./iFOCUS_files/maxresdefault(6).jpg" alt="Blue Magic #1 Dubaï"><div class="vover"></div><div class="vplay">▶</div></div>
+          <div class="vthumb vthumb-16"><img class="vthumb-img" src="https://img.youtube.com/vi/LInadEbX7JQ/maxresdefault.jpg" alt="Blue Magic #1 Dubaï"><div class="vover"></div><div class="vplay">▶</div></div>
           <div class="vinfo"><span class="vtag vlog">Vlog</span><div class="vtitle">LE BLUE MAGIC 🛜 #1<br>24h à Dubaï</div><div class="vmeta">Isma · Réalisation · Tournage · Montage</div></div>
         </a>
         <a href="https://www.youtube.com/watch?v=2tj5aINKkTA" target="_blank" class="vcard">
-          <div class="vthumb vthumb-16"><img class="vthumb-img" src="./iFOCUS_files/maxresdefault(11).jpg" alt="Blue Magic #2 Abu Dhabi"><div class="vover"></div><div class="vplay">▶</div></div>
+          <div class="vthumb vthumb-16"><img class="vthumb-img" src="https://img.youtube.com/vi/2tj5aINKkTA/maxresdefault.jpg" alt="Blue Magic #2 Abu Dhabi"><div class="vover"></div><div class="vplay">▶</div></div>
           <div class="vinfo"><span class="vtag vlog">Vlog</span><div class="vtitle">LE BLUE MAGIC 🛜 #2<br>24h pilote F1 Abu Dhabi</div><div class="vmeta">Isma · Réalisation · Tournage · Montage</div></div>
         </a>
         <div class="vcard" style="cursor:none">
@@ -580,30 +600,30 @@ footer p{font-size:.75rem;color:var(--muted)}
       <!-- Autres YouTube -->
       <div class="grid-4 rev d2">
         <a href="https://youtu.be/8awSTPaP-28" target="_blank" class="vcard">
-          <div class="vthumb vthumb-16"><img class="vthumb-img" src="./iFOCUS_files/maxresdefault(8).jpg" alt="BSA Academy"><div class="vover"></div><div class="vplay vplay-sm">▶</div></div>
+          <div class="vthumb vthumb-16"><img class="vthumb-img" src="https://img.youtube.com/vi/8awSTPaP-28/maxresdefault.jpg" alt="BSA Academy"><div class="vover"></div><div class="vplay vplay-sm">▶</div></div>
           <div class="vinfo"><span class="vtag yt">YouTube</span><div class="vtitle">BSA Academy — Le Film</div><div class="vmeta">Réalisateur · Long format</div><div class="vmeta" style="color:var(--accent);font-size:.7rem;margin-top:3px">🎬 Diffusé en cinéma</div></div>
         </a>
         <a href="https://youtu.be/D24TU9QvIf8" target="_blank" class="vcard">
-          <div class="vthumb vthumb-16"><img class="vthumb-img" src="./iFOCUS_files/maxresdefault(12).jpg" alt="BS Academy Live"><div class="vover"></div><div class="vplay vplay-sm">▶</div></div>
-          <div class="vinfo"><span class="vtag yt">YouTube</span><div class="vtitle">BS Academy Live Twitch</div><div class="vmeta">Réalisateur &amp; Host</div><div class="vstat">👁 77 000 vues</div></div>
+          <div class="vthumb vthumb-16"><img class="vthumb-img" src="https://img.youtube.com/vi/D24TU9QvIf8/maxresdefault.jpg" alt="BS Academy Live"><div class="vover"></div><div class="vplay vplay-sm">▶</div></div>
+          <div class="vinfo"><span class="vtag yt">YouTube</span><div class="vtitle">BS Academy Live Twitch</div><div class="vmeta">Réalisateur & Host</div><div class="vstat">👁 77 000 vues</div></div>
         </a>
         <a href="https://youtu.be/8njvFXxJ4-E" target="_blank" class="vcard">
-          <div class="vthumb vthumb-16"><img class="vthumb-img" src="./iFOCUS_files/maxresdefault(7).jpg" alt="Michou Among Us 1"><div class="vover"></div><div class="vplay vplay-sm">▶</div></div>
+          <div class="vthumb vthumb-16"><img class="vthumb-img" src="https://img.youtube.com/vi/8njvFXxJ4-E/maxresdefault.jpg" alt="Michou Among Us 1"><div class="vover"></div><div class="vplay vplay-sm">▶</div></div>
           <div class="vinfo"><span class="vtag gaming">Gaming</span><div class="vtitle">Michou Among Us — Ep. 1</div><div class="vmeta">Équipe de prod · Mothaiba</div><div class="vstat">👁 7 000 000 vues</div></div>
         </a>
         <a href="https://youtu.be/TZjqnNS0NwY" target="_blank" class="vcard">
-          <div class="vthumb vthumb-16"><img class="vthumb-img" src="./iFOCUS_files/maxresdefault(13).jpg" alt="Michou Among Us 2"><div class="vover"></div><div class="vplay vplay-sm">▶</div></div>
+          <div class="vthumb vthumb-16"><img class="vthumb-img" src="https://img.youtube.com/vi/TZjqnNS0NwY/maxresdefault.jpg" alt="Michou Among Us 2"><div class="vover"></div><div class="vplay vplay-sm">▶</div></div>
           <div class="vinfo"><span class="vtag gaming">Gaming</span><div class="vtitle">Michou Among Us — Ep. 2</div><div class="vmeta">Équipe de prod · Mothaiba</div><div class="vstat">👁 18 000 000 vues</div></div>
         </a>
       </div>
 
       <div class="grid-4 rev d3">
         <a href="https://youtu.be/8H2NTNvwLk0" target="_blank" class="vcard">
-          <div class="vthumb vthumb-16"><img class="vthumb-img" src="./iFOCUS_files/maxresdefault(14).jpg" alt="Michou Among Us IRL"><div class="vover"></div><div class="vplay vplay-sm">▶</div></div>
+          <div class="vthumb vthumb-16"><img class="vthumb-img" src="https://img.youtube.com/vi/8H2NTNvwLk0/maxresdefault.jpg" alt="Michou Among Us IRL"><div class="vover"></div><div class="vplay vplay-sm">▶</div></div>
           <div class="vinfo"><span class="vtag gaming">Gaming</span><div class="vtitle">Michou Among Us IRL</div><div class="vmeta">Équipe de prod · Mothaiba</div><div class="vstat">👁 6 000 000 vues</div></div>
         </a>
         <a href="https://youtu.be/Hsc6SU_VLHE" target="_blank" class="vcard">
-          <div class="vthumb vthumb-16"><img class="vthumb-img" src="./iFOCUS_files/maxresdefault(15).jpg" alt="Hamza Kerdaloko"><div class="vover"></div><div class="vplay vplay-sm">▶</div></div>
+          <div class="vthumb vthumb-16"><img class="vthumb-img" src="https://img.youtube.com/vi/Hsc6SU_VLHE/maxresdefault.jpg" alt="Hamza Kerdaloko"><div class="vover"></div><div class="vplay vplay-sm">▶</div></div>
           <div class="vinfo"><span class="vtag music">Clip</span><div class="vtitle">Hamza — Kerdaloko</div><div class="vmeta">Chef opérateur</div><div class="vstat">👁 450 000 vues</div></div>
         </a>
       </div>
@@ -615,12 +635,12 @@ footer p{font-size:.75rem;color:var(--muted)}
         <!-- Alyxa - CARROUSEL 5 vidéos avec vraies miniatures YouTube -->
         <div class="carousel-card" data-current="0">
           <div class="carousel-track">
-            <a href="https://youtube.com/shorts/1lHNV-TUglw" target="_blank" class="carousel-link" data-link="">
-              <div class="carousel-slide active"><img src="./iFOCUS_files/maxresdefault(10).jpg" alt="Alyxa 1"></div>
-              <div class="carousel-slide"><img src="./iFOCUS_files/maxresdefault(16).jpg" alt="Alyxa 2"></div>
-              <div class="carousel-slide"><img src="./iFOCUS_files/maxresdefault(17).jpg" alt="Alyxa 3"></div>
-              <div class="carousel-slide"><img src="./iFOCUS_files/maxresdefault(18).jpg" alt="Alyxa 4"></div>
-              <div class="carousel-slide"><img src="./iFOCUS_files/maxresdefault(19).jpg" alt="Alyxa 5"></div>
+            <a href="https://youtube.com/shorts/1lHNV-TUglw" target="_blank" class="carousel-link" data-link>
+              <div class="carousel-slide active"><img src="https://img.youtube.com/vi/1lHNV-TUglw/maxresdefault.jpg" alt="Alyxa 1"></div>
+              <div class="carousel-slide"><img src="https://img.youtube.com/vi/-1aw3Jhqg2Y/maxresdefault.jpg" alt="Alyxa 2"></div>
+              <div class="carousel-slide"><img src="https://img.youtube.com/vi/cLIiO_IQtnI/maxresdefault.jpg" alt="Alyxa 3"></div>
+              <div class="carousel-slide"><img src="https://img.youtube.com/vi/IGBFLf8q2Zo/maxresdefault.jpg" alt="Alyxa 4"></div>
+              <div class="carousel-slide"><img src="https://img.youtube.com/vi/T1Gq542TYvg/maxresdefault.jpg" alt="Alyxa 5"></div>
             </a>
             <div class="vplay" style="pointer-events:none">▶</div>
             <div class="carousel-badge">📂 5 vidéos</div>
@@ -643,19 +663,19 @@ footer p{font-size:.75rem;color:var(--muted)}
 
         <!-- Injouables Teaser -->
         <a href="https://youtube.com/shorts/CMAlEHSHHBk" target="_blank" class="vcard">
-          <div class="vthumb vthumb-916"><img class="vthumb-img" src="./iFOCUS_files/maxresdefault(9).jpg" alt="Injouables Teaser"><div class="vover"></div><div class="vplay">▶</div></div>
+          <div class="vthumb vthumb-916"><img class="vthumb-img" src="https://img.youtube.com/vi/CMAlEHSHHBk/maxresdefault.jpg" alt="Injouables Teaser"><div class="vover"></div><div class="vplay">▶</div></div>
           <div class="vinfo"><span class="vtag brand">Branding</span><div class="vtitle">Injouables — Teaser</div><div class="vmeta">Réalisation · Tournage · Montage</div></div>
         </a>
 
         <!-- Injouables VRAI OU FAUX -->
         <a href="https://youtube.com/shorts/6WdvtkzeIFU" target="_blank" class="vcard">
-          <div class="vthumb vthumb-916"><img class="vthumb-img" src="./iFOCUS_files/maxresdefault(20).jpg" alt="Injouables Vrai ou Faux"><div class="vover"></div><div class="vplay">▶</div></div>
+          <div class="vthumb vthumb-916"><img class="vthumb-img" src="https://img.youtube.com/vi/6WdvtkzeIFU/maxresdefault.jpg" alt="Injouables Vrai ou Faux"><div class="vover"></div><div class="vplay">▶</div></div>
           <div class="vinfo"><span class="vtag brand">Branding</span><div class="vtitle">Injouables — VRAI OU FAUX</div><div class="vmeta">Réalisation · Tournage · Montage</div></div>
         </a>
 
         <!-- MBM Cars AMG GT -->
         <a href="https://youtube.com/shorts/5aP-68-fgOM" target="_blank" class="vcard">
-          <div class="vthumb vthumb-916"><img class="vthumb-img" src="./iFOCUS_files/maxresdefault(4).jpg" alt="MBM Cars AMG GT"><div class="vover"></div><div class="vplay">▶</div></div>
+          <div class="vthumb vthumb-916"><img class="vthumb-img" src="https://img.youtube.com/vi/5aP-68-fgOM/maxresdefault.jpg" alt="MBM Cars AMG GT"><div class="vover"></div><div class="vplay">▶</div></div>
           <div class="vinfo"><span class="vtag cars">Cars</span><div class="vtitle">MBM Cars — AMG GT</div><div class="vmeta">Réalisation · Tournage · Montage</div></div>
         </a>
       </div>
@@ -663,25 +683,25 @@ footer p{font-size:.75rem;color:var(--muted)}
       <div class="grid-vert-4 rev d1">
         <!-- JUST AN EDIT IN DUBAÏ -->
         <a href="https://youtube.com/shorts/cFp9WKpDGGU" target="_blank" class="vcard">
-          <div class="vthumb vthumb-916"><img class="vthumb-img" src="./iFOCUS_files/maxresdefault(5).jpg" alt="Just an Edit in Dubai"><div class="vover"></div><div class="vplay">▶</div></div>
+          <div class="vthumb vthumb-916"><img class="vthumb-img" src="https://img.youtube.com/vi/cFp9WKpDGGU/maxresdefault.jpg" alt="Just an Edit in Dubai"><div class="vover"></div><div class="vplay">▶</div></div>
           <div class="vinfo"><span class="vtag vlog">Lifestyle</span><div class="vtitle">JUST AN EDIT IN DUBAÏ</div><div class="vmeta">Réalisation · Tournage · Montage</div></div>
         </a>
 
         <!-- Injouables FAQ (lien Drive en attente upload) -->
-        <a href="file:///Users/hichamtahir/Downloads/index_1.html#" data-drive-link="https://drive.google.com/file/d/1GbrRn0qMjaP2bcTasnZlnypCBaGngrN3/view" target="_blank" class="vcard">
+        <a href="#" data-drive-link="https://drive.google.com/file/d/1GbrRn0qMjaP2bcTasnZlnypCBaGngrN3/view" target="_blank" class="vcard">
           <div class="vthumb vthumb-916"><div class="vi c4"></div><div class="vover"></div><div class="vplay">▶</div></div>
           <div class="vinfo"><span class="vtag brand">Branding</span><div class="vtitle">Injouables — FAQ</div><div class="vmeta">Réalisation · Tournage · Montage</div></div>
         </a>
 
         <!-- Injouables PODCAST PRO -->
         <a href="https://youtube.com/shorts/gk9Yn_tnY2A" target="_blank" class="vcard">
-          <div class="vthumb vthumb-916"><img class="vthumb-img" src="./iFOCUS_files/maxresdefault(21).jpg" alt="Injouables Podcast Pro"><div class="vover"></div><div class="vplay">▶</div></div>
+          <div class="vthumb vthumb-916"><img class="vthumb-img" src="https://img.youtube.com/vi/gk9Yn_tnY2A/maxresdefault.jpg" alt="Injouables Podcast Pro"><div class="vover"></div><div class="vplay">▶</div></div>
           <div class="vinfo"><span class="vtag brand">Branding</span><div class="vtitle">Injouables — PODCAST PRO</div><div class="vmeta">Réalisation · Tournage · Montage</div></div>
         </a>
 
         <!-- Injouables PODCAST PERSO -->
         <a href="https://youtube.com/shorts/vFhOtZ3YUjM" target="_blank" class="vcard">
-          <div class="vthumb vthumb-916"><img class="vthumb-img" src="./iFOCUS_files/maxresdefault(22).jpg" alt="Injouables Podcast Perso"><div class="vover"></div><div class="vplay">▶</div></div>
+          <div class="vthumb vthumb-916"><img class="vthumb-img" src="https://img.youtube.com/vi/vFhOtZ3YUjM/maxresdefault.jpg" alt="Injouables Podcast Perso"><div class="vover"></div><div class="vplay">▶</div></div>
           <div class="vinfo"><span class="vtag brand">Branding</span><div class="vtitle">Injouables — PODCAST PERSO</div><div class="vmeta">Réalisation · Tournage · Montage</div></div>
         </a>
       </div>
@@ -689,20 +709,20 @@ footer p{font-size:.75rem;color:var(--muted)}
       <div class="grid-vert-4 rev d2">
         <!-- TEASER BAKARY SAKO -->
         <a href="https://youtube.com/shorts/K5vXW8ouHKw" target="_blank" class="vcard">
-          <div class="vthumb vthumb-916"><img class="vthumb-img" src="./iFOCUS_files/maxresdefault(23).jpg" alt="Teaser Bakary Sako"><div class="vover"></div><div class="vplay">▶</div></div>
+          <div class="vthumb vthumb-916"><img class="vthumb-img" src="https://img.youtube.com/vi/K5vXW8ouHKw/maxresdefault.jpg" alt="Teaser Bakary Sako"><div class="vover"></div><div class="vplay">▶</div></div>
           <div class="vinfo"><span class="vtag football">Football</span><div class="vtitle">TEASER — BAKARY SAKO</div><div class="vmeta">Réalisation · Tournage · Montage</div></div>
         </a>
 
         <!-- Injouables JEU CONCOURS -->
         <a href="https://youtube.com/shorts/Xmvg93kPhP4" target="_blank" class="vcard">
-          <div class="vthumb vthumb-916"><img class="vthumb-img" src="./iFOCUS_files/maxresdefault(24).jpg" alt="Injouables Jeu Concours"><div class="vover"></div><div class="vplay">▶</div></div>
+          <div class="vthumb vthumb-916"><img class="vthumb-img" src="https://img.youtube.com/vi/Xmvg93kPhP4/maxresdefault.jpg" alt="Injouables Jeu Concours"><div class="vover"></div><div class="vplay">▶</div></div>
           <div class="vinfo"><span class="vtag brand">Branding</span><div class="vtitle">Injouables — JEU CONCOURS</div><div class="vmeta">Réalisation · Tournage · Montage</div></div>
         </a>
 
         <!-- TEASER ANAIS YOUSRA LKH FARAH -->
         <a href="https://youtube.com/shorts/VzjwtGDsVFk" target="_blank" class="vcard">
-          <div class="vthumb vthumb-916"><img class="vthumb-img" src="./iFOCUS_files/maxresdefault(25).jpg" alt="Teaser Anaïs Yousra Farah"><div class="vover"></div><div class="vplay">▶</div></div>
-          <div class="vinfo"><span class="vtag vlog">Lifestyle</span><div class="vtitle">TEASER — ANAÏS, YOUSRA LKH &amp; FARAH</div><div class="vmeta">Réalisation · Tournage · Montage</div></div>
+          <div class="vthumb vthumb-916"><img class="vthumb-img" src="https://img.youtube.com/vi/VzjwtGDsVFk/maxresdefault.jpg" alt="Teaser Anaïs Yousra Farah"><div class="vover"></div><div class="vplay">▶</div></div>
+          <div class="vinfo"><span class="vtag vlog">Lifestyle</span><div class="vtitle">TEASER — ANAÏS, YOUSRA LKH & FARAH</div><div class="vmeta">Réalisation · Tournage · Montage</div></div>
         </a>
 
         <!-- Le Cercle Football - Placeholder bientôt -->
@@ -722,16 +742,16 @@ footer p{font-size:.75rem;color:var(--muted)}
     <div class="port-panel" id="tab-m6">
       <div class="grid-vert-4 rev">
         <a href="https://youtu.be/Jyg0kF7b7nY" target="_blank" class="vcard">
-          <div class="vthumb vthumb-916"><img class="vthumb-img" src="./iFOCUS_files/maxresdefault(3).jpg" alt="Naya M6"><div class="vover"></div><div class="vplay">▶</div><div class="m6b">M6</div></div>
+          <div class="vthumb vthumb-916"><img class="vthumb-img" src="https://img.youtube.com/vi/Jyg0kF7b7nY/maxresdefault.jpg" alt="Naya M6"><div class="vover"></div><div class="vplay">▶</div><div class="m6b">M6</div></div>
           <div class="vinfo"><span class="vtag tv">Reportage TV</span><div class="vtitle">Naya — Jeans pour stars</div><div class="vmeta">Hakimi · Aya Nakamura · Gunna · iPhone · M6</div><div class="vstat">👁 215 000 vues · 2M TV</div></div>
         </a>
         <a href="https://youtu.be/QSK8HFDjEpk" target="_blank" class="vcard">
-          <div class="vthumb vthumb-916"><img class="vthumb-img" src="./iFOCUS_files/maxresdefault(26).jpg" alt="Marc Gostoli M6"><div class="vover"></div><div class="vplay">▶</div><div class="m6b">M6</div></div>
+          <div class="vthumb vthumb-916"><img class="vthumb-img" src="https://img.youtube.com/vi/QSK8HFDjEpk/maxresdefault.jpg" alt="Marc Gostoli M6"><div class="vover"></div><div class="vplay">▶</div><div class="m6b">M6</div></div>
           <div class="vinfo"><span class="vtag tv">Reportage TV</span><div class="vtitle">Marc Gostoli — Skis adaptés</div><div class="vmeta">Sony FX3 · M6 · 2M audience TV</div><div class="vstat">👁 10 300 vues · 2M TV</div></div>
         </a>
         <a href="https://youtu.be/gScglMnLYms" target="_blank" class="vcard">
-          <div class="vthumb vthumb-916"><img class="vthumb-img" src="./iFOCUS_files/maxresdefault(2).jpg" alt="Pitch Addict M6"><div class="vover"></div><div class="vplay">▶</div><div class="m6b">M6</div></div>
-          <div class="vinfo"><span class="vtag football">Football</span><div class="vtitle">Pitch Addict — Real Madrid &amp; FIFA</div><div class="vmeta">iPhone · DJI Drone · M6 · 6M abonnés</div><div class="vstat">👁 19 000 vues · 2M TV</div></div>
+          <div class="vthumb vthumb-916"><img class="vthumb-img" src="https://img.youtube.com/vi/gScglMnLYms/maxresdefault.jpg" alt="Pitch Addict M6"><div class="vover"></div><div class="vplay">▶</div><div class="m6b">M6</div></div>
+          <div class="vinfo"><span class="vtag football">Football</span><div class="vtitle">Pitch Addict — Real Madrid & FIFA</div><div class="vmeta">iPhone · DJI Drone · M6 · 6M abonnés</div><div class="vstat">👁 19 000 vues · 2M TV</div></div>
         </a>
       </div>
     </div>
@@ -762,13 +782,13 @@ footer p{font-size:.75rem;color:var(--muted)}
         </div>
 
         <!-- Clip Maissa × Zizou (vidéo Drive en attente d'upload GitHub) -->
-        <a href="file:///Users/hichamtahir/Downloads/index_1.html#" data-drive-link="https://drive.google.com/file/d/1uoUqfWDnmryZ5xmzgACSTfMPkQPVOdXw/view" target="_blank" class="vcard">
+        <a href="#" data-drive-link="https://drive.google.com/file/d/1uoUqfWDnmryZ5xmzgACSTfMPkQPVOdXw/view" target="_blank" class="vcard">
           <div class="vthumb vthumb-916"><div class="vi c6"></div><div class="vover"></div><div class="vplay">▶</div></div>
           <div class="vinfo"><span class="vtag music">Clip</span><div class="vtitle">CLIP — Maissa × Zizou</div><div class="vmeta">Réalisation · Clip musical</div></div>
         </a>
 
         <!-- Feliccia Nanou (vidéo Drive en attente d'upload GitHub) -->
-        <a href="file:///Users/hichamtahir/Downloads/index_1.html#" data-drive-link="https://drive.google.com/file/d/1adi0ke6c_INDi9OliPU27KYkkuOZpmED/view" target="_blank" class="vcard">
+        <a href="#" data-drive-link="https://drive.google.com/file/d/1adi0ke6c_INDi9OliPU27KYkkuOZpmED/view" target="_blank" class="vcard">
           <div class="vthumb vthumb-916"><div class="vi c7"></div><div class="vover"></div><div class="vplay">▶</div></div>
           <div class="vinfo"><span class="vtag music">Clip</span><div class="vtitle">Feliccia Nanou</div><div class="vmeta">Réalisation · Clip musical</div></div>
         </a>
@@ -778,12 +798,12 @@ footer p{font-size:.75rem;color:var(--muted)}
     <!-- PHOTOS - galerie cliquable -->
     <div class="port-panel" id="tab-photo">
       <div class="photo-grid rev">
-        <div class="pcard" onclick="openGallery(&#39;miami&#39;)"><div class="pinner c1"><div class="pemoji">🏝️</div><div class="pcount" id="count-miami">3 photos</div><div class="plbl">MIAMI 🏝️</div></div></div>
-        <div class="pcard" onclick="openGallery(&#39;dubai&#39;)"><div class="pinner c3"><div class="pemoji">🌇</div><div class="pcount" id="count-dubai">3 photos</div><div class="plbl">DUBAÏ 🌇</div></div></div>
-        <div class="pcard" onclick="openGallery(&#39;amg&#39;)"><div class="pinner c5"><div class="pemoji">🚘</div><div class="pcount" id="count-amg">1 photo</div><div class="plbl">MERCEDES - AMG GT 🚘</div></div></div>
-        <div class="pcard" onclick="openGallery(&#39;football&#39;)"><div class="pinner c2"><div class="pemoji">⚽</div><div class="pcount" id="count-football">1 photo</div><div class="plbl">TheFootballCircle ⚽</div></div></div>
-        <div class="pcard" onclick="openGallery(&#39;lambo&#39;)"><div class="pinner c4"><div class="pemoji">🚘</div><div class="pcount" id="count-lambo">1 photo</div><div class="plbl">LAMBORGHINI &amp; MASERATTI 🚘</div></div></div>
-        <div class="pcard" onclick="openGallery(&#39;padel&#39;)"><div class="pinner c9"><div class="pemoji">🎾</div><div class="pcount" id="count-padel">1 photo</div><div class="plbl">PADEL 🎾</div></div></div>
+        <div class="pcard" onclick="openGallery('miami')"><div class="pinner c1"><div class="pemoji">🏝️</div><div class="pcount" id="count-miami">— photos</div><div class="plbl">MIAMI 🏝️</div></div></div>
+        <div class="pcard" onclick="openGallery('dubai')"><div class="pinner c3"><div class="pemoji">🌇</div><div class="pcount" id="count-dubai">— photos</div><div class="plbl">DUBAÏ 🌇</div></div></div>
+        <div class="pcard" onclick="openGallery('amg')"><div class="pinner c5"><div class="pemoji">🚘</div><div class="pcount" id="count-amg">— photos</div><div class="plbl">MERCEDES - AMG GT 🚘</div></div></div>
+        <div class="pcard" onclick="openGallery('football')"><div class="pinner c2"><div class="pemoji">⚽</div><div class="pcount" id="count-football">— photos</div><div class="plbl">TheFootballCircle ⚽</div></div></div>
+        <div class="pcard" onclick="openGallery('lambo')"><div class="pinner c4"><div class="pemoji">🚘</div><div class="pcount" id="count-lambo">— photos</div><div class="plbl">LAMBORGHINI & MASERATTI 🚘</div></div></div>
+        <div class="pcard" onclick="openGallery('padel')"><div class="pinner c9"><div class="pemoji">🎾</div><div class="pcount" id="count-padel">— photos</div><div class="plbl">PADEL 🎾</div></div></div>
       </div>
     </div>
 
@@ -792,32 +812,42 @@ footer p{font-size:.75rem;color:var(--muted)}
   <!-- 2. ONGLETS EN BAS -->
   <div class="port-tabs-wrap rev">
     <div class="port-tabs">
-      <button class="tab active" onclick="switchTab(&#39;tout&#39;,this)"><span>TOUT</span></button>
-      <button class="tab" onclick="switchTab(&#39;yt&#39;,this)"><span>YouTube</span></button>
-      <button class="tab" onclick="switchTab(&#39;insta&#39;,this)"><span>Instagram</span></button>
-      <button class="tab" onclick="switchTab(&#39;m6&#39;,this)"><span>M6</span></button>
-      <button class="tab" onclick="switchTab(&#39;snap&#39;,this)"><span>Snapchat</span></button>
-      <button class="tab" onclick="switchTab(&#39;photo&#39;,this)"><span>Photos</span></button>
+      <button class="tab active" onclick="switchTab('tout',this)"><span>TOUT</span></button>
+      <button class="tab" onclick="switchTab('yt',this)"><span>YouTube</span></button>
+      <button class="tab" onclick="switchTab('insta',this)"><span>Instagram</span></button>
+      <button class="tab" onclick="switchTab('m6',this)"><span>M6</span></button>
+      <button class="tab" onclick="switchTab('snap',this)"><span>Snapchat</span></button>
+      <button class="tab" onclick="switchTab('photo',this)"><span>Photos</span></button>
     </div>
   </div>
 
   <!-- 3. CTA EN BAS -->
   <div class="port-cta-wrap rev">
-    <a href="https://wa.me/VOTRE_NUMERO?text=Bonjour%2C%20j%27ai%20vu%20votre%20portfolio%20et%20je%20veux%20collaborer." target="_blank" class="port-cta">
+    <a href="https://wa.me/VOTRE_NUMERO?text=Bonjour%2C%20j'ai%20vu%20votre%20portfolio%20et%20je%20veux%20collaborer." target="_blank" class="port-cta">
       <span data-i18n="work_together">Travaillons ensemble →</span>
     </a>
   </div>
 </section>
 
-<!-- ============= LIGHTBOX GALERIE ============= -->
+<!-- ============= LIGHTBOX GALERIE PHOTO ============= -->
 <div class="lightbox" id="lightbox" onclick="closeLightboxBg(event)">
   <div class="lightbox-inner" onclick="event.stopPropagation()">
     <div class="lightbox-counter" id="lbCounter">1 / 1</div>
     <button class="lightbox-close" onclick="closeLightbox()">✕</button>
     <button class="lightbox-arrow prev" onclick="lbNav(-1)">‹</button>
     <button class="lightbox-arrow next" onclick="lbNav(1)">›</button>
-    <img class="lightbox-img" id="lbImg" src="file:///Users/hichamtahir/Downloads/index_1.html" alt="">
+    <img class="lightbox-img" id="lbImg" src="" alt="">
     <div class="lightbox-caption" id="lbCaption"></div>
+  </div>
+</div>
+
+<!-- ============= LIGHTBOX VIDÉO YOUTUBE ============= -->
+<div class="lightbox-video" id="lightboxVideo" onclick="closeVideoLightboxBg(event)">
+  <div class="lbv-inner format-16" id="lbvInner" onclick="event.stopPropagation()">
+    <a href="#" id="lbvYtLink" target="_blank" class="lbv-yt-link">↗ Voir sur YouTube</a>
+    <button class="lbv-close" onclick="closeVideoLightbox()">✕</button>
+    <iframe class="lbv-frame" id="lbvFrame" src="" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+    <div class="lbv-caption" id="lbvCaption"></div>
   </div>
 </div>
 
@@ -840,20 +870,20 @@ footer p{font-size:.75rem;color:var(--muted)}
       <div class="prog-bar"><div class="prog-fill" id="progFill" style="width:50%"></div></div>
       <div class="dsteps-row">
         <button class="ds active" id="sb1" data-i18n="ds1">1. Projet</button>
-        <button class="ds" id="sb2" data-i18n="ds3">2. Brief &amp; envoi</button>
+        <button class="ds" id="sb2" data-i18n="ds3">2. Brief & envoi</button>
       </div>
       <div class="dpage show" id="dp1">
         <p style="font-size:.83rem;color:var(--muted);margin-bottom:1.2rem" data-i18n="q1_intro">Quel type de contenu souhaitez-vous créer ?</p>
         <div class="type-grid">
-          <div class="tcard sel" onclick="pickType(this,&#39;Reportage / Documentaire&#39;)"><div class="tcard-icon">🎥</div><div class="tcard-name" data-i18n="t1">Reportage</div><div class="tcard-desc" data-i18n="t1d">TV, docu, portrait</div></div>
-          <div class="tcard" onclick="pickType(this,&#39;Clip Musical&#39;)"><div class="tcard-icon">🎵</div><div class="tcard-name" data-i18n="t2">Clip Musical</div><div class="tcard-desc" data-i18n="t2d">Clip, teaser, concert</div></div>
-          <div class="tcard" onclick="pickType(this,&#39;Brand Film / Pub&#39;)"><div class="tcard-icon">✨</div><div class="tcard-name" data-i18n="t3">Brand Film</div><div class="tcard-desc" data-i18n="t3d">Marque, produit, lancement</div></div>
-          <div class="tcard" onclick="pickType(this,&#39;Podcast / Interview&#39;)"><div class="tcard-icon">🎙️</div><div class="tcard-name" data-i18n="t4">Podcast</div><div class="tcard-desc" data-i18n="t4d">Talk, interview, podcast</div></div>
-          <div class="tcard" onclick="pickType(this,&#39;Contenu Social&#39;)"><div class="tcard-icon">📱</div><div class="tcard-name" data-i18n="t5">Social Media</div><div class="tcard-desc" data-i18n="t5d">Reels, TikTok, Shorts</div></div>
-          <div class="tcard" onclick="pickType(this,&#39;Vlog / Lifestyle&#39;)"><div class="tcard-icon">🌍</div><div class="tcard-name" data-i18n="t6">Vlog / Lifestyle</div><div class="tcard-desc" data-i18n="t6d">Voyage, events, lifestyle</div></div>
+          <div class="tcard sel" onclick="pickType(this,'Reportage / Documentaire')"><div class="tcard-icon">🎥</div><div class="tcard-name" data-i18n="t1">Reportage</div><div class="tcard-desc" data-i18n="t1d">TV, docu, portrait</div></div>
+          <div class="tcard" onclick="pickType(this,'Clip Musical')"><div class="tcard-icon">🎵</div><div class="tcard-name" data-i18n="t2">Clip Musical</div><div class="tcard-desc" data-i18n="t2d">Clip, teaser, concert</div></div>
+          <div class="tcard" onclick="pickType(this,'Brand Film / Pub')"><div class="tcard-icon">✨</div><div class="tcard-name" data-i18n="t3">Brand Film</div><div class="tcard-desc" data-i18n="t3d">Marque, produit, lancement</div></div>
+          <div class="tcard" onclick="pickType(this,'Podcast / Interview')"><div class="tcard-icon">🎙️</div><div class="tcard-name" data-i18n="t4">Podcast</div><div class="tcard-desc" data-i18n="t4d">Talk, interview, podcast</div></div>
+          <div class="tcard" onclick="pickType(this,'Contenu Social')"><div class="tcard-icon">📱</div><div class="tcard-name" data-i18n="t5">Social Media</div><div class="tcard-desc" data-i18n="t5d">Reels, TikTok, Shorts</div></div>
+          <div class="tcard" onclick="pickType(this,'Vlog / Lifestyle')"><div class="tcard-icon">🌍</div><div class="tcard-name" data-i18n="t6">Vlog / Lifestyle</div><div class="tcard-desc" data-i18n="t6d">Voyage, events, lifestyle</div></div>
         </div>
         <div class="qty-row">
-          <div><div class="qty-lbl" data-i18n="nb_videos">Nombre de vidéos</div><div class="qty-sub" data-i18n="nb_videos_sub">Vidéos longues (&gt;2 min)</div></div>
+          <div><div class="qty-lbl" data-i18n="nb_videos">Nombre de vidéos</div><div class="qty-sub" data-i18n="nb_videos_sub">Vidéos longues (>2 min)</div></div>
           <div class="qty-ctrl"><button class="qbtn" onclick="cQty(-1)">−</button><div class="qnum" id="qnum">1</div><button class="qbtn" onclick="cQty(1)">+</button></div>
         </div>
         <div class="dbtns"><button class="dnext" onclick="goStep(2)" data-i18n="next">Suivant →</button></div>
@@ -866,12 +896,12 @@ footer p{font-size:.75rem;color:var(--muted)}
           <div class="sum-row"><span data-i18n="sum1">Type</span><span class="sum-val" id="s-type">—</span></div>
           <div class="sum-row"><span data-i18n="sum2">Vidéos</span><span class="sum-val" id="s-qty">1</span></div>
         </div>
-        <a href="https://wa.me/VOTRE_NUMERO?text=Bonjour%20%F0%9F%91%8B%0A%0ADemande%20de%20devis%20iFOCUS%20%3A%0A%0A%F0%9F%93%8C%20Type%20%3A%20Reportage%20%2F%20Documentaire%0A%F0%9F%93%B9%20Vid%C3%A9os%20%3A%201%0A%F0%9F%91%A4%20Nom%20%3A%20%E2%80%94%0A%F0%9F%92%AC%20Projet%20%3A%20%E2%80%94%0A%0AMerci%20!" id="wa-btn" target="_blank" class="dwa">
-          <svg viewBox="0 0 24 24"><path class="wa" d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347zM12 0C5.373 0 0 5.373 0 12c0 2.123.553 4.116 1.522 5.845L.057 23.486a.5.5 0 00.598.665l5.968-1.553A11.932 11.932 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.888a9.876 9.876 0 01-5.031-1.375l-.36-.214-3.742.974.998-3.636-.235-.374A9.847 9.847 0 012.112 12C2.112 6.539 6.539 2.112 12 2.112S21.888 6.539 21.888 12 17.461 21.888 12 21.888z"></path></svg>
+        <a href="#" id="wa-btn" target="_blank" class="dwa">
+          <svg viewBox="0 0 24 24"><path class="wa" d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347zM12 0C5.373 0 0 5.373 0 12c0 2.123.553 4.116 1.522 5.845L.057 23.486a.5.5 0 00.598.665l5.968-1.553A11.932 11.932 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.888a9.876 9.876 0 01-5.031-1.375l-.36-.214-3.742.974.998-3.636-.235-.374A9.847 9.847 0 012.112 12C2.112 6.539 6.539 2.112 12 2.112S21.888 6.539 21.888 12 17.461 21.888 12 21.888z"/></svg>
           <span data-i18n="send_wa">Envoyer ma demande sur WhatsApp</span>
         </a>
         <div class="dbtns" style="margin-top:1rem"><button class="dback" onclick="goStep(1)" data-i18n="back">← Retour</button></div>
-        <div class="dwa-note"><div class="gdot"></div><span data-i18n="wa_note">Réponse sous 24h · Devis gratuit &amp; sans engagement</span></div>
+        <div class="dwa-note"><div class="gdot"></div><span data-i18n="wa_note">Réponse sous 24h · Devis gratuit & sans engagement</span></div>
       </div>
     </div>
   </div>
@@ -897,25 +927,130 @@ footer p{font-size:.75rem;color:var(--muted)}
     <p class="cta-sub" data-i18n="cta_sub">Un message suffit. Zéro engagement. Réponse garantie sous 24h.</p>
     <div class="cta-24"><div class="gdot"></div><span data-i18n="resp_tag">Réponse garantie sous 24 heures</span></div>
     <a href="https://wa.me/VOTRE_NUMERO?text=Bonjour%2C%20je%20souhaite%20travailler%20avec%20iFOCUS." target="_blank" class="cta-btn" id="cta-wa-btn">
-      <svg viewBox="0 0 24 24"><path class="wa" d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347zM12 0C5.373 0 0 5.373 0 12c0 2.123.553 4.116 1.522 5.845L.057 23.486a.5.5 0 00.598.665l5.968-1.553A11.932 11.932 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.888a9.876 9.876 0 01-5.031-1.375l-.36-.214-3.742.974.998-3.636-.235-.374A9.847 9.847 0 012.112 12C2.112 6.539 6.539 2.112 12 2.112S21.888 6.539 21.888 12 17.461 21.888 12 21.888z"></path></svg>
+      <svg viewBox="0 0 24 24"><path class="wa" d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347zM12 0C5.373 0 0 5.373 0 12c0 2.123.553 4.116 1.522 5.845L.057 23.486a.5.5 0 00.598.665l5.968-1.553A11.932 11.932 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.888a9.876 9.876 0 01-5.031-1.375l-.36-.214-3.742.974.998-3.636-.235-.374A9.847 9.847 0 012.112 12C2.112 6.539 6.539 2.112 12 2.112S21.888 6.539 21.888 12 17.461 21.888 12 21.888z"/></svg>
       <span data-i18n="cta_btn">Envoyer un message WhatsApp</span>
     </a>
     <div class="cta-socials">
-      <a href="file:///Users/hichamtahir/Downloads/index_1.html#" class="cl">Instagram</a>
-      <a href="file:///Users/hichamtahir/Downloads/index_1.html#" class="cl">YouTube</a>
-      <a href="file:///Users/hichamtahir/Downloads/index_1.html#" class="cl">TikTok</a>
-      <a href="file:///Users/hichamtahir/Downloads/index_1.html#" class="cl">contact@ifocus.ae</a>
+      <a href="#" class="cl">Instagram</a>
+      <a href="#" class="cl">YouTube</a>
+      <a href="#" class="cl">TikTok</a>
+      <a href="#" class="cl">contact@ifocus.ae</a>
     </div>
   </div>
 </section>
 
 <footer>
-  <div class="logo-wrap"><a href="file:///Users/hichamtahir/Downloads/index_1.html#" class="flogo">i<span>FOCUS</span></a><span class="logo-sub">Basé à Dubaï</span></div>
+  <div class="logo-wrap"><a href="#" class="flogo">i<span>FOCUS</span></a><span class="logo-sub">Basé à Dubaï</span></div>
   <p data-i18n="footer_copy">© 2025 iFOCUS · Tous droits réservés</p>
   <p style="font-size:.7rem">Dubai · Remote worldwide</p>
 </footer>
 
 <script>
+/* ============= LIGHTBOX VIDÉO YOUTUBE ============= */
+/* Extrait l'ID YouTube depuis n'importe quel format d'URL */
+function extractYoutubeId(url){
+  if(!url||url==='#')return null;
+  const patterns=[
+    /(?:youtube\.com\/watch\?v=|youtu\.be\/|youtube\.com\/shorts\/|youtube\.com\/embed\/)([a-zA-Z0-9_-]{11})/,
+    /youtube\.com\/v\/([a-zA-Z0-9_-]{11})/
+  ];
+  for(const p of patterns){
+    const m=url.match(p);
+    if(m)return m[1];
+  }
+  return null;
+}
+/* Détecte si c'est un format vertical (Short) en regardant la carte parente */
+function isShortFormat(card){
+  if(!card)return false;
+  return !!card.querySelector('.vthumb-916, .carousel-track');
+}
+function openVideoLightbox(videoId, title, isShort){
+  const lb=document.getElementById('lightboxVideo');
+  const frame=document.getElementById('lbvFrame');
+  const inner=document.getElementById('lbvInner');
+  const caption=document.getElementById('lbvCaption');
+  const ytLink=document.getElementById('lbvYtLink');
+  /* Adapter le format */
+  inner.classList.remove('format-16','format-916');
+  inner.classList.add(isShort?'format-916':'format-16');
+  /* Charger la vidéo avec autoplay */
+  frame.src=`https://www.youtube.com/embed/${videoId}?autoplay=1&rel=0&modestbranding=1`;
+  caption.textContent=title||'';
+  ytLink.href=`https://youtu.be/${videoId}`;
+  lb.classList.add('open');
+  document.body.classList.add('lock');
+}
+function closeVideoLightbox(){
+  const lb=document.getElementById('lightboxVideo');
+  const frame=document.getElementById('lbvFrame');
+  lb.classList.remove('open');
+  document.body.classList.remove('lock');
+  /* Stop la vidéo en vidant l'iframe */
+  frame.src='';
+}
+function closeVideoLightboxBg(e){
+  if(e.target.id==='lightboxVideo')closeVideoLightbox();
+}
+
+/* Intercepter tous les clics sur les vidéos YouTube */
+document.addEventListener('DOMContentLoaded',function(){
+  /* Cartes vidéo classiques (.vcard avec lien YouTube) */
+  document.querySelectorAll('.vcard[href], .vcard a[href], a.vcard').forEach(el=>{
+    /* Si c'est un <a>, on prend directement, sinon on cherche le lien */
+    const link=el.tagName==='A'?el:el.querySelector('a[href]');
+    if(!link)return;
+    const href=link.getAttribute('href');
+    const videoId=extractYoutubeId(href);
+    if(!videoId)return;
+    /* Récupérer le titre depuis la carte */
+    const card=el.tagName==='A'?el:el;
+    const title=card.querySelector('.vtitle')?.textContent.trim()||'';
+    const isShort=isShortFormat(card);
+    /* Bloquer la navigation et ouvrir la lightbox */
+    link.addEventListener('click',function(e){
+      e.preventDefault();
+      e.stopPropagation();
+      openVideoLightbox(videoId,title,isShort);
+    });
+  });
+
+  /* Carrousel Alyxa - clic sur le lien central */
+  document.querySelectorAll('.carousel-card').forEach(card=>{
+    const link=card.querySelector('.carousel-link');
+    if(!link)return;
+    link.addEventListener('click',function(e){
+      e.preventDefault();
+      e.stopPropagation();
+      const idx=parseInt(card.dataset.current||0);
+      const vid=ALYXA_VIDEOS[idx];
+      if(!vid)return;
+      const videoId=extractYoutubeId(vid.link);
+      if(!videoId)return;
+      openVideoLightbox(videoId,vid.title,true); /* Alyxa = Shorts donc 9:16 */
+    });
+  });
+});
+
+/* Fermer avec Échap aussi pour la lightbox vidéo */
+document.addEventListener('keydown',function(e){
+  if(e.key==='Escape'&&document.getElementById('lightboxVideo').classList.contains('open')){
+    closeVideoLightbox();
+  }
+});
+
+/* ============= FALLBACK MINIATURES YOUTUBE ============= */
+/* Les Shorts n'ont pas toujours de maxresdefault.jpg, fallback sur hqdefault */
+document.querySelectorAll('img.vthumb-img, .carousel-slide img').forEach(img=>{
+  img.addEventListener('error',function(){
+    if(this.src.includes('maxresdefault')){
+      this.src=this.src.replace('maxresdefault','hqdefault');
+    }else if(this.src.includes('hqdefault')){
+      this.src=this.src.replace('hqdefault','mqdefault');
+    }
+  },{once:false});
+});
+
 /* ============= GALERIE PHOTO - DONNÉES ============= */
 /* Tu pourras ajouter tes vraies photos ici quand tu m'envoies le Google Drive.
    Pour l'instant, j'ai mis des placeholders Unsplash de qualité. */
@@ -1170,10 +1305,21 @@ function tFaq(item){
 document.querySelectorAll('a[href^="#"]').forEach(a=>{
   a.addEventListener('click',e=>{
     const h=a.getAttribute('href');
+    /* Ignorer les liens vides et boutons WhatsApp */
     if(h==='#'||h===''||a.id==='wa-btn'||a.id==='nav-wa-btn'||a.id==='hero-wa-btn'||a.id==='cta-wa-btn')return;
-    e.preventDefault();
+    /* Trouver la cible */
     const t=document.querySelector(h);
-    if(t)t.scrollIntoView({behavior:'smooth'});
+    if(!t)return;
+    e.preventDefault();
+    /* Fermer le menu mobile s'il est ouvert */
+    const navLinks=document.querySelector('.nav-links');
+    const navRight=document.querySelector('.nav-right');
+    if(navLinks&&navLinks.style.display==='flex'){
+      navLinks.style.display='';
+      navRight.style.display='';
+    }
+    /* Scroll fluide vers la section */
+    t.scrollIntoView({behavior:'smooth',block:'start'});
   });
 });
 
@@ -1203,6 +1349,5 @@ document.getElementById('bname').addEventListener('input',buildWaLink);
 document.getElementById('bdesc').addEventListener('input',buildWaLink);
 buildWaLink();
 </script>
-
-
-</body></html>
+</body>
+</html>
