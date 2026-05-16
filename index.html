@@ -50,6 +50,9 @@ nav{position:fixed;top:0;left:0;right:0;z-index:200;padding:1.3rem 4rem 1.3rem 2
 .nav-wa{display:inline-flex;align-items:center;gap:8px;background:var(--accent);color:#000;font-family:var(--fh);font-size:.8rem;font-weight:700;padding:.6rem 1.4rem;text-decoration:none;cursor:none;transition:transform .2s,box-shadow .2s}
 .nav-wa:hover{transform:translateY(-2px);box-shadow:0 6px 24px rgba(232,255,74,.28)}
 .nav-wa svg{width:14px;height:14px;fill:#000}
+.nav-ig{display:inline-flex;align-items:center;justify-content:center;width:34px;height:34px;border:1px solid var(--border2);color:var(--muted);text-decoration:none;cursor:none;transition:border-color .2s,color .2s,transform .2s;border-radius:50%}
+.nav-ig:hover{border-color:var(--accent);color:var(--accent);transform:translateY(-2px)}
+.nav-ig svg{width:14px;height:14px}
 .nav-mobile{display:none;align-items:center;gap:.5rem}
 .nav-mobile .lang-btn{padding:.35rem .7rem;font-size:.65rem}
 .burger{display:flex;flex-direction:column;gap:5px;cursor:none;background:none;border:none;padding:4px}
@@ -323,6 +326,12 @@ h2 span{color:var(--accent)}
 
 footer{border-top:1px solid var(--border);padding:2rem 4rem;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:1rem}
 footer p{font-size:.75rem;color:var(--muted)}
+.footer-links{display:flex;align-items:center;gap:1.5rem;flex-wrap:wrap}
+.footer-link{display:inline-flex;align-items:center;gap:7px;color:var(--muted);font-size:.78rem;text-decoration:none;transition:color .2s;font-family:var(--fb)}
+.footer-link:hover{color:var(--accent)}
+.footer-link svg{transition:transform .2s}
+.footer-link:hover svg{transform:scale(1.1)}
+.footer-copy{text-align:right}
 .flogo{font-family:var(--fh);font-size:1.3rem;font-weight:800;letter-spacing:-.02em;text-decoration:none;color:var(--text)}.flogo span{color:var(--accent)}
 
 .rev{opacity:0;transform:translateY(32px);transition:opacity .7s ease,transform .7s ease}
@@ -394,9 +403,12 @@ footer p{font-size:.75rem;color:var(--muted)}
     <li><a href="#faq">FAQ</a></li>
   </ul>
   <div class="nav-right">
+    <a href="https://instagram.com/hicham.thr" target="_blank" class="nav-ig" title="@hicham.thr">
+      <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg>
+    </a>
     <button class="lang-btn active" onclick="setLang('fr')">FR</button>
     <button class="lang-btn" onclick="setLang('en')">EN</button>
-    <a href="https://wa.me/VOTRE_NUMERO?text=Bonjour%2C%20je%20souhaite%20en%20savoir%20plus%20sur%20iFOCUS." target="_blank" class="nav-wa" id="nav-wa-btn">
+    <a href="https://wa.me/33667060170?text=Bonjour%2C%20je%20souhaite%20en%20savoir%20plus%20sur%20iFOCUS." target="_blank" class="nav-wa" id="nav-wa-btn">
       <svg viewBox="0 0 24 24"><path class="wa" d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347zM12 0C5.373 0 0 5.373 0 12c0 2.123.553 4.116 1.522 5.845L.057 23.486a.5.5 0 00.598.665l5.968-1.553A11.932 11.932 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.888a9.876 9.876 0 01-5.031-1.375l-.36-.214-3.742.974.998-3.636-.235-.374A9.847 9.847 0 012.112 12C2.112 6.539 6.539 2.112 12 2.112S21.888 6.539 21.888 12 17.461 21.888 12 21.888z"/></svg>
       <span data-i18n="nav_cta">Envoyer un message</span>
     </a>
@@ -424,7 +436,7 @@ footer p{font-size:.75rem;color:var(--muted)}
     <div class="proof-pill"><div class="dot"></div><span data-i18n="proof_3">Michou · Inox Zombie · Pitch Addict...</span></div>
   </div>
   <div class="hero-btns">
-    <a href="https://wa.me/VOTRE_NUMERO?text=Bonjour%2C%20je%20souhaite%20en%20savoir%20plus%20sur%20iFOCUS." target="_blank" class="btn-y" id="hero-wa-btn">
+    <a href="https://wa.me/33667060170?text=Bonjour%2C%20je%20souhaite%20en%20savoir%20plus%20sur%20iFOCUS." target="_blank" class="btn-y" id="hero-wa-btn">
       <svg viewBox="0 0 24 24"><path class="wa" d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347zM12 0C5.373 0 0 5.373 0 12c0 2.123.553 4.116 1.522 5.845L.057 23.486a.5.5 0 00.598.665l5.968-1.553A11.932 11.932 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.888a9.876 9.876 0 01-5.031-1.375l-.36-.214-3.742.974.998-3.636-.235-.374A9.847 9.847 0 012.112 12C2.112 6.539 6.539 2.112 12 2.112S21.888 6.539 21.888 12 17.461 21.888 12 21.888z"/></svg>
       <span data-i18n="hero_cta">Discutons de votre projet</span>
     </a>
@@ -501,7 +513,7 @@ footer p{font-size:.75rem;color:var(--muted)}
         </a>
         <!-- Insta MBM Cars -->
         <a href="https://youtube.com/shorts/5aP-68-fgOM" target="_blank" class="vcard">
-          <div class="vthumb vthumb-916"><img class="vthumb-img" src="https://img.youtube.com/vi/5aP-68-fgOM/maxresdefault.jpg" alt="MBM Cars AMG GT"><div class="vover"></div><div class="vplay">▶</div></div>
+          <div class="vthumb vthumb-916"><img class="vthumb-img" src="MINIATURES/INSTAGRAM/amg.webp" alt="MBM Cars AMG GT"><div class="vover"></div><div class="vplay">▶</div></div>
           <div class="vinfo"><span class="vtag cars">Cars</span><div class="vtitle">MBM Cars — AMG GT</div><div class="vmeta">Réalisation · Tournage · Montage</div></div>
         </a>
         <!-- Insta Dubaï Edit -->
@@ -539,13 +551,8 @@ footer p{font-size:.75rem;color:var(--muted)}
         </a>
         <!-- Snapchat HMI -->
         <div class="vcard">
-          <div class="vthumb vthumb-916"><div class="vi c4"></div><div class="vover"></div><div class="vplay">▶</div></div>
+          <div class="vthumb vthumb-916"><img class="vthumb-img" src="MINIATURES/SNAPCHAT/hmi_house_3.webp" alt="HMI House 3"><div class="vover"></div><div class="vplay">▶</div></div>
           <div class="vinfo"><span class="vtag social">Snapchat</span><div class="vtitle">HMI House 3</div><div class="vmeta">Réalisation</div></div>
-        </div>
-        <!-- Snapchat Maissa -->
-        <div class="vcard">
-          <div class="vthumb vthumb-916"><div class="vi c6"></div><div class="vover"></div><div class="vplay">▶</div></div>
-          <div class="vinfo"><span class="vtag music">Clip</span><div class="vtitle">Maissa × Zizou</div><div class="vmeta">Réalisation · Clip musical</div></div>
         </div>
       </div>
 
@@ -556,9 +563,9 @@ footer p{font-size:.75rem;color:var(--muted)}
           <span>Aussi en photo</span>
         </div>
         <div class="photo-grid">
-          <div class="pcard" onclick="openGallery('miami')"><div class="pinner c1"><div class="pemoji">🏝️</div><div class="plbl">MIAMI 🏝️</div></div></div>
-          <div class="pcard" onclick="openGallery('dubai')"><div class="pinner c3"><div class="pemoji">🌇</div><div class="plbl">DUBAÏ 🌇</div></div></div>
-          <div class="pcard" onclick="openGallery('amg')"><div class="pinner c5"><div class="pemoji">🚘</div><div class="plbl">MERCEDES - AMG GT 🚘</div></div></div>
+          <div class="pcard" onclick="openGallery('miami')"><div class="pinner" style="background-image:url('images/photos/miami/miami-01.webp');background-size:cover;background-position:center"><div class="plbl">MIAMI 🏝️</div></div></div>
+          <div class="pcard" onclick="openGallery('dubai')"><div class="pinner" style="background-image:url('images/photos/dubai/dubai-01.webp');background-size:cover;background-position:center"><div class="plbl">DUBAÏ 🌇</div></div></div>
+          <div class="pcard" onclick="openGallery('amg')"><div class="pinner" style="background-image:url('images/photos/amg/amg-01.webp');background-size:cover;background-position:center"><div class="plbl">MERCEDES - AMG GT 🚘</div></div></div>
         </div>
       </div>
     </div>
@@ -669,13 +676,13 @@ footer p{font-size:.75rem;color:var(--muted)}
 
         <!-- Injouables VRAI OU FAUX -->
         <a href="https://youtube.com/shorts/6WdvtkzeIFU" target="_blank" class="vcard">
-          <div class="vthumb vthumb-916"><img class="vthumb-img" src="https://img.youtube.com/vi/6WdvtkzeIFU/maxresdefault.jpg" alt="Injouables Vrai ou Faux"><div class="vover"></div><div class="vplay">▶</div></div>
+          <div class="vthumb vthumb-916"><img class="vthumb-img" src="MINIATURES/INSTAGRAM/vrai_faux_injouables.webp" alt="Injouables Vrai ou Faux"><div class="vover"></div><div class="vplay">▶</div></div>
           <div class="vinfo"><span class="vtag brand">Branding</span><div class="vtitle">Injouables — VRAI OU FAUX</div><div class="vmeta">Réalisation · Tournage · Montage</div></div>
         </a>
 
         <!-- MBM Cars AMG GT -->
         <a href="https://youtube.com/shorts/5aP-68-fgOM" target="_blank" class="vcard">
-          <div class="vthumb vthumb-916"><img class="vthumb-img" src="https://img.youtube.com/vi/5aP-68-fgOM/maxresdefault.jpg" alt="MBM Cars AMG GT"><div class="vover"></div><div class="vplay">▶</div></div>
+          <div class="vthumb vthumb-916"><img class="vthumb-img" src="MINIATURES/INSTAGRAM/amg.webp" alt="MBM Cars AMG GT"><div class="vover"></div><div class="vplay">▶</div></div>
           <div class="vinfo"><span class="vtag cars">Cars</span><div class="vtitle">MBM Cars — AMG GT</div><div class="vmeta">Réalisation · Tournage · Montage</div></div>
         </a>
       </div>
@@ -687,11 +694,7 @@ footer p{font-size:.75rem;color:var(--muted)}
           <div class="vinfo"><span class="vtag vlog">Lifestyle</span><div class="vtitle">JUST AN EDIT IN DUBAÏ</div><div class="vmeta">Réalisation · Tournage · Montage</div></div>
         </a>
 
-        <!-- Injouables FAQ (lien Drive en attente upload) -->
-        <a href="#" data-drive-link="https://drive.google.com/file/d/1GbrRn0qMjaP2bcTasnZlnypCBaGngrN3/view" target="_blank" class="vcard">
-          <div class="vthumb vthumb-916"><div class="vi c4"></div><div class="vover"></div><div class="vplay">▶</div></div>
-          <div class="vinfo"><span class="vtag brand">Branding</span><div class="vtitle">Injouables — FAQ</div><div class="vmeta">Réalisation · Tournage · Montage</div></div>
-        </a>
+        <!-- Injouables FAQ supprimée (vidéo Drive non hébergée) -->
 
         <!-- Injouables PODCAST PRO -->
         <a href="https://youtube.com/shorts/gk9Yn_tnY2A" target="_blank" class="vcard">
@@ -701,7 +704,7 @@ footer p{font-size:.75rem;color:var(--muted)}
 
         <!-- Injouables PODCAST PERSO -->
         <a href="https://youtube.com/shorts/vFhOtZ3YUjM" target="_blank" class="vcard">
-          <div class="vthumb vthumb-916"><img class="vthumb-img" src="https://img.youtube.com/vi/vFhOtZ3YUjM/maxresdefault.jpg" alt="Injouables Podcast Perso"><div class="vover"></div><div class="vplay">▶</div></div>
+          <div class="vthumb vthumb-916"><img class="vthumb-img" src="MINIATURES/INSTAGRAM/injouables_podcast_perso.webp" alt="Injouables Podcast Perso"><div class="vover"></div><div class="vplay">▶</div></div>
           <div class="vinfo"><span class="vtag brand">Branding</span><div class="vtitle">Injouables — PODCAST PERSO</div><div class="vmeta">Réalisation · Tournage · Montage</div></div>
         </a>
       </div>
@@ -715,7 +718,7 @@ footer p{font-size:.75rem;color:var(--muted)}
 
         <!-- Injouables JEU CONCOURS -->
         <a href="https://youtube.com/shorts/Xmvg93kPhP4" target="_blank" class="vcard">
-          <div class="vthumb vthumb-916"><img class="vthumb-img" src="https://img.youtube.com/vi/Xmvg93kPhP4/maxresdefault.jpg" alt="Injouables Jeu Concours"><div class="vover"></div><div class="vplay">▶</div></div>
+          <div class="vthumb vthumb-916"><img class="vthumb-img" src="MINIATURES/INSTAGRAM/jeuconcours_injouables.webp" alt="Injouables Jeu Concours"><div class="vover"></div><div class="vplay">▶</div></div>
           <div class="vinfo"><span class="vtag brand">Branding</span><div class="vtitle">Injouables — JEU CONCOURS</div><div class="vmeta">Réalisation · Tournage · Montage</div></div>
         </a>
 
@@ -742,31 +745,26 @@ footer p{font-size:.75rem;color:var(--muted)}
     <div class="port-panel" id="tab-m6">
       <div class="grid-vert-4 rev">
         <a href="https://youtu.be/Jyg0kF7b7nY" target="_blank" class="vcard">
-          <div class="vthumb vthumb-916"><img class="vthumb-img" src="https://img.youtube.com/vi/Jyg0kF7b7nY/maxresdefault.jpg" alt="Naya M6"><div class="vover"></div><div class="vplay">▶</div><div class="m6b">M6</div></div>
+          <div class="vthumb vthumb-916"><img class="vthumb-img" src="MINIATURES/M6/naya.webp" alt="Naya M6"><div class="vover"></div><div class="vplay">▶</div><div class="m6b">M6</div></div>
           <div class="vinfo"><span class="vtag tv">Reportage TV</span><div class="vtitle">Naya — Jeans pour stars</div><div class="vmeta">Hakimi · Aya Nakamura · Gunna · iPhone · M6</div><div class="vstat">👁 215 000 vues · 2M TV</div></div>
         </a>
         <a href="https://youtu.be/QSK8HFDjEpk" target="_blank" class="vcard">
-          <div class="vthumb vthumb-916"><img class="vthumb-img" src="https://img.youtube.com/vi/QSK8HFDjEpk/maxresdefault.jpg" alt="Marc Gostoli M6"><div class="vover"></div><div class="vplay">▶</div><div class="m6b">M6</div></div>
+          <div class="vthumb vthumb-916"><img class="vthumb-img" src="MINIATURES/M6/marc_gostoli.webp" alt="Marc Gostoli M6"><div class="vover"></div><div class="vplay">▶</div><div class="m6b">M6</div></div>
           <div class="vinfo"><span class="vtag tv">Reportage TV</span><div class="vtitle">Marc Gostoli — Skis adaptés</div><div class="vmeta">Sony FX3 · M6 · 2M audience TV</div><div class="vstat">👁 10 300 vues · 2M TV</div></div>
         </a>
         <a href="https://youtu.be/gScglMnLYms" target="_blank" class="vcard">
-          <div class="vthumb vthumb-916"><img class="vthumb-img" src="https://img.youtube.com/vi/gScglMnLYms/maxresdefault.jpg" alt="Pitch Addict M6"><div class="vover"></div><div class="vplay">▶</div><div class="m6b">M6</div></div>
+          <div class="vthumb vthumb-916"><img class="vthumb-img" src="MINIATURES/M6/pitch_addict.webp" alt="Pitch Addict M6"><div class="vover"></div><div class="vplay">▶</div><div class="m6b">M6</div></div>
           <div class="vinfo"><span class="vtag football">Football</span><div class="vtitle">Pitch Addict — Real Madrid & FIFA</div><div class="vmeta">iPhone · DJI Drone · M6 · 6M abonnés</div><div class="vstat">👁 19 000 vues · 2M TV</div></div>
         </a>
       </div>
     </div>
 
     <!-- ============ SNAPCHAT - format 9:16 ============ -->
-    <!-- Les vidéos Drive seront remplacées par les liens GitHub une fois uploadées -->
     <div class="port-panel" id="tab-snap">
       <div class="grid-vert-4 rev">
-        <!-- HMI House 3 (pas de vidéo, juste miniature à venir) -->
+        <!-- HMI House 3 - avec sa vraie miniature -->
         <div class="vcard" style="cursor:none">
-          <div class="vthumb vthumb-916">
-            <div class="vi c4"></div>
-            <div class="vover" style="opacity:.5"></div>
-            <div class="vplay" style="opacity:.4">▶</div>
-          </div>
+          <div class="vthumb vthumb-916"><img class="vthumb-img" src="MINIATURES/SNAPCHAT/hmi_house_3.webp" alt="HMI House 3"><div class="vover"></div><div class="vplay">▶</div></div>
           <div class="vinfo"><span class="vtag social">Snapchat</span><div class="vtitle">HMI House 3</div><div class="vmeta">Réalisation</div></div>
         </div>
 
@@ -780,30 +778,48 @@ footer p{font-size:.75rem;color:var(--muted)}
           </div>
           <div class="vinfo"><span class="vtag social">Snapchat</span><div class="vtitle">Finale HMI House — Costa Rica</div><div class="vmeta">À venir prochainement</div></div>
         </div>
-
-        <!-- Clip Maissa × Zizou (vidéo Drive en attente d'upload GitHub) -->
-        <a href="#" data-drive-link="https://drive.google.com/file/d/1uoUqfWDnmryZ5xmzgACSTfMPkQPVOdXw/view" target="_blank" class="vcard">
-          <div class="vthumb vthumb-916"><div class="vi c6"></div><div class="vover"></div><div class="vplay">▶</div></div>
-          <div class="vinfo"><span class="vtag music">Clip</span><div class="vtitle">CLIP — Maissa × Zizou</div><div class="vmeta">Réalisation · Clip musical</div></div>
-        </a>
-
-        <!-- Feliccia Nanou (vidéo Drive en attente d'upload GitHub) -->
-        <a href="#" data-drive-link="https://drive.google.com/file/d/1adi0ke6c_INDi9OliPU27KYkkuOZpmED/view" target="_blank" class="vcard">
-          <div class="vthumb vthumb-916"><div class="vi c7"></div><div class="vover"></div><div class="vplay">▶</div></div>
-          <div class="vinfo"><span class="vtag music">Clip</span><div class="vtitle">Feliccia Nanou</div><div class="vmeta">Réalisation · Clip musical</div></div>
-        </a>
       </div>
     </div>
 
     <!-- PHOTOS - galerie cliquable -->
     <div class="port-panel" id="tab-photo">
       <div class="photo-grid rev">
-        <div class="pcard" onclick="openGallery('miami')"><div class="pinner c1"><div class="pemoji">🏝️</div><div class="pcount" id="count-miami">— photos</div><div class="plbl">MIAMI 🏝️</div></div></div>
-        <div class="pcard" onclick="openGallery('dubai')"><div class="pinner c3"><div class="pemoji">🌇</div><div class="pcount" id="count-dubai">— photos</div><div class="plbl">DUBAÏ 🌇</div></div></div>
-        <div class="pcard" onclick="openGallery('amg')"><div class="pinner c5"><div class="pemoji">🚘</div><div class="pcount" id="count-amg">— photos</div><div class="plbl">MERCEDES - AMG GT 🚘</div></div></div>
-        <div class="pcard" onclick="openGallery('football')"><div class="pinner c2"><div class="pemoji">⚽</div><div class="pcount" id="count-football">— photos</div><div class="plbl">TheFootballCircle ⚽</div></div></div>
-        <div class="pcard" onclick="openGallery('lambo')"><div class="pinner c4"><div class="pemoji">🚘</div><div class="pcount" id="count-lambo">— photos</div><div class="plbl">LAMBORGHINI & MASERATTI 🚘</div></div></div>
-        <div class="pcard" onclick="openGallery('padel')"><div class="pinner c9"><div class="pemoji">🎾</div><div class="pcount" id="count-padel">— photos</div><div class="plbl">PADEL 🎾</div></div></div>
+        <div class="pcard" onclick="openGallery('miami')">
+          <div class="pinner" style="background-image:url('images/photos/miami/miami-01.webp');background-size:cover;background-position:center">
+            <div class="pcount" id="count-miami">— photos</div>
+            <div class="plbl">MIAMI 🏝️</div>
+          </div>
+        </div>
+        <div class="pcard" onclick="openGallery('dubai')">
+          <div class="pinner" style="background-image:url('images/photos/dubai/dubai-01.webp');background-size:cover;background-position:center">
+            <div class="pcount" id="count-dubai">— photos</div>
+            <div class="plbl">DUBAÏ 🌇</div>
+          </div>
+        </div>
+        <div class="pcard" onclick="openGallery('amg')">
+          <div class="pinner" style="background-image:url('images/photos/amg/amg-01.webp');background-size:cover;background-position:center">
+            <div class="pcount" id="count-amg">— photos</div>
+            <div class="plbl">MERCEDES - AMG GT 🚘</div>
+          </div>
+        </div>
+        <div class="pcard" onclick="openGallery('football')">
+          <div class="pinner" style="background-image:url('images/photos/football/football-01.webp');background-size:cover;background-position:center">
+            <div class="pcount" id="count-football">— photos</div>
+            <div class="plbl">TheFootballCircle ⚽</div>
+          </div>
+        </div>
+        <div class="pcard" onclick="openGallery('lambo')">
+          <div class="pinner" style="background-image:url('images/photos/lambo/lambo-01.webp');background-size:cover;background-position:center">
+            <div class="pcount" id="count-lambo">— photos</div>
+            <div class="plbl">LAMBORGHINI & MASERATTI 🚘</div>
+          </div>
+        </div>
+        <div class="pcard" onclick="openGallery('lifestyle')">
+          <div class="pinner" style="background-image:url('images/photos/lifestyle/lifestyle-01.webp');background-size:cover;background-position:center">
+            <div class="pcount" id="count-lifestyle">— photos</div>
+            <div class="plbl">LIFESTYLE ✨</div>
+          </div>
+        </div>
       </div>
     </div>
 
@@ -823,7 +839,7 @@ footer p{font-size:.75rem;color:var(--muted)}
 
   <!-- 3. CTA EN BAS -->
   <div class="port-cta-wrap rev">
-    <a href="https://wa.me/VOTRE_NUMERO?text=Bonjour%2C%20j'ai%20vu%20votre%20portfolio%20et%20je%20veux%20collaborer." target="_blank" class="port-cta">
+    <a href="https://wa.me/33667060170?text=Bonjour%2C%20j'ai%20vu%20votre%20portfolio%20et%20je%20veux%20collaborer." target="_blank" class="port-cta">
       <span data-i18n="work_together">Travaillons ensemble →</span>
     </a>
   </div>
@@ -926,23 +942,33 @@ footer p{font-size:.75rem;color:var(--muted)}
     <h2><span data-i18n="cta_h2_1">Prêt à créer quelque</span><br><span data-i18n="cta_h2_2">chose qui <span style="color:var(--accent)">frappe ?</span></span></h2>
     <p class="cta-sub" data-i18n="cta_sub">Un message suffit. Zéro engagement. Réponse garantie sous 24h.</p>
     <div class="cta-24"><div class="gdot"></div><span data-i18n="resp_tag">Réponse garantie sous 24 heures</span></div>
-    <a href="https://wa.me/VOTRE_NUMERO?text=Bonjour%2C%20je%20souhaite%20travailler%20avec%20iFOCUS." target="_blank" class="cta-btn" id="cta-wa-btn">
+    <a href="https://wa.me/33667060170?text=Bonjour%2C%20je%20souhaite%20travailler%20avec%20iFOCUS." target="_blank" class="cta-btn" id="cta-wa-btn">
       <svg viewBox="0 0 24 24"><path class="wa" d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347zM12 0C5.373 0 0 5.373 0 12c0 2.123.553 4.116 1.522 5.845L.057 23.486a.5.5 0 00.598.665l5.968-1.553A11.932 11.932 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.888a9.876 9.876 0 01-5.031-1.375l-.36-.214-3.742.974.998-3.636-.235-.374A9.847 9.847 0 012.112 12C2.112 6.539 6.539 2.112 12 2.112S21.888 6.539 21.888 12 17.461 21.888 12 21.888z"/></svg>
       <span data-i18n="cta_btn">Envoyer un message WhatsApp</span>
     </a>
     <div class="cta-socials">
-      <a href="#" class="cl">Instagram</a>
-      <a href="#" class="cl">YouTube</a>
-      <a href="#" class="cl">TikTok</a>
-      <a href="#" class="cl">contact@ifocus.ae</a>
+      <a href="https://instagram.com/hicham.thr" target="_blank" class="cl">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" style="vertical-align:middle;margin-right:5px"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg>@hicham.thr
+      </a>
+      <a href="https://wa.me/33667060170" target="_blank" class="cl">WhatsApp</a>
+      <a href="mailto:ifocus.dxb@gmail.com" class="cl">ifocus.dxb@gmail.com</a>
     </div>
   </div>
 </section>
 
 <footer>
   <div class="logo-wrap"><a href="#" class="flogo">i<span>FOCUS</span></a><span class="logo-sub">Basé à Dubaï</span></div>
-  <p data-i18n="footer_copy">© 2025 iFOCUS · Tous droits réservés</p>
-  <p style="font-size:.7rem">Dubai · Remote worldwide</p>
+  <div class="footer-links">
+    <a href="https://instagram.com/hicham.thr" target="_blank" class="footer-link" title="@hicham.thr">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg>
+      <span>@hicham.thr</span>
+    </a>
+    <a href="mailto:ifocus.dxb@gmail.com" class="footer-link">ifocus.dxb@gmail.com</a>
+  </div>
+  <div class="footer-copy">
+    <p data-i18n="footer_copy">© 2025 iFOCUS · Tous droits réservés</p>
+    <p style="font-size:.7rem;margin-top:3px">Dubai · Remote worldwide</p>
+  </div>
 </footer>
 
 <script>
@@ -1051,62 +1077,82 @@ document.querySelectorAll('img.vthumb-img, .carousel-slide img').forEach(img=>{
   },{once:false});
 });
 
-/* ============= GALERIE PHOTO - DONNÉES ============= */
-/* Tu pourras ajouter tes vraies photos ici quand tu m'envoies le Google Drive.
-   Pour l'instant, j'ai mis des placeholders Unsplash de qualité. */
-const GALLERIES = {
-  miami: {
-    title: 'MIAMI 🏝️',
-    photos: [
-      {src:'https://images.unsplash.com/photo-1535498730771-e735b998cd64?w=1600',caption:'Miami Beach'},
-      {src:'https://images.unsplash.com/photo-1605723517503-3cadb5818a0c?w=1600',caption:'South Beach sunset'},
-      {src:'https://images.unsplash.com/photo-1568515387631-8b650bbcdb90?w=1600',caption:'Downtown Miami'}
-    ]
-  },
-  dubai: {
-    title: 'DUBAÏ 🌇',
-    photos: [
-      {src:'https://images.unsplash.com/photo-1512453979798-5ea266f8880c?w=1600',caption:'Burj Khalifa'},
-      {src:'https://images.unsplash.com/photo-1518684079-3c830dcef090?w=1600',caption:'Marina'},
-      {src:'https://images.unsplash.com/photo-1546412414-e1885259563a?w=1600',caption:'Skyline'}
-    ]
-  },
-  amg: {
-    title: 'MERCEDES - AMG GT 🚘',
-    photos: [
-      {src:'https://images.unsplash.com/photo-1617531653332-bd46c24f2068?w=1600',caption:'AMG GT'}
-    ]
-  },
-  football: {
-    title: 'TheFootballCircle ⚽',
-    photos: [
-      {src:'https://images.unsplash.com/photo-1551958219-acbc608c6377?w=1600',caption:'Match'}
-    ]
-  },
-  lambo: {
-    title: 'LAMBORGHINI & MASERATTI 🚘',
-    photos: [
-      {src:'https://images.unsplash.com/photo-1544829099-b9a0c07fad1a?w=1600',caption:'Huracán'}
-    ]
-  },
-  padel: {
-    title: 'PADEL 🎾',
-    photos: [
-      {src:'https://images.unsplash.com/photo-1554068865-24cecd4e34b8?w=1600',caption:'Padel court'}
-    ]
-  }
+/* ============= GALERIE PHOTO - SYSTÈME INTELLIGENT ============= */
+/* Charge automatiquement les photos depuis le repo GitHub.
+   Convention : images/photos/<categorie>/<categorie>-01.webp à <categorie>-NN.webp
+   Le code teste jusqu'à MAX_PHOTOS et n'affiche que les photos qui existent réellement. */
+const GITHUB_BASE = 'images/photos/';
+const MAX_PHOTOS_PER_CATEGORY = 25;
+const GALLERY_CONFIG = {
+  miami:     {title:'MIAMI 🏝️',                   emoji:'🏝️'},
+  dubai:     {title:'DUBAÏ 🌇',                   emoji:'🌇'},
+  amg:       {title:'MERCEDES - AMG GT 🚘',      emoji:'🚘'},
+  football:  {title:'TheFootballCircle ⚽',       emoji:'⚽'},
+  lambo:     {title:'LAMBORGHINI & MASERATTI 🚘', emoji:'🚘'},
+  lifestyle: {title:'LIFESTYLE ✨',                emoji:'✨'}
 };
+/* Cache des photos détectées pour chaque catégorie */
+const GALLERIES = {};
+/* Compteurs photo après détection */
+Object.keys(GALLERY_CONFIG).forEach(key=>{
+  GALLERIES[key]={title:GALLERY_CONFIG[key].title,photos:[]};
+});
 
-/* Update photo counts */
-Object.keys(GALLERIES).forEach(k=>{
-  const el=document.getElementById('count-'+k);
-  if(el)el.textContent=GALLERIES[k].photos.length+' photo'+(GALLERIES[k].photos.length>1?'s':'');
+/* Détecte les photos existantes dans une catégorie (en testant le chargement) */
+function detectPhotos(category){
+  return new Promise(resolve=>{
+    const photos=[];
+    let pending=MAX_PHOTOS_PER_CATEGORY;
+    let stopAfter=null;
+    /* Vérification par chargement effectif des images */
+    for(let i=1;i<=MAX_PHOTOS_PER_CATEGORY;i++){
+      const num=String(i).padStart(2,'0');
+      const src=`${GITHUB_BASE}${category}/${category}-${num}.webp`;
+      const img=new Image();
+      const index=i;
+      img.onload=()=>{
+        photos.push({index,src,caption:`${GALLERY_CONFIG[category].title.split(' ')[0]} ${num}`});
+        if(--pending===0)finish();
+      };
+      img.onerror=()=>{
+        /* Photo n'existe pas, on continue */
+        if(--pending===0)finish();
+      };
+      img.src=src;
+    }
+    function finish(){
+      /* Trie par index pour avoir l'ordre 01, 02, 03... */
+      photos.sort((a,b)=>a.index-b.index);
+      GALLERIES[category].photos=photos;
+      /* Met à jour le compteur sur la carte */
+      const el=document.getElementById('count-'+category);
+      if(el){
+        if(photos.length===0){
+          el.textContent='Bientôt';
+          el.style.opacity='0.5';
+        }else{
+          el.textContent=photos.length+' photo'+(photos.length>1?'s':'');
+        }
+      }
+      resolve(photos);
+    }
+  });
+}
+
+/* Lance la détection de toutes les catégories au chargement de la page */
+document.addEventListener('DOMContentLoaded',function(){
+  Object.keys(GALLERY_CONFIG).forEach(cat=>detectPhotos(cat));
 });
 
 /* ============= LIGHTBOX ============= */
 let lbState={photos:[],idx:0,title:''};
 function openGallery(key){
   const g=GALLERIES[key];if(!g)return;
+  /* Si pas encore de photos détectées, message informatif */
+  if(!g.photos||g.photos.length===0){
+    alert('Photos bientôt disponibles dans cette catégorie !');
+    return;
+  }
   lbState.photos=g.photos;lbState.idx=0;lbState.title=g.title;
   showLb();
   document.body.classList.add('lock');
@@ -1263,7 +1309,7 @@ function setLang(l){
   document.querySelectorAll('[data-i18n]').forEach(el=>{const k=el.getAttribute('data-i18n');if(T[l][k]!==undefined)el.innerHTML=T[l][k];});
   document.title='iFOCUS';
   const waMsg=l==='fr'?'Bonjour%2C%20je%20souhaite%20en%20savoir%20plus%20sur%20iFOCUS.':'Hello%2C%20I%27d%20like%20to%20know%20more%20about%20iFOCUS.';
-  ['nav-wa-btn','hero-wa-btn','cta-wa-btn'].forEach(id=>{const el=document.getElementById(id);if(el)el.href=`https://wa.me/VOTRE_NUMERO?text=${waMsg}`;});
+  ['nav-wa-btn','hero-wa-btn','cta-wa-btn'].forEach(id=>{const el=document.getElementById(id);if(el)el.href=`https://wa.me/33667060170?text=${waMsg}`;});
   buildWaLink();
 }
 (function(){const bl=(navigator.language||'fr').toLowerCase();if(!bl.startsWith('fr'))setLang('en');})();
@@ -1343,7 +1389,7 @@ function buildWaLink(){
   const name=document.getElementById('bname').value||'—';
   const desc=document.getElementById('bdesc').value||'—';
   let msg=lang==='fr'?`Bonjour 👋\n\nDemande de devis iFOCUS :\n\n📌 Type : ${selectedProjectType}\n📹 Vidéos : ${qty}\n👤 Nom : ${name}\n💬 Projet : ${desc}\n\nMerci !`:`Hello 👋\n\nQuote request for iFOCUS:\n\n📌 Type: ${selectedProjectType}\n📹 Videos: ${qty}\n👤 Name: ${name}\n💬 Project: ${desc}\n\nThank you!`;
-  document.getElementById('wa-btn').href='https://wa.me/VOTRE_NUMERO?text='+encodeURIComponent(msg);
+  document.getElementById('wa-btn').href='https://wa.me/33667060170?text='+encodeURIComponent(msg);
 }
 document.getElementById('bname').addEventListener('input',buildWaLink);
 document.getElementById('bdesc').addEventListener('input',buildWaLink);
